@@ -16,7 +16,7 @@ format: html
 - Instructor's Name & Contact:
   - Marc Tollis (marc.tollis\@nau.edu)
     - Room 209, SICCS (Building 90, second floor)
-    - Office Hours: Tuesdays and Thursdays, 11:00 AM–12:00 PM
+    - Office Hours: Thursdays, 11:00 AM–12:00 PM
     - 928-523-3406
 
 ## Canvas & Recorded Lectures
