@@ -1,5 +1,5 @@
 ---
-title: "CS506: Data Wrangling and Management – Syllabus"
+title: "INF506: Data Wrangling and Management – Syllabus"
 format: html
 ---
 
@@ -9,21 +9,21 @@ format: html
 
 **INF506: Data Wrangling and Management** introduces graduate students to data wrangling and management using **R** and the **Tidyverse** ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows.
 
--   CS 506, Fall 2025, 3 units
--   Section 001: TuTh 9:35AM-10:50AM, Learning Resource Ctr Rm 106C
+-   INF 506, Fall 2026, 3 units
+-   Section 001: Mondays and Wednesdays, 12:45–2:00 PM, Science Annex Room 223
 -   Prerequisite: Graduate status
 -   Mode of Instruction: Face-to-face (in person)
 -   Instructor's Name & Contact:
-    -   Marc Tollis (marc.tollis\@nau.edu)
+    -   Marc Tollis (marc.tollis@nau.edu)
         -   Room 209, SICCS (Building 90, second floor)
-        -   Office Hours: Tue 11AM-12PM
+        -   Office Hours: Tuesdays and Thursdays, 11:00 AM–12:00 PM
         -   928-523-3406
 
 ## Canvas & Recorded Lectures
 
-We will use the learning management system, [Canvas](https://legacy.nau.edu/lms/), to conduct some course business, including assignment disbursement and submitting. I will use Canvas to record lectures for future viewing.
+We will use the learning management system, [Canvas](https://canvas.nau.edu/), to conduct some course business, including assignment disbursement and submitting.
 
-## CS506 Book Website
+## INF506 Book Website
 
 I have compiled a [course website](https://marctollis.github.io/cs506-book/) that has supplemental text and coded examples that we will walk through in class. This website essentially serves as the course textbook and is required reading. There will be other required reading material.
 
