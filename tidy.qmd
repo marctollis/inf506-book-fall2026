@@ -1,0 +1,148 @@
+---
+title: "Tidy Data with tidyr"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Explain why tidy data improves analysis and visualization
+-   Reshape data between wide and long formats using `pivot_longer()` and `pivot_wider()`
+-   Separate and unite columns using `separate()` and `unite()`
+-   Apply tidying techniques to messy real-world datasets
+-   Prepare datasets for use with `dplyr` and `ggplot2`
+
+------------------------------------------------------------------------
+
+## Why Tidy Data?
+
+In Week 6, you performed **EDA** on datasets that were already in a usable format.\
+Real datasets are often messy. **Tidy data** makes it easy to:
+
+-   Use `ggplot2` for visualization\
+-   Use `dplyr` for summaries and transformations\
+-   Combine datasets with joins
+
+**Principles of Tidy Data** (Hadley Wickham):\
+1. Each variable is a column\
+2. Each observation is a row\
+3. Each value is a cell
+
+------------------------------------------------------------------------
+
+## Pivoting: Long vs Wide
+
+### `pivot_longer()`
+
+Converts wide data into long (tidy) format.
+
+```{r}
+library(tidyverse)
+
+table4a |>
+  pivot_longer(cols = c(`1999`, `2000`),
+               names_to = "year",
+               values_to = "cases")
+```
+
+------------------------------------------------------------------------
+
+### `pivot_wider()`
+
+Converts long data back into wide format.
+
+```{r}
+table2 |>
+  pivot_wider(names_from = type, values_from = count)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Pivoting
+
+1.  Use `pivot_longer()` to convert `table4a` to long format.\
+2.  Use `pivot_wider()` on `table2` to create separate columns for `type`.\
+3.  Which format is easier to use with `ggplot2` and `dplyr`?
+
+------------------------------------------------------------------------
+
+## Separating and Uniting Columns
+
+### `separate()`
+
+Splits a column into multiple columns.
+
+```{r}
+table3 |>
+  separate(rate, into = c("cases", "population"), sep = "/")
+```
+
+------------------------------------------------------------------------
+
+### `unite()`
+
+Combines multiple columns into one.
+
+```{r}
+table5 |>
+  unite(new, century, year, sep = "")
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Separate and Unite
+
+1.  Use `separate()` to split the `rate` column in `table3`.\
+2.  Use `unite()` to combine `century` and `year` into one column.
+
+------------------------------------------------------------------------
+
+## Tidying a Real Dataset
+
+The `who` dataset is messy: column names encode multiple variables.
+
+Example tidying workflow:
+
+```{r}
+who |>
+  pivot_longer(cols = starts_with("new"),
+               names_to = "key",
+               values_to = "cases",
+               values_drop_na = TRUE) |>
+  separate(key, into = c("type", "sex_age"), sep = "_") |>
+  separate(sex_age, into = c("sex", "age"), sep = 1)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – WHO Dataset
+
+1.  Pivot `who` longer to create `key` and `cases`.\
+2.  Separate `key` into multiple components.\
+3.  Count total cases by country.\
+4.  Which country has the highest reported cases?
+
+------------------------------------------------------------------------
+
+## Tidy Data Workflow
+
+After tidying, you can:
+
+-   Use `ggplot2` for visualizations\
+-   Use `group_by()` and `summarize()` for summaries\
+-   Join with other datasets
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For homework, you will:
+
+-   Take a messy dataset (e.g., `table4a`, `table5`, or your own)
+-   Use `pivot_longer()` and/or `pivot_wider()` to reshape it
+-   Use `separate()` and `unite()` as needed
+-   Produce a tidy dataset and create **one visualization** and **one grouped summary**
+-   Render to PDF and submit on Canvas
+
+------------------------------------------------------------------------
+

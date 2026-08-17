@@ -1,0 +1,137 @@
+---
+title: "Appendix: Coding Style Guidelines"
+---
+
+## Why Style Matters
+
+Consistent code style makes your work:
+
+-   **Easier to read** (for you and collaborators)
+-   **Easier to debug** (clean structure reveals problems quickly)
+-   **Easier to maintain** (future you will thank present you)
+
+This appendix summarizes the **tidyverse style guide** based on [R4DS Workflow: Style](https://r4ds.hadley.nz/workflow-style.html).
+
+------------------------------------------------------------------------
+
+## File Naming
+
+-   Use **lowercase**, **descriptive names**, and **hyphens** (not spaces).
+-   Good: `data-cleaning.R`, `plot-analysis.R`
+-   Bad: `Data Cleaning.R`, `final.R`
+
+------------------------------------------------------------------------
+
+## Object Naming
+
+-   Use **snake_case** for variable and function names.
+-   Be descriptive, not cryptic.
+
+```{r}
+# Good
+daily_sales <- 100
+calculate_mean <- function(x) mean(x)
+
+# Bad
+ds <- 100
+cm <- function(x) mean(x)
+```
+
+------------------------------------------------------------------------
+
+## Spaces and Indentation
+
+-   Use **two spaces** for indentation.
+-   Always put a space **after commas** and **around operators**.
+
+```{r, eval=FALSE}
+# Good
+y <- x + 1
+filter(mpg, cyl == 4)
+
+# Bad
+y<-x+1
+filter(mpg,cyl==4)
+```
+
+------------------------------------------------------------------------
+
+## Long Lines
+
+-   Keep lines **under 80 characters**.
+-   Use line breaks for long function calls.
+
+```{r, eval=FALSE}
+mpg |>
+  filter(cyl == 4, hwy > 30) |>
+  arrange(desc(hwy))
+```
+
+------------------------------------------------------------------------
+
+## Function Formatting
+
+-   Use consistent curly brace placement.
+
+```{r, eval=FALSE}
+# Good
+my_function <- function(x) {
+  x + 1
+}
+
+# Bad
+my_function <- function(x){
+x+1}
+```
+
+------------------------------------------------------------------------
+
+## Commenting Code
+
+-   Write **comments** to explain why, not what.
+-   Use `#` for inline comments.
+
+```{r, eval=FALSE}
+# Calculate average highway mpg for 4-cylinder cars
+avg_hwy <- mpg |>
+  filter(cyl == 4) |>
+  summarize(mean_hwy = mean(hwy))
+```
+
+------------------------------------------------------------------------
+
+## Piping
+
+-   Each step in a pipeline goes on a **new line**.
+-   Use the pipe `|>` to connect transformations.
+
+```{r, eval=FALSE}
+mpg |>
+  filter(cyl == 4) |>
+  group_by(manufacturer) |>
+  summarize(mean_hwy = mean(hwy))
+```
+
+------------------------------------------------------------------------
+
+## Tidyverse Style Summary
+
+-   Use **`|>`** for pipelines, **snake_case** for names
+-   Indent **two spaces** per level
+-   Avoid deeply nested code — break into steps
+-   Write **clear, short, and well-commented** code
+
+------------------------------------------------------------------------
+
+## In-Class Exercise
+
+1.  Take a messy R script (provided in class).\
+2.  Reformat it to follow these style guidelines.\
+3.  Compare before vs. after readability.
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+Good code style is not just aesthetic — it improves **reproducibility** and **collaboration**.\
+Follow these conventions for all homework and projects in this course.

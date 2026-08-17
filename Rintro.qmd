@@ -1,0 +1,180 @@
+---
+title: "Introduction to R, RStudio, and Quarto"
+---
+
+## Learning Objectives
+
+By the end of this week, you should be able to:
+
+-   Install and open R, RStudio, and Quarto
+-   Navigate the four-pane layout of RStudio
+-   Create and run R scripts
+-   Understand the differences between the console, script editor, and environment
+-   Execute basic R operations and understand data types
+-   Install and load R packages
+-   Create and render a Quarto (`.qmd`) document to `.pdf`
+
+------------------------------------------------------------------------
+
+## Getting Started
+
+R is a programming language designed for data analysis.\
+RStudio is an Integrated Development Environment (IDE) that makes working with R easier.\
+Quarto is a tool for creating reproducible documents that combine code and text.
+
+------------------------------------------------------------------------
+
+## Installing R, RStudio, and Quarto
+
+1.  Install R: <https://cran.r-project.org/>
+2.  Install RStudio: <https://posit.co/download/rstudio-desktop/>
+3.  Install Quarto: <https://quarto.org/docs/get-started/>
+
+When you open RStudio, you’ll see four panes:
+
+-   Console – runs code interactively
+-   Source – write and save scripts or Quarto documents
+-   Environment/History – view and manage objects
+-   Files/Plots/Packages/Help/Viewer – navigation and visualization tools
+
+------------------------------------------------------------------------
+
+## Introduction to Quarto
+
+Quarto allows you to create documents that include both text and executable R code.
+
+### Your First Quarto Document
+
+1.  In RStudio: File → New File → Quarto Document
+2.  Replace the header with:
+
+```         
+---
+title: "My First Quarto Document"
+author: "Your Name"
+format: pdf
+---
+```
+
+3.  Below the header, add:
+
+```{r}
+x <- c(1, 2, 3, 4, 5)
+mean(x)
+```
+
+4.  Click Render to produce a PDF file.
+
+------------------------------------------------------------------------
+
+### In-Class Quarto Exercise
+
+-   Create a new Quarto document with:
+    -   A title, your name, and the date
+    -   A short paragraph of text
+    -   A code chunk that calculates the mean and standard deviation of a numeric vector
+-   Render it to PDF and verify it works.
+
+------------------------------------------------------------------------
+
+## Basic R Concepts
+
+### Variables and Assignments
+
+```{r}
+x <- 5
+y <- 10
+z <- x + y
+z
+```
+
+### Vectors and Functions
+
+```{r}
+ages <- c(25, 30, 35, 40)
+mean(ages)
+sd(ages)
+```
+
+### Data Frames
+
+```{r}
+name <- c("Alice", "Bob", "Charlie")
+age <- c(25, 30, 35)
+student_data <- data.frame(name, age)
+student_data
+```
+
+### Inspecting Data
+
+```{r}
+str(student_data)
+summary(student_data)
+head(student_data)
+```
+
+### Comments and Help
+
+```{r}
+# This is a comment
+?mean  # Help for the mean function
+```
+
+------------------------------------------------------------------------
+
+### Using Scripts and Console
+
+-   Write your code in the script editor and run lines with Ctrl+Enter (Cmd+Enter on Mac)
+-   Save scripts with the `.R` extension
+-   Use the Console for quick exploration
+
+------------------------------------------------------------------------
+
+### Installing and Loading Packages
+
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+
+------------------------------------------------------------------------
+
+### In-Class R Exercises
+
+1.  Create a numeric vector of five numbers and calculate its mean, median, and standard deviation.
+2.  Create a data frame with three columns (name, age, and major) and print its structure.
+3.  Import a dataset from a URL using `read.csv()` and summarize it using `summary()`.
+
+```{r}
+my_vec <- c(10, 20, 30, 40, 50)
+mean(my_vec)
+median(my_vec)
+sd(my_vec)
+
+df <- data.frame(
+  name = c("Lily", "Mark", "Tom"),
+  age = c(21, 22, 23),
+  major = c("Biology", "Math", "History")
+)
+str(df)
+
+data <- read.csv("https://people.sc.fsu.edu/~jburkardt/data/csv/airtravel.csv")
+summary(data)
+```
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+-   Create a `.qmd` document that:
+    -   Includes a title and your name
+    -   Demonstrates at least three code chunks
+    -   Shows basic statistics on a numeric vector
+    -   Imports a dataset, inspects it with `str()` and `summary()`, and writes one paragraph summarizing your findings
+-   Render to PDF and submit to Canvas.
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+You now know how to run R scripts and render Quarto documents.\
+Next week, you’ll learn how to create data visualizations using `ggplot2`.

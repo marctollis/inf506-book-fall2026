@@ -1,0 +1,307 @@
+---
+title: "Strings and Regular Expressions with stringr"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Manipulate strings using the `stringr` package
+-   Detect patterns with regular expressions (regex)
+-   Extract, replace, and split text
+-   Clean messy text data for analysis
+
+------------------------------------------------------------------------
+
+## Introduction to `stringr`
+
+The `stringr` package provides consistent, simple functions for string operations.
+
+Load the library:
+
+```{r}
+library(tidyverse)
+library(stringr)
+```
+
+------------------------------------------------------------------------
+
+## Creating and Inspecting Strings
+
+### Simple string creation:
+
+```{r}
+string1 <- "Here is a string"
+string2 <- 'Single quotes work also'
+string3 <- 'If I want to put a "quote" in a string, I use single quotes.'
+```
+
+## Creating strings from data
+
+### `str_c()`
+
+This takes vectors as arguments and returns a character vector.
+
+Here is a simple string:
+
+```{r}
+x <- c("apple", "banana", "pear")
+x
+```
+
+We can combine similar strings with `str_c`:
+
+```{r}
+str_c("apple", "banana", "pear")
+str_c("apple ", "banana ", "pear ")
+```
+
+```{r}
+str_c(fruit, " is tasty")
+```
+
+### Letters
+
+`str_length` gives you the number of letters in a string. You can provide a vector with multiple strings:
+
+```{r}
+str_length(c("x", "CS506: Data Wrangling and Management", NA))
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Basic String Operations
+
+1.  Create a vector of at least 5 words.\
+2.  Measure their lengths with `str_length()`.\
+3.  Concatenate them with the phrase `" is cool"`.
+
+```{r}
+lore <- c("Pokemon", "Harry Potter", "LOTR", "Star Wars", "Rocky")
+str_length(lore)
+str_c(lore, " is cool")
+```
+
+## In-Class Challenge
+
+1.  Install the `babynames` package and load the library. Invoke `glimpse()` to understand the column names.\
+2.  Use `filter()` to look at the longest names (those with exactly 15 letters).\
+3.  Use `count()` to find the distribution of lengths of names (Hint: use the `wt` argument).\
+
+```{r}
+library(babynames)
+babynames |>
+  filter(str_length(name) == 15) |>
+  count(name, wt = n) |>
+  arrange(desc(n))
+```
+
+## Detecting Patterns with Regular Expressions
+
+"Regex" are a powerful way to detecting and describing patterns in strings.
+
+###`str_view`
+`str_view` can take a regular expression as its second argument.
+
+Here it is with a literal character:
+
+```{r}
+str_view(stringr::fruit, "berry")
+```
+
+But you can also use a punctuation character like `.`, `+`, `*`, `[`, `]`, and `?`. These are called **metacharacters**.
+
+`.` will match any character. `"a."` will match anything that is "a" followed by another character:
+
+```{r}
+str_view(c("a", "ab", "ae", "bd", "ea", "eab"), "a.")
+```
+
+We can also look for anything with an "a", followed by three letters, followed by an "e":
+
+```{r}
+str_view(stringr::fruit, "a...e")
+```
+
+###`str_detect()`
+Returns TRUE if a pattern is found.
+
+```{r}
+animals <- c("dog", "cat", "parrot", "cow")
+str_detect(animals, "o")
+```
+
+You can use **regular expressions** for more complex patterns.
+
+Examples:
+
+-   `^a` – starts with “a”\
+-   `ing$` – ends with “ing”\
+-   `[0-9]+` – one or more digits
+
+```{r}
+animals <- c("ant", "bat", "cat", "dog")
+str_detect(animals, "^a")
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Pattern Detection
+
+1.  Create a vector of email-like strings.\
+2.  Use `str_detect()` to check which contain `"@"`.\
+3.  Write a regex to detect strings ending in `.com`.
+
+------------------------------------------------------------------------
+
+```{r}
+emails <- c("marc@nau.edu", "velma@gmail.com", "jack@yahoo.com", "sam@apple.com")
+str_detect(emails, "@")
+str_detect(emails, '.com$')
+```
+`str_detect` returns a logical vector that is `TRUE` if the pattern matches an element of the character vector and `FALSE` if it doesn't.
+
+```{r}
+str_detect(c("a", "b", "c"), "[aeiou]")
+```
+
+This pairs quite well with `filter()`:
+
+```{r}
+babynames |>
+  filter(str_detect(name, "x")) |>
+  count(name, wt = n, sort = TRUE)
+```
+
+
+### `str_count()`
+
+Rather than a true or false, `str_count()` counts how many matches are in a string.
+
+```{r}
+x <- c("apple", "banana", "pear")
+str_count(x, "p")
+```
+
+## Extracting and Replacing Text
+
+### `str_extract()`
+
+Extracts the first match:
+
+```{r}
+str_extract(c("abc123", "xyz789"), "[0-9]+")
+```
+
+### `str_replace()`
+
+Replaces matching patterns:
+
+```{r}
+str_replace("apple pie", "apple", "peach")
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – Extraction and Replacement
+
+1.  Extract digits from a vector of alphanumeric strings.\
+2.  Replace the word `"dog"` with `"puppy"` in a text vector.
+
+```{r}
+v <- c('1','fg3','5gh','j34', '0978')
+str_extract(v, "[0-9]+")
+
+str_replace(c("Big dog", "Bird dog", "Silly dog"), "dog", "puppy")
+```
+
+## Pattern details
+
+These regular expressions allow us to search our data with more detail.
+
+### Escaping
+
+You can use `str_view` to view the strings without the escapes.
+
+```{r}
+double_quote <- "\"" # or '"'
+single_quote <- '\'' # or "'"
+x <- c(double_quote, single_quote)
+str_view(x)
+```
+
+### Anchors
+
+Regular expressions match any part of a string by default. Sometimes you just want the start or end, so you need to **anchor** your regex:
+
+`^` matches the start:
+
+```{r}
+str_view(stringr::fruit, "^a")
+```
+
+`$` matches the end:
+
+```{r}
+str_view(stringr::fruit, "a$")
+```
+
+### Character classes
+
+Let you match a set of characters: Let's use the string vector `stringr::words`:
+
+```{r}
+str_view(stringr::words, "[aeiou]x[aeiou]")
+```
+
+Or, if you want anything **except** your character class:
+
+```{r}
+str_view(stringr::words, "[^aeiou]y[^aeiou]")
+```
+
+ - `-` defines a range (`[a-z]' or '[0-9]`).\
+ - `\` escapes a special character, so `[\^\-\]]` matches `^`, `-``, or `]`.
+
+### Quantifiers
+
+These control how many times a pattern can match.\
+- `?` makes a pattern optional (i.e. it matches 0 or 1 times)\
+- `+` lets a pattern repeat (i.e. it matches at least once)\
+- `*` lets a pattern be optional or repeat (i.e. it matches any number of times, including 0).\
+
+```{r}
+# ab? matches an "a", optionally followed by a "b".
+str_view(c("a", "ab", "abb"), "ab?")
+
+# ab+ matches an "a", followed by at least one "b".
+str_view(c("a", "ab", "abb"), "ab+")
+
+# ab* matches an "a", followed by any number of "b"s.
+str_view(c("a", "ab", "abb"), "ab*")
+```
+
+You can specify the number of matches with `{}`.\\
+
+-   `{n}` - matches **exactly** n times.
+
+-   `{n,}` - matches **at least** n times.
+
+-   `{n,m}` - matches between n and m times.
+
+## In-Class Challenge
+
+Using `stringr::words`, create regular expressions that find all words that:\
+- Start with “y”.\
+- Don’t start with “y”.\
+- End with “x”.\
+- Are exactly three letters long. (Don’t cheat by using `str_length()`!)\
+- Have seven letters or more.\
+- Contain a vowel-consonant pair.\
+- Contain at least two vowel-consonant pairs in a row.\
+- Only consist of repeated vowel-consonant pairs.\
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next, we will learn to **work with factors and categorical data** using the `forcats` package.

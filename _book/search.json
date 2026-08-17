@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CS506: Data Wrangling and Management",
+    "section": "",
+    "text": "Preface\nWelcome to CS506: Data Wrangling and Management. This course introduces graduate students to data wrangling and management using R and the Tidyverse ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows. The course will utilize the free textbook R for Data Science by Hadley Wickham and Garrett Grolemund.\nCourse Objectives: Upon successful completion of the course, students will be able to:\n\nDevelop an understanding of R and the Tidyverse ecosystem\nImport structured and unstructured data into R\nClean and transform data using dplyr, tidyr, and other core Tidyverse packages\nVisualize data effectively using ggplot2\nConduct exploratory data analysis (EDA)\nApply data wrangling techniques to real-world datasets\n\nTextbook: R for Data Science by Hadley Wickham & Garrett Grolemund (Available for free: https://r4ds.had.co.nz/)\nSoftware Requirements:\n\nR (https://www.r-project.org/)\nRStudio (https://posit.co/downloads/)",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]

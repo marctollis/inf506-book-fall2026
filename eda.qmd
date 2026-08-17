@@ -1,0 +1,171 @@
+---
+title: "Exploratory Data Analysis (EDA)"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Understand the purpose of exploratory data analysis (EDA)
+-   Visualize distributions of single variables
+-   Examine relationships between variables
+-   Detect patterns, clusters, and outliers
+-   Use transformations to clarify patterns
+
+------------------------------------------------------------------------
+
+## Introduction to EDA
+
+Exploratory Data Analysis (EDA) is about **looking at your data** to find patterns, spot anomalies, and guide your next steps.\
+We use `ggplot2` to visualize both **univariate** and **bivariate** relationships.
+
+We will use the `diamonds` dataset.
+
+------------------------------------------------------------------------
+
+## Visualizing Single Variables
+
+### Categorical Variables
+
+Use a bar chart (`geom_bar()`):
+
+```{r}
+library(tidyverse)
+
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+```
+
+------------------------------------------------------------------------
+
+### Continuous Variables
+
+Use a histogram (`geom_histogram()`):
+
+```{r}
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = carat), binwidth = 0.5)
+```
+
+You can also use `geom_freqpoly()` for density curves.
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Single Variables
+
+1.  Plot the distribution of `color` using a bar chart.\
+2.  Plot a histogram of `price` with a binwidth of 1000.\
+3.  What patterns or anomalies do you see?
+
+------------------------------------------------------------------------
+
+## Visualizing Relationships
+
+### Two Continuous Variables
+
+Scatterplots show relationships:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price), alpha = 0.3)
+```
+
+Use `alpha` to reduce overplotting.
+
+------------------------------------------------------------------------
+
+### Categorical vs. Continuous
+
+Boxplots work well:
+
+```{r}
+ggplot(data = diamonds) +
+  geom_boxplot(mapping = aes(x = cut, y = price))
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Relationships
+
+1.  Create a scatterplot of `carat` vs `price`.\
+2.  Color the points by `cut`.\
+3.  Make a boxplot of `price` across diamond `color` categories.
+
+------------------------------------------------------------------------
+
+## Patterns and Outliers
+
+Look for clusters, gaps, and unusual observations.\
+You can **filter** or **highlight** outliers.
+
+Example: filter diamonds with unusually high price:
+
+```{r}
+diamonds |>
+  filter(price > 15000) |>
+  arrange(desc(price)) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+### Transformations
+
+Log transformations can reveal patterns in skewed data.
+
+```{r}
+ggplot(data = diamonds) +
+  geom_point(mapping = aes(x = carat, y = price)) +
+  scale_y_log10()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – Patterns and Transformations
+
+1.  Identify any outliers in the `diamonds` dataset using filters.\
+2.  Apply a log transformation to `price`.\
+3.  Does the relationship between `carat` and `price` become clearer?
+
+------------------------------------------------------------------------
+
+## Combining EDA with dplyr
+
+Use `filter()`, `mutate()`, and `group_by()` to enhance your plots.
+
+Example: average price per cut:
+
+```{r}
+diamonds |>
+  group_by(cut) |>
+  summarize(mean_price = mean(price))
+```
+
+------------------------------------------------------------------------
+
+### In-Class Challenge – EDA Workflow
+
+-   Explore `diamonds` by:
+    -   Visualizing distributions of at least two variables
+    -   Plotting relationships between two variables
+    -   Detecting outliers
+    -   Applying a transformation to clarify a pattern
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For homework, you will:
+
+-   Choose a dataset (e.g., `diamonds` or your own)\
+-   Create at least **two univariate** visualizations (bar chart, histogram)\
+-   Create at least **two bivariate** visualizations (scatterplot, boxplot)\
+-   Identify any patterns or outliers and describe them in text\
+-   Apply at least one transformation to improve visualization\
+-   Render to PDF and submit
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next week, we will dive into **Tidy Data** and learn how to reshape messy datasets using `tidyr`.

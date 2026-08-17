@@ -1,0 +1,134 @@
+---
+title: "Data Transformation with dplyr (Part 1)"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Filter rows using `filter()`
+-   Sort rows using `arrange()`
+-   Select columns using `select()`
+-   Create or modify columns using `mutate()`
+-   Combine multiple transformations using the base R pipe `|>`
+
+------------------------------------------------------------------------
+
+## Introduction
+
+This chapter follows [*R for Data Science (Ch. 3)*](https://r4ds.hadley.nz/data-transform.html){target="_blank"} and introduces `dplyr`, a tidyverse package for data transformation.\
+We will use the `nycflights13::flights` dataset for examples.
+
+------------------------------------------------------------------------
+
+## Working with Rows
+
+### `filter()`
+
+`filter()` keeps rows that match given conditions.
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+
+flights |>
+  filter(month == 1, day == 1)
+```
+
+> What's a **tibble**? See [Appendix C: Tidyverse and Tibbles](https://marctollis.github.io/cs506-book/tibbles.html)
+
+### `arrange()`
+
+`arrange()` orders rows by a column.
+
+```{r}
+flights |>
+  arrange(desc(dep_delay))
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Rows
+
+Using the `flights` dataset:
+
+1.  Filter for flights departing from **JFK** in **July**.\
+2.  Arrange by **arrival delay** (largest to smallest).\
+3.  Identify the flight with the worst delay.
+
+------------------------------------------------------------------------
+
+## Working with Columns
+
+### `select()`
+
+`select()` chooses columns.
+
+```{r}
+flights |>
+  select(year, month, day, dep_delay, arr_delay)
+```
+
+### `mutate()`
+
+`mutate()` creates or modifies columns.
+
+```{r}
+flights |>
+  mutate(speed = distance / air_time * 60) |>
+  select(tailnum, distance, air_time, speed)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Columns
+
+1.  Select `carrier`, `flight`, `dep_delay`, and `arr_delay`.\
+2.  Create a column `gain = arr_delay - dep_delay`.\
+3.  Display the first 10 rows.
+
+------------------------------------------------------------------------
+
+## Using Pipes to Combine Steps
+
+The base R pipe `|>` passes results from one function to the next, making code easier to read.
+
+```{r}
+flights |>
+  filter(month == 6, origin == "JFK") |>
+  select(carrier, flight, dep_delay, arr_delay) |>
+  mutate(gain = arr_delay - dep_delay) |>
+  arrange(desc(gain)) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – Pipes
+
+Chain these steps using `|>`:
+
+1.  Filter flights from JFK in June.\
+2.  Select `carrier`, `flight`, `dep_delay`, `arr_delay`.\
+3.  Create a column `gain`.\
+4.  Arrange by largest gain and show the top 5.
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For Homework, you will:
+
+-   Use `flights` or another dataset.\
+-   Filter for a subset of interest.\
+-   Create at least two new variables with `mutate()`.\
+-   Sort using `arrange()`.\
+-   Save the transformed dataset and inspect it with `glimpse()` and `summary()`.
+
+Render to PDF and submit on Canvas.
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next week, we will extend these skills with `group_by()` and `summarize()` to calculate grouped summaries.

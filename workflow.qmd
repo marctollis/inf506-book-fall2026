@@ -1,0 +1,148 @@
+---
+title: "Workflow and Reproducibility"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Organize your work with R projects
+-   Use Quarto for reproducible documents
+-   Follow best practices for naming files and structuring directories
+-   Incorporate code, text, and output into a single reproducible report
+-   Use version control with GitHub (optional, for advanced students)
+
+------------------------------------------------------------------------
+
+## Why Workflow Matters
+
+Reproducible workflows:
+
+-   Make it easy to rerun analyses later
+-   Allow others to reproduce your results
+-   Keep projects organized and easy to navigate
+-   Prevent errors caused by hard-coded file paths and messy code
+
+------------------------------------------------------------------------
+
+## Organizing Projects in RStudio
+
+### RStudio Projects
+
+-   Use **File → New Project** for each analysis/course project
+-   Keep data, scripts, and outputs in **subfolders** (e.g., `data/`, `scripts/`, `figures/`, `docs/`)
+-   Avoid using absolute paths—use **relative paths** inside the project
+
+------------------------------------------------------------------------
+
+### Example Project Structure
+
+```         
+my_project/
+  data/
+    raw_data.csv
+  scripts/
+    analysis.R
+  figures/
+    plot1.png
+  docs/
+    report.qmd
+  my_project.Rproj
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Project Setup
+
+1.  Create a new RStudio Project for this course.\
+2.  Make folders: `data`, `scripts`, `outputs`.\
+3.  Save your `.qmd` homework file in the project root.\
+4.  Render your Quarto document and confirm outputs stay organized.
+
+------------------------------------------------------------------------
+
+## Quarto for Reproducibility
+
+Quarto allows you to:
+
+-   Combine text and code in one document
+-   Render reports to PDF, HTML, or Word
+-   Ensure results match the code that generated them
+
+### Example Quarto Workflow
+
+``` yaml
+---
+title: "My Analysis"
+format: pdf
+---
+```
+
+```{r, eval=FALSE}
+library(tidyverse)
+data <- read_csv("data/mydata.csv")
+summary(data)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Quarto Report
+
+1.  Create a `.qmd` file that loads a dataset and runs a simple analysis.\
+2.  Add at least one plot and one table.\
+3.  Render to PDF and check the output.
+
+------------------------------------------------------------------------
+
+## Best Practices for Reproducibility
+
+-   **Use scripts and Quarto documents instead of manual steps**
+-   **Keep raw data unchanged**; clean data with scripts
+-   **Document everything**: use comments and text
+-   **Save figures and tables** programmatically, not manually
+-   **Render final reports from source code**
+
+------------------------------------------------------------------------
+
+## Optional: Version Control with Git and GitHub
+
+For students interested in collaboration and tracking changes:
+
+-   Install Git and create a GitHub account
+-   Use `usethis::use_git()` to initialize Git in a project
+-   Commit changes regularly and push to GitHub
+
+(We will not cover Git in detail, but this is recommended for your own practice.)
+
+------------------------------------------------------------------------
+
+### In-Class Challenge – Reproducible Mini-Report
+
+-   Set up a project with an organized folder structure
+-   Create a Quarto document that:
+    -   Reads a dataset
+    -   Runs a simple transformation
+    -   Creates a plot
+    -   Summarizes the results in text
+-   Render to PDF and check for a clean, reproducible output
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For homework, you will:
+
+-   Organize your project folder (data, scripts, outputs)
+-   Create a Quarto report with:
+    -   One dataset
+    -   At least one data cleaning step
+    -   One visualization
+    -   One table of summary statistics
+-   Ensure all file paths are relative (not absolute)
+-   Render to PDF and submit on Canvas
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next week, we will move into **Data Import** (CSV, Excel, and parsing dates) and continue to build your data wrangling workflow.

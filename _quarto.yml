@@ -1,0 +1,57 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "CS506: Data Wrangling and Management"
+  subtitle: "Fall 2025"
+  author: 
+    - name: Marc Tollis, PhD
+      affiliations:
+        - name: Northern Arizona University
+  cover-image: cover.png
+  site-url: https://marctollis.github.io/cs506-book/
+  repo-url: https://github.com/marctollis/cs506-book
+  repo-actions: [source, issue]
+  chapters:
+    - index.qmd
+    - welcome.qmd
+    - Rintro.qmd
+    - ggplot2.qmd
+    - dplyr1.qmd
+    - dplyr2.qmd
+    - tidy.qmd
+    - eda.qmd
+    - workflow.qmd
+    - dataimport.qmd
+    - transform.qmd
+    - strings.qmd
+    - factors.qmd
+    - relational.qmd
+    - advanced_import.qmd
+
+  appendices:
+    - syllabus.qmd
+    - codestyle.qmd
+    - tibbles.qmd
+  sidebar:
+    style: "floating"
+    collapse-level: 1
+    border: true
+    search: true
+
+crossref: 
+    appendix-delim: ":"
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    smooth-scroll: true
+    code-link: true
+    code-tools:
+      toggle: true
+    code-fold: false
+    highlight-style: printing
+    code-block-bg: true

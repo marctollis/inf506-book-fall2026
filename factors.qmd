@@ -1,0 +1,153 @@
+---
+title: "Factors and Categorical Data with forcats"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+- Understand what factors are and why they are used
+- Reorder factor levels to improve plots
+- Rename factor levels
+- Collapse multiple levels into broader categories
+- Use `forcats` functions to manipulate categorical variables effectively
+
+---
+
+## Introduction to Factors
+
+Factors are used to work with **categorical data** (variables with a fixed set of possible values).  
+R uses factors to control ordering in plots and summaries.
+
+Example:
+
+```{r}
+x <- factor(c("low", "medium", "high", "medium", "low"))
+levels(x)
+```
+
+---
+
+## Using forcats
+
+The `forcats` package provides helper functions for factors.
+
+```{r}
+library(forcats)
+library(tidyverse)
+```
+
+---
+
+## Reordering Factor Levels
+
+### `fct_reorder()`
+
+Reorders factor levels by another variable (e.g., mean of a numeric variable):
+
+```{r}
+ggplot(mpg, aes(x = fct_reorder(class, hwy), y = hwy)) +
+  geom_boxplot()
+```
+
+---
+
+### In-Class Exercise 1 – Reordering
+
+1. Use `fct_reorder()` to reorder car classes in the `mpg` dataset by highway mpg.  
+2. Make a boxplot of `hwy` by class.  
+3. Which class has the highest median mpg?
+
+---
+
+## Changing Factor Labels
+
+### `fct_recode()`
+
+Renames levels:
+
+```{r}
+mpg |>
+  mutate(drv = fct_recode(drv,
+    "front-wheel" = "f",
+    "rear-wheel"  = "r",
+    "4-wheel"     = "4"
+  )) |>
+  count(drv)
+```
+
+---
+
+### In-Class Exercise 2 – Recoding
+
+1. Recode the `drv` variable to use descriptive names.  
+2. Count the number of cars in each drive category.
+
+---
+
+## Collapsing Levels
+
+### `fct_collapse()`
+
+Combines multiple levels into broader categories.
+
+```{r}
+mpg |>
+  mutate(class_grouped = fct_collapse(class,
+    small = c("2seater", "compact", "subcompact"),
+    large = c("suv", "pickup", "minivan")
+  )) |>
+  count(class_grouped)
+```
+
+---
+
+### In-Class Exercise 3 – Collapsing Levels
+
+1. Create a new variable that collapses `class` into `small` vs. `large`.  
+2. Make a bar chart of the collapsed variable.
+
+---
+
+## Reordering Factors for Plots
+
+### `fct_infreq()`
+
+Orders factors by frequency:
+
+```{r}
+mpg |>
+  mutate(class = fct_infreq(class)) |>
+  ggplot(aes(x = class)) +
+  geom_bar()
+```
+
+---
+
+### In-Class Challenge – Factor Workflow
+
+Using the `mpg` dataset:
+
+- Reorder the `manufacturer` variable by number of cars
+- Collapse classes into fewer categories
+- Create a bar plot that uses the new ordering and grouping
+
+---
+
+## Homework Preview
+
+For the next homework, you will:
+
+- Choose a dataset with at least one categorical variable
+- Use `forcats` functions to:
+  - Reorder levels
+  - Recode labels
+  - Collapse levels where appropriate
+- Produce at least one visualization that uses your factor manipulations
+- Render to PDF and submit on Canvas
+
+---
+
+## Next Steps
+
+Next, we will learn how to work with **relational data** using `dplyr` join functions to combine multiple datasets.

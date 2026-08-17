@@ -1,0 +1,153 @@
+---
+title: "Data Transformation with dplyr (Part 2)"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Group data with `group_by()`
+-   Compute summary statistics with `summarize()`
+-   Use multiple summaries with grouped data
+-   Combine multiple datasets using `join` functions
+-   Practice chaining multiple verbs with the pipe `|>`
+
+------------------------------------------------------------------------
+
+## Grouped Summaries
+
+Grouping allows you to calculate statistics **per group**.\
+We will use the `nycflights13::flights` dataset.
+
+### `group_by()` and `summarize()`
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+
+flights |>
+  group_by(carrier) |>
+  summarize(
+    delay = mean(dep_delay, na.rm = TRUE)
+  )
+```
+
+## Multiple Summaries
+
+```{r}
+flights |>
+  group_by(dest) |>
+  summarize(
+    count = n(),
+    avg_delay = mean(arr_delay, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Grouped Summaries
+
+Using `flights`:
+
+1.  Group by `origin` and calculate the average departure delay.\
+2.  Group by `carrier` and find the number of flights and average arrival delay.\
+3.  Which carrier has the highest average arrival delay?
+
+------------------------------------------------------------------------
+
+## Grouping with Multiple Variables
+
+You can group by multiple columns at once.
+
+```{r}
+flights |>
+  group_by(origin, month) |>
+  summarize(
+    avg_delay = mean(dep_delay, na.rm = TRUE),
+    .groups = "drop_last"
+  )
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Multiple Grouping
+
+1.  Group by `origin` and `carrier`.\
+2.  Summarize with the average `air_time`.\
+3.  Arrange results to see which origin-carrier combination has the longest average flights.
+
+------------------------------------------------------------------------
+
+## Joining Datasets
+
+`dplyr` provides functions to join tables by a common key:
+
+-   `left_join()`\
+-   `inner_join()`\
+-   `right_join()`\
+-   `full_join()`
+
+Example using `flights` and `airlines`:
+
+```{r}
+flights |>
+  left_join(airlines, by = "carrier") |>
+  select(name, carrier, flight) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – Joins
+
+1.  Use `left_join()` to add airline names to the flights dataset.\
+2.  Use `count()` to find how many flights each airline operates.\
+3.  Arrange results by the number of flights.
+
+------------------------------------------------------------------------
+
+## Chaining with Pipes
+
+We can combine `group_by()`, `summarize()`, and joins in a single pipeline.
+
+```{r}
+flights |>
+  left_join(airlines, by = "carrier") |>
+  group_by(name) |>
+  summarize(
+    flights = n(),
+    avg_delay = mean(dep_delay, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(avg_delay))
+```
+
+------------------------------------------------------------------------
+
+## In-Class Challenge
+
+Using the flights dataset:
+
+-   Join airline names\
+-   Group by airline name\
+-   Summarize number of flights, average departure delay, and average arrival delay\
+-   Arrange by average arrival delay\
+-   Identify the airline with the longest delays
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For homework, extend your data transformation by:
+
+-   Grouping data by at least one variable\
+-   Calculating at least two summary statistics\
+-   Joining an additional dataset (e.g., airlines, airports)\
+-   Rendering your results as a table in your PDF
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next week, we will explore **tidy data principles** and learn how to reshape datasets using `tidyr`.

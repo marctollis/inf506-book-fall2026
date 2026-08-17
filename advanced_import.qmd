@@ -1,0 +1,185 @@
+---
+title: "Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping"
+---
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+-   Import and work with data from Excel and Google Sheets
+-   Connect to and query relational databases from R
+-   Use Arrow to work efficiently with parquet files and large datasets
+-   Access and tidy hierarchical JSON data
+-   Perform basic web scraping to extract data from web pages
+
+------------------------------------------------------------------------
+
+## Spreadsheets (R4DS Chapter 20)
+
+R can read Excel files with the `readxl` package and Google Sheets with `googlesheets4`.
+
+### Importing Excel
+
+```{r, eval=FALSE}
+library(readxl)
+
+excel_df <- read_excel("data/example.xlsx", sheet = "Sheet1")
+head(excel_df)
+```
+
+### Importing Google Sheets
+
+```{r eval=FALSE}
+library(googlesheets4)
+sheet_url <- "https://docs.google.com/spreadsheets/d/your-sheet-id/edit#gid=0"
+gs_df <- read_sheet(sheet_url)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 1 – Spreadsheets
+
+1.  Read an Excel file from the course data folder.\
+2.  Load a Google Sheet you create (optional, requires authentication).\
+3.  Summarize one numeric column.
+
+------------------------------------------------------------------------
+
+## Databases (R4DS Chapter 21)
+
+Use `DBI` and `RSQLite` to interact with relational databases. You can also use `dplyr` verbs to query tables.
+
+### Example: Connecting to SQLite
+
+```{r, eval=FALSE}
+library(DBI)
+con <- dbConnect(RSQLite::SQLite(), "data/mydb.sqlite")
+
+# List tables
+dbListTables(con)
+
+# Read a table into R
+flights_db <- dbReadTable(con, "flights")
+
+# Or use dplyr to query lazily
+library(dplyr)
+tbl(con, "flights") |> filter(dep_delay > 60) |> collect() |> head()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Databases
+
+1.  Connect to the provided SQLite database.\
+2.  List tables with `dbListTables()`.\
+3.  Query the flights table for flights delayed more than 2 hours.
+
+------------------------------------------------------------------------
+
+## Arrow (R4DS Chapter 22)
+
+Arrow allows you to read parquet files efficiently without loading everything into memory.
+
+### Example: Reading Parquet
+
+```{r, eval=FALSE}
+library(arrow)
+
+dataset <- open_dataset("data/large.parquet")
+dataset |> filter(column_x > 10) |> collect() |> head()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 3 – Arrow
+
+1.  Open a parquet dataset using `arrow::open_dataset()`.\
+2.  Run a filter and select query.\
+3.  Compare performance to reading the equivalent CSV.
+
+------------------------------------------------------------------------
+
+## Hierarchical Data (R4DS Chapter 23)
+
+Hierarchical data (JSON) often contains nested lists. Use `jsonlite` to load JSON and `tidyr::unnest_wider()` to flatten it.
+
+### Example: Reading JSON
+
+```{r, eval=FALSE}
+library(jsonlite)
+
+json_data <- fromJSON("data/example.json")
+str(json_data)
+```
+
+### Flattening Nested Data
+
+```{r}
+library(tidyr)
+nested_df <- tibble(
+  id = 1,
+  details = list(tibble(city = "NYC", temp = 75))
+)
+
+nested_df |> unnest_wider(details)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 4 – JSON Rectangling
+
+1.  Load a nested JSON file.\
+2.  Use `unnest_wider()` or `unnest_longer()` to flatten it.\
+3.  Create a tidy table with one row per observation.
+
+------------------------------------------------------------------------
+
+## Web Scraping (R4DS Chapter 24)
+
+Web scraping extracts data from websites. Use `rvest` to read HTML and extract tables or nodes.
+
+### Example: Scraping a Table
+
+```{r}
+library(rvest)
+
+url <- "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)"
+page <- read_html(url)
+
+gdp_table <- page |> html_element("table") |> html_table()
+head(gdp_table)
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 5 – Web Scraping
+
+1.  Use `rvest` to scrape a simple table from Wikipedia.\
+2.  Convert it to a tibble and clean column names.\
+3.  Create a plot of GDP vs. rank.
+
+------------------------------------------------------------------------
+
+## In-Class Challenge – Multiple Data Sources
+
+1.  Import an Excel dataset, a JSON dataset, and scrape a table from the web.\
+2.  Clean and join at least two sources.\
+3.  Create one visualization combining information.
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For the next homework:
+
+-   Choose **two different data sources** (Excel, database, parquet, JSON, web)
+-   Import and tidy them
+-   Join or compare across sources
+-   Render a short report with one plot and one table
+-   Submit the rendered PDF
+
+------------------------------------------------------------------------
+
+## Conclusion
+
+This session completes the course by showing how to **access data from multiple modern sources**, preparing you to work with **real-world messy data** beyond flat CSV files.

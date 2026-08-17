@@ -1,0 +1,153 @@
+---
+title: "Relational Data with dplyr Joins"
+---
+
+## Learning Objectives
+
+By the end of this chapter, you should be able to:
+
+-   Understand the concept of relational data and keys
+-   Combine multiple datasets using different join functions
+-   Use `left_join()`, `inner_join()`, `full_join()`, and `semi_join()`
+-   Diagnose and handle join problems (missing keys, duplicates)
+-   Apply joins in analysis workflows
+
+------------------------------------------------------------------------
+
+## What is Relational Data?
+
+Relational data consists of **multiple tables** that can be linked by **keys**.
+
+Example tables from `nycflights13`:
+
+-   `flights`: flight information
+-   `airlines`: airline names
+-   `airports`: airport locations
+-   `planes`: plane details
+-   `weather`: weather data
+
+------------------------------------------------------------------------
+
+## Keys
+
+-   **Primary key**: uniquely identifies each row in a table
+    -   **Compound key:** when multiple variables are needed.\
+-   **Foreign key**: column that matches a primary key in another table
+
+Example: `flights$carrier` matches `airlines$carrier`.
+
+### Surrogate Keys
+
+Sometimes primary keys may contain unique information but are not actually useful `airports$altitude` or `airports$latitude` may be unique, but that is not useful for data analysis of airline flights (for most people).
+
+A good surrogate key would be to add rows names as unique identifiers:
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+flights2 <- flights |>
+  mutate(id = row_number(), .before = 1)
+flights2
+```
+
+------------------------------------------------------------------------
+
+## Mutating joins with dplyr
+
+`dplyr` join functions merge tables by keys.
+
+### `left_join()`
+
+Keeps all rows from the first table:
+
+```{r}
+library(tidyverse)
+library(nycflights13)
+
+flights |>
+  left_join(airlines, by = "carrier") |>
+  rename(airline_name = name) |>
+  select(airline_name, carrier, flight) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+#### `inner_join()` keeps only matching rows.
+
+#### `full_join()` keeps all rows from both tables.
+
+------------------------------------------------------------------------
+
+## Filtering joins
+
+#### `semi_join()` and `anti_join()`:
+
+-   `semi_join()`: keeps rows in first table with matches in second\
+-   `anti_join()`: keeps rows with no matches
+
+------------------------------------------------------------------------
+
+## Joining Multiple Tables
+
+You can chain joins to combine several datasets:
+
+```{r}
+flights |>
+  left_join(airlines, by = "carrier") |>
+  rename(airline_name = name) |>
+  left_join(airports, by = c("dest" = "faa")) |>
+  select(airline_name, dest, arr_delay) |>
+  head()
+```
+
+------------------------------------------------------------------------
+
+### In-Class Exercise 2 – Multi-Table Joins
+
+1.  Join `flights` with `airports` to add destination airport names.\
+2.  Summarize average arrival delay by airport.\
+3.  Which airport has the longest average delay?
+
+------------------------------------------------------------------------
+
+## Handling Join Problems
+
+-   Missing keys → results in `NA` values\
+-   Duplicated keys → may create duplicate rows\
+-   Always check results with `count()` or `distinct()`
+
+Example:
+
+```{r}
+flights |>
+  left_join(airlines, by = "carrier") |>
+  rename(airline_name = name) |>
+  count(carrier, airline_name)
+```
+
+------------------------------------------------------------------------
+
+## In-Class Challenge – Join Workflow
+
+-   Join flights with airlines and airports\
+-   Calculate average arrival delay by airline and destination\
+-   Arrange by delay and identify the worst-performing routes
+
+------------------------------------------------------------------------
+
+## Homework Preview
+
+For the next homework, you will:
+
+-   Combine at least two datasets using joins
+-   Use at least two different join types (`left_join()`, `inner_join()`, etc.)
+-   Handle missing data or duplicates appropriately
+-   Produce a summary table and one visualization based on the joined data
+-   Render to PDF and submit on Canvas
+
+------------------------------------------------------------------------
+
+## Next Steps
+
+Next, we will introduce **accessing data** using spreadsheets, SQL databases, JSON, and web scraping.
