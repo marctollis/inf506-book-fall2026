@@ -167,6 +167,8 @@ Students are encouraged to attend the office hours of the instructor. If a stude
 
 ### University Policies
 
-- Please see this [document](https://nau.edu/wp-content/uploads/sites/26/Syllabus-Policy-Statements-Nov-28-2023.pdf) for all of the required Syllabus Policy Statements that equally apply to this course.
+The following required NAU Syllabus Policy Statements apply to this course.
+
+{{< include nau-policies.qmd >}}
 
 > This syllabus is subject to minor adjustments. Updates will be announced in class and posted on Canvas.
