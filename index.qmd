@@ -1,8 +1,8 @@
 # Preface {.unnumbered}
 
-Welcome to CS506: Data Wrangling and Management. This course introduces graduate students to data wrangling and management using R and the Tidyverse ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows.
+Welcome to INF506: Data Wrangling and Management. This course introduces graduate students to data wrangling and management using R and the Tidyverse ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows.
 
-Please access the [course syllabus](https://marctollis.github.io/cs506-book/syllabus.html).
+Please access the [course syllabus](https://marctollis.github.io/inf506-book-fall2026/syllabus.html).
 
 The course will utilize the free textbook [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham and Garrett Grolemund.
 
