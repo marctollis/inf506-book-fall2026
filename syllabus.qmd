@@ -25,7 +25,7 @@ We will use the learning management system, [Canvas](https://canvas.nau.edu/), t
 
 ## INF506 Book Website
 
-I have compiled a [course website](https://marctollis.github.io/cs506-book/) that has supplemental text and coded examples that we will walk through in class. This website essentially serves as the course textbook and is required reading. There will be other required reading material.
+I have compiled a [course website](https://marctollis.github.io/inf506-book-fall2026/) that has supplemental text and coded examples that we will walk through in class. This website essentially serves as the course textbook and is required reading. There will be other required reading material.
 
 ------------------------------------------------------------------------
 
@@ -115,18 +115,18 @@ This course directly supports the following program student outcomes in the Mast
 
 | **Week** | **Dates (M/W)** | **R4DS Chapters** | **Topics** | **Assignments** | **Quiz** |
 |------------|------------|------------|------------|------------|------------|
-| 1 | Aug 24 / 26 | [Ch. 1](https://r4ds.hadley.nz/intro.html) | [**Intro to R, RStudio, and Quarto**](https://marctollis.github.io/cs506-book/Rintro.html): Projects, rendering `.qmd` to `.pdf` | PS1 |  |
-| 2 | Aug 31 / Sept 2 | [Ch. 2 – Data Visualization](https://r4ds.hadley.nz/data-visualize.html) | [**Data Visualization with ggplot2**](https://marctollis.github.io/cs506-book/ggplot2.html): Aesthetics, geoms, facets | PS2 |  |
-| 3 | Sept 7 (Labor Day) / Sept 9 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Data Transformation (Rows)**](https://marctollis.github.io/cs506-book/dplyr1.html): `filter()`, `arrange()` | PS3 |  |
-| 4 | Sept 14 / 16 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Grouping & Summarization**](https://marctollis.github.io/cs506-book/dplyr2.html): `group_by()`, `summarize()` | PS4 | Quiz 1 (Monday) |
-| 5 | Sept 21 / 23 | [Ch. 5 – Tidy Data](https://r4ds.hadley.nz/data-tidy.html) | [**Tidy Data**](https://marctollis.github.io/cs506-book/tidy.html) | PS5 |  |
-| 6 | Sept 28 / Sept 30 | [Ch. 10 – Exploratory Data Analysis](https://r4ds.hadley.nz/EDA.html) | [**Exploratory data analysis: distributions, patterns, relationships**](https://marctollis.github.io/cs506-book/eda.html) | PS6 | Quiz 2 (Wednesday) |
+| 1 | Aug 24 / 26 | [Ch. 1](https://r4ds.hadley.nz/intro.html) | [**Intro to R, RStudio, and Quarto**](https://marctollis.github.io/inf506-book-fall2026/Rintro.html): Projects, rendering `.qmd` to `.pdf` | PS1 |  |
+| 2 | Aug 31 / Sept 2 | [Ch. 2 – Data Visualization](https://r4ds.hadley.nz/data-visualize.html) | [**Data Visualization with ggplot2**](https://marctollis.github.io/inf506-book-fall2026/ggplot2.html): Aesthetics, geoms, facets | PS2 |  |
+| 3 | Sept 7 (Labor Day) / Sept 9 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Data Transformation (Rows)**](https://marctollis.github.io/inf506-book-fall2026/dplyr1.html): `filter()`, `arrange()` | PS3 |  |
+| 4 | Sept 14 / 16 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Grouping & Summarization**](https://marctollis.github.io/inf506-book-fall2026/dplyr2.html): `group_by()`, `summarize()` | PS4 | Quiz 1 (Monday) |
+| 5 | Sept 21 / 23 | [Ch. 5 – Tidy Data](https://r4ds.hadley.nz/data-tidy.html) | [**Tidy Data**](https://marctollis.github.io/inf506-book-fall2026/tidy.html) | PS5 |  |
+| 6 | Sept 28 / Sept 30 | [Ch. 10 – Exploratory Data Analysis](https://r4ds.hadley.nz/EDA.html) | [**Exploratory data analysis: distributions, patterns, relationships**](https://marctollis.github.io/inf506-book-fall2026/eda.html) | PS6 | Quiz 2 (Wednesday) |
 | 7 | Oct 5 / Oct 7 |  | Mini Hackathon (Tuesday) | Mini Hackathon |  |
-| 8 | Oct 12 / Oct 4 | [Ch. 7 - Data Import](https://r4ds.hadley.nz/data-import.html) | [**Data Import**](https://marctollis.github.io/cs506-book/dataimport.html): `readr`, column types | PS7 | Quiz 3 (Monday) |
-| 9 | Oct 19 / Oct 21 | [Ch. 12 through 18 – Transform](https://r4ds.hadley.nz/transform.html) | [**Logical Vectors and Numbers**](https://marctollis.github.io/cs506-book/transform.html); [**Strings & Regular Expressions**](https://marctollis.github.io/cs506-book/strings.html): `stringr` | PS8 |  |
-| 10 | Oct 26 / Oct 28 | [Ch. 12 through 18 – Transform (continued)](https://r4ds.hadley.nz/transform.html) | [**Factors & Categorical Data**](https://marctollis.github.io/cs506-book/strings.html): `forcats` | PS9 | Quiz 4 (Thursday) |
-| 11 | Nov 2 / Nov 4 | [Ch. 19 – Joins](https://r4ds.hadley.nz/joins.html) | [**Relational Data**](https://marctollis.github.io/cs506-book/relational.html): joining tables (`left_join`, etc.) | PS10 |  |
-| 12 | Nov 9 / Nov 11 (Veterans' Day) | [Ch. 20-24 – Advanced Importing](https://r4ds.hadley.nz/model-basics.html) | [**Advanced Importing**](https://marctollis.github.io/cs506-book/advanced_import.html), databases, web scraping | PS11 |  |
+| 8 | Oct 12 / Oct 4 | [Ch. 7 - Data Import](https://r4ds.hadley.nz/data-import.html) | [**Data Import**](https://marctollis.github.io/inf506-book-fall2026/dataimport.html): `readr`, column types | PS7 | Quiz 3 (Monday) |
+| 9 | Oct 19 / Oct 21 | [Ch. 12 through 18 – Transform](https://r4ds.hadley.nz/transform.html) | [**Logical Vectors and Numbers**](https://marctollis.github.io/inf506-book-fall2026/transform.html); [**Strings & Regular Expressions**](https://marctollis.github.io/inf506-book-fall2026/strings.html): `stringr` | PS8 |  |
+| 10 | Oct 26 / Oct 28 | [Ch. 12 through 18 – Transform (continued)](https://r4ds.hadley.nz/transform.html) | [**Factors & Categorical Data**](https://marctollis.github.io/inf506-book-fall2026/factors.html): `forcats` | PS9 | Quiz 4 (Thursday) |
+| 11 | Nov 2 / Nov 4 | [Ch. 19 – Joins](https://r4ds.hadley.nz/joins.html) | [**Relational Data**](https://marctollis.github.io/inf506-book-fall2026/relational.html): joining tables (`left_join`, etc.) | PS10 |  |
+| 12 | Nov 9 / Nov 11 (Veterans' Day) | [Ch. 20-24 – Advanced Importing](https://r4ds.hadley.nz/model-basics.html) | [**Advanced Importing**](https://marctollis.github.io/inf506-book-fall2026/advanced_import.html), databases, web scraping | PS11 |  |
 | 13 | Nov 16 / Nov 18 | TBD | TBD |  | Quiz 5 |
 | 14 | Nov 23 / 25 | — | **Nov 23:** Code Review Workshop<br> | Code Review Workshop | — |
 | 15 | Nov 30 / Dec 2 | — | Course Wrap-up & Final Quiz |  | Quiz 6 |
