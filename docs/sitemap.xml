@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://marctollis.github.io/cs506-book/index.html</loc>
-    <lastmod>2025-07-29T14:31:57.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/index.html</loc>
+    <lastmod>2026-08-17T21:45:25.886Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/welcome.html</loc>
-    <lastmod>2025-07-25T17:37:00.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/welcome.html</loc>
+    <lastmod>2026-08-17T21:45:25.898Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/Rintro.html</loc>
-    <lastmod>2025-08-27T19:51:05.500Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/Rintro.html</loc>
+    <lastmod>2026-08-17T21:45:25.820Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/ggplot2.html</loc>
-    <lastmod>2025-07-29T01:11:06.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/ggplot2.html</loc>
+    <lastmod>2026-08-17T21:45:25.886Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/dplyr1.html</loc>
-    <lastmod>2025-07-29T14:43:12.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/dplyr1.html</loc>
+    <lastmod>2026-08-17T21:45:25.884Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/dplyr2.html</loc>
-    <lastmod>2025-07-29T01:11:54.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/dplyr2.html</loc>
+    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/tidy.html</loc>
-    <lastmod>2025-07-29T18:22:58.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/tidy.html</loc>
+    <lastmod>2026-08-17T21:45:25.896Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/eda.html</loc>
-    <lastmod>2025-07-29T01:12:22.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/eda.html</loc>
+    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/workflow.html</loc>
-    <lastmod>2025-07-29T01:13:50.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/workflow.html</loc>
+    <lastmod>2026-08-17T21:45:25.898Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/dataimport.html</loc>
-    <lastmod>2025-10-21T00:29:58.908Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/dataimport.html</loc>
+    <lastmod>2026-08-17T21:45:25.832Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/transform.html</loc>
-    <lastmod>2025-10-23T01:19:05.787Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/transform.html</loc>
+    <lastmod>2026-08-17T21:45:25.897Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/strings.html</loc>
-    <lastmod>2025-10-23T01:19:05.785Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/strings.html</loc>
+    <lastmod>2026-08-17T21:45:25.894Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/factors.html</loc>
-    <lastmod>2025-07-28T23:29:09.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/factors.html</loc>
+    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/relational.html</loc>
-    <lastmod>2025-11-03T22:20:01.462Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/relational.html</loc>
+    <lastmod>2026-08-17T21:45:25.888Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/advanced_import.html</loc>
-    <lastmod>2025-07-29T01:15:13.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/advanced_import.html</loc>
+    <lastmod>2026-08-17T21:45:25.831Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/syllabus.html</loc>
-    <lastmod>2025-10-23T01:19:05.607Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/syllabus.html</loc>
+    <lastmod>2026-08-17T21:45:25.895Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/codestyle.html</loc>
-    <lastmod>2025-07-28T23:33:14.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/codestyle.html</loc>
+    <lastmod>2026-08-17T21:45:25.831Z</lastmod>
   </url>
   <url>
-    <loc>https://marctollis.github.io/cs506-book/tibbles.html</loc>
-    <lastmod>2025-07-29T14:18:49.000Z</lastmod>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/tibbles.html</loc>
+    <lastmod>2026-08-17T21:45:25.896Z</lastmod>
   </url>
 </urlset>

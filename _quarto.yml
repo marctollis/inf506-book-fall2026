@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 book:
-  title: "CS506: Data Wrangling and Management"
-  subtitle: "Fall 2025"
+  title: "INF506: Data Wrangling and Management"
+  subtitle: "Fall 2026"
   author: 
     - name: Marc Tollis, PhD
       affiliations:
         - name: Northern Arizona University
   cover-image: cover.png
-  site-url: https://marctollis.github.io/cs506-book/
-  repo-url: https://github.com/marctollis/cs506-book
+  site-url: https://marctollis.github.io/inf506-book-fall2026/
+  repo-url: https://github.com/marctollis/inf506-book-fall2026
   repo-actions: [source, issue]
   chapters:
     - index.qmd
