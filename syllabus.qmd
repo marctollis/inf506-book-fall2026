@@ -9,15 +9,15 @@ format: html
 
 **INF506: Data Wrangling and Management** introduces graduate students to data wrangling and management using **R** and the **Tidyverse** ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows.
 
--   INF 506, Fall 2026, 3 units
--   Section 001: Mondays and Wednesdays, 12:45–2:00 PM, Science Annex Room 223
--   Prerequisite: Graduate status
--   Mode of Instruction: Face-to-face (in person)
--   Instructor's Name & Contact:
-    -   Marc Tollis (marc.tollis@nau.edu)
-        -   Room 209, SICCS (Building 90, second floor)
-        -   Office Hours: Tuesdays and Thursdays, 11:00 AM–12:00 PM
-        -   928-523-3406
+- INF 506, Fall 2026, 3 units
+- Section 001: Mondays and Wednesdays, 12:45–2:00 PM, Science Annex Room 223
+- Prerequisite: Graduate status
+- Mode of Instruction: Face-to-face (in person)
+- Instructor's Name & Contact:
+  - Marc Tollis (marc.tollis\@nau.edu)
+    - Room 209, SICCS (Building 90, second floor)
+    - Office Hours: Tuesdays and Thursdays, 11:00 AM–12:00 PM
+    - 928-523-3406
 
 ## Canvas & Recorded Lectures
 
@@ -33,12 +33,12 @@ I have compiled a [course website](https://marctollis.github.io/cs506-book/) tha
 
 By the end of the course, students will be able to:
 
--   Use R and RStudio for data analysis
--   Import structured and unstructured data
--   Clean and transform data using `dplyr`, `tidyr`, and other Tidyverse packages
--   Create effective visualizations using `ggplot2`
--   Perform exploratory data analysis (EDA)
--   Apply data wrangling techniques to real datasets
+- Use R and RStudio for data analysis
+- Import structured and unstructured data
+- Clean and transform data using `dplyr`, `tidyr`, and other Tidyverse packages
+- Create effective visualizations using `ggplot2`
+- Perform exploratory data analysis (EDA)
+- Apply data wrangling techniques to real datasets
 
 ### Course Student Learning Outcomes
 
@@ -81,10 +81,10 @@ This course directly supports the following program student outcomes in the Mast
 
 ## Required Materials
 
--   **Textbook:** [*R for Data Science*](https://r4ds.hadley.nz/) (free online)
--   **Software:**
-    -   [R](https://www.r-project.org/)
-    -   [RStudio](https://posit.co/downloads/)
+- **Textbook:** [*R for Data Science*](https://r4ds.hadley.nz/) (free online)
+- **Software:**
+  - [R](https://www.r-project.org/)
+  - [RStudio](https://posit.co/downloads/)
 
 ------------------------------------------------------------------------
 
@@ -92,54 +92,56 @@ This course directly supports the following program student outcomes in the Mast
 
 | Component                         | Weight |
 |-----------------------------------|--------|
-| Problem Sets (14 total)           | 30%    |
+| Problem Sets (\~9)                | 30%    |
 | Quizzes (6 total, lowest dropped) | 50%    |
 | Workshops (2)                     | 15%    |
 | Attendance                        | 5%     |
 
--   Grades will be assigned using the weighted sum described above using this scale: **A** ≥ 90%, **B** ≥ 80%, **C** ≥ 70%, **D** ≥ 60%, **F** \< 60%.
+- Grades will be assigned using the weighted sum described above using this scale: **A** ≥ 90%, **B** ≥ 80%, **C** ≥ 70%, **D** ≥ 60%, **F** \< 60%.
 
 ## Grading and Submission
 
--   **Problem Sets** are simple assignments that will be completed on your own and submitted via Canvas.
--   **Problem sets** are marked as **complete** or **incomplete**.
--   **Quizzes** are written and completed in-class.
--   **The final quiz** is a case study project starting in class and due during finals week.
--   **Workshops** will take up class time and attendance is required for the workshop grade.
--   **Workshop** assignments will be submitted via Canvas.
--   All **Canvas-based assignments are due Sunday 11:59PM** the week they are assigned (except the Mini Hackathon).
+- **Problem Sets** are simple assignments that will be completed on your own and submitted via Canvas.
+- **Problem sets** are marked as **complete** or **incomplete**.
+- **Quizzes** are written and completed in-class.
+- **The final quiz** is a case study project starting in class and due during finals week.
+- **Workshops** will take up class time and attendance is required for the workshop grade.
+- **Workshop** assignments will be submitted via Canvas.
+- All **Canvas-based assignments are due Sunday 11:59PM** the week they are assigned (except the Mini Hackathon).
 
 ------------------------------------------------------------------------
 
-## Course Schedule (Fall 2025)
+## Course Schedule (Fall 2026)
 
-| **Week** | **Dates (T/Th)** | **R4DS Chapters** | **Topics** | **Assignments** | **Quiz** |
+| **Week** | **Dates (M/W)** | **R4DS Chapters** | **Topics** | **Assignments** | **Quiz** |
 |------------|------------|------------|------------|------------|------------|
-| 1 | Aug 26 / 28 | [Ch. 1](https://r4ds.hadley.nz/intro.html) | [**Intro to R, RStudio, and Quarto**](https://marctollis.github.io/cs506-book/Rintro.html): Projects, rendering `.qmd` to `.pdf` | PS1 |  |
-| 2 | Sept 2 / 4 | [Ch. 2 – Data Visualization](https://r4ds.hadley.nz/data-visualize.html) | [**Data Visualization with ggplot2**](https://marctollis.github.io/cs506-book/ggplot2.html): Aesthetics, geoms, facets | PS2 |  |
-| 3 | Sept 9 / 11 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Data Transformation (Rows)**](https://marctollis.github.io/cs506-book/dplyr1.html): `filter()`, `arrange()` | PS3 | Quiz 1 |
-| 4 | Sept 16 / 18 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Grouping & Summarization**](https://marctollis.github.io/cs506-book/dplyr2.html): `group_by()`, `summarize()` | PS4 |  |
-| 5 | Sept 23 / 25 | [Ch. 5 – Tidy Data](https://r4ds.hadley.nz/data-tidy.html) | [**Tidy Data**](https://marctollis.github.io/cs506-book/tidy.html) | PS5 | Quiz 2 |
-| 6 | Sept 30 / Oct 2 | [Ch. 10 – Exploratory Data Analysis](https://r4ds.hadley.nz/EDA.html) | [**Exploratory data analysis: distributions, patterns, relationships**](https://marctollis.github.io/cs506-book/eda.html) | PS6 |  |
-| 7 | Oct 7 / 9 |  | Mini Hackathon (Tuesday) | Mini Hackathon | Quiz 3 (Thursday) |
-| 8 | Oct 14 / 16 | [Ch. 7 - Data Import](https://r4ds.hadley.nz/data-import.html) | [**Data Import**](https://marctollis.github.io/cs506-book/dataimport.html): `readr`, column types | PS7 |  |
-| 9 | Oct 21 / 23 | [Ch. 12 through 18 – Transform](https://r4ds.hadley.nz/transform.html) | [**Logical Vectors and Numbers**](https://marctollis.github.io/cs506-book/transform.html); [**Strings & Regular Expressions**](https://marctollis.github.io/cs506-book/strings.html): `stringr` | PS8 |  |
-| 10 | Oct 28 / 30 | [Ch. 12 through 18 – Transform (continued)](https://r4ds.hadley.nz/transform.html) | [**Factors & Categorical Data**](https://marctollis.github.io/cs506-book/strings.html): `forcats` | PS9 | Quiz 4 (Thursday) |
-| 11 | Nov 4 / 6 | [Ch. 19 – Joins](https://r4ds.hadley.nz/joins.html) | [**Relational Data**](https://marctollis.github.io/cs506-book/relational.html): joining tables (`left_join`, etc.) | PS10 |  |
-| 12 | Nov 11\* / 13 | [Ch. 20-24 – Advanced Importing](https://r4ds.hadley.nz/model-basics.html) | [**Advanced Importing**](https://marctollis.github.io/cs506-book/advanced_import.html), databases, web scraping | PS11 |  |
-| 13 | Nov 18 / 20 | TBD | TBD |  | Quiz 5 (may be take-home) |
-| 14 | Nov 25 / 27 | — | **Nov 25:** Code Review Workshop<br> **Nov 27:** Thanksgiving – No Class | Code Review Workshop | — |
-| 15 | Dec 2 / 4 | — | Course Wrap-up & Final Quiz |  | Quiz 6 |
+| 1 | Aug 24 / 26 | [Ch. 1](https://r4ds.hadley.nz/intro.html) | [**Intro to R, RStudio, and Quarto**](https://marctollis.github.io/cs506-book/Rintro.html): Projects, rendering `.qmd` to `.pdf` | PS1 |  |
+| 2 | Aug 31 / Sept 2 | [Ch. 2 – Data Visualization](https://r4ds.hadley.nz/data-visualize.html) | [**Data Visualization with ggplot2**](https://marctollis.github.io/cs506-book/ggplot2.html): Aesthetics, geoms, facets | PS2 |  |
+| 3 | Sept 7 (Labor Day) / Sept 9 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Data Transformation (Rows)**](https://marctollis.github.io/cs506-book/dplyr1.html): `filter()`, `arrange()` | PS3 |  |
+| 4 | Sept 14 / 16 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Grouping & Summarization**](https://marctollis.github.io/cs506-book/dplyr2.html): `group_by()`, `summarize()` | PS4 | Quiz 1 (Monday) |
+| 5 | Sept 21 / 23 | [Ch. 5 – Tidy Data](https://r4ds.hadley.nz/data-tidy.html) | [**Tidy Data**](https://marctollis.github.io/cs506-book/tidy.html) | PS5 |  |
+| 6 | Sept 28 / Sept 30 | [Ch. 10 – Exploratory Data Analysis](https://r4ds.hadley.nz/EDA.html) | [**Exploratory data analysis: distributions, patterns, relationships**](https://marctollis.github.io/cs506-book/eda.html) | PS6 | Quiz 2 (Wednesday) |
+| 7 | Oct 5 / Oct 7 |  | Mini Hackathon (Tuesday) | Mini Hackathon |  |
+| 8 | Oct 12 / Oct 4 | [Ch. 7 - Data Import](https://r4ds.hadley.nz/data-import.html) | [**Data Import**](https://marctollis.github.io/cs506-book/dataimport.html): `readr`, column types | PS7 | Quiz 3 (Monday) |
+| 9 | Oct 19 / Oct 21 | [Ch. 12 through 18 – Transform](https://r4ds.hadley.nz/transform.html) | [**Logical Vectors and Numbers**](https://marctollis.github.io/cs506-book/transform.html); [**Strings & Regular Expressions**](https://marctollis.github.io/cs506-book/strings.html): `stringr` | PS8 |  |
+| 10 | Oct 26 / Oct 28 | [Ch. 12 through 18 – Transform (continued)](https://r4ds.hadley.nz/transform.html) | [**Factors & Categorical Data**](https://marctollis.github.io/cs506-book/strings.html): `forcats` | PS9 | Quiz 4 (Thursday) |
+| 11 | Nov 2 / Nov 4 | [Ch. 19 – Joins](https://r4ds.hadley.nz/joins.html) | [**Relational Data**](https://marctollis.github.io/cs506-book/relational.html): joining tables (`left_join`, etc.) | PS10 |  |
+| 12 | Nov 9 / Nov 11 (Veterans' Day) | [Ch. 20-24 – Advanced Importing](https://r4ds.hadley.nz/model-basics.html) | [**Advanced Importing**](https://marctollis.github.io/cs506-book/advanced_import.html), databases, web scraping | PS11 |  |
+| 13 | Nov 16 / Nov 18 | TBD | TBD |  | Quiz 5 |
+| 14 | Nov 23 / 25 | — | **Nov 23:** Code Review Workshop<br> | Code Review Workshop | — |
+| 15 | Nov 30 / Dec 2 | — | Course Wrap-up & Final Quiz |  | Quiz 6 |
 
-> \* **Nov 11 (Veterans Day)** – no class that Tuesday.
+> **\*Sept 7 (Labor Day)** - no class that Monday.
+>
+> \* **Nov 11 (Veterans Day)** – no class that Wednesday.
 
 ------------------------------------------------------------------------
 
 ## Resources
 
--   [RStudio Cheatsheets](https://posit.co/resources/cheatsheets/)
--   DataCamp & Coursera tutorials for extra practice
--   Office hours for additional help
+- [RStudio Cheatsheets](https://posit.co/resources/cheatsheets/)
+- DataCamp & Coursera tutorials for extra practice
+- Office hours for additional help
 
 ## Policies
 
@@ -147,24 +149,24 @@ This course directly supports the following program student outcomes in the Mast
 
 Students are encouraged to attend the office hours of the instructor. If a student cannot attend regular office hours with the instructor, an appointment may be considered if made via email with sufficient advanced notice.
 
--   Emails addressed to the instructor must be **respectful and professional**. The instructor will respond to emails promptly, within 2 business days. The instructor will generally not respond to emails on weekends or after working hours (i.e., in the evenings), so please plan accordingly.
+- Emails addressed to the instructor must be **respectful and professional**. The instructor will respond to emails promptly, within 2 business days. The instructor will generally not respond to emails on weekends or after working hours (i.e., in the evenings), so please plan accordingly.
 
--   Cheating, including plagiarism of writing or computer code, will not be tolerated. All academic integrity violations are treated seriously. Academic integrity violations will result in penalties including, but not limited to, a zero on the assignment, a failing grade in the class, or expulsion from NAU. The University's Academic Integrity policies will be strictly enforced.
+- Cheating, including plagiarism of writing or computer code, will not be tolerated. All academic integrity violations are treated seriously. Academic integrity violations will result in penalties including, but not limited to, a zero on the assignment, a failing grade in the class, or expulsion from NAU. The University's Academic Integrity policies will be strictly enforced.
 
--   Each student is required to demonstrate respect towards their peers and the instructor. The instructor is held to the same standard. - The instructor will not provide copies of course notes. These materials should be sought from the students’ peers or by watching the recorded lectures.
+- Each student is required to demonstrate respect towards their peers and the instructor. The instructor is held to the same standard. - The instructor will not provide copies of course notes. These materials should be sought from the students’ peers or by watching the recorded lectures.
 
--   Electronic device usage must support learning in the class. All cell phones, PDAs, music players and other entertainment devices must be turned off (or put on silent) during lecture.
+- Electronic device usage must support learning in the class. All cell phones, PDAs, music players and other entertainment devices must be turned off (or put on silent) during lecture.
 
--   Grades will be entered in Canvas and . Please check LOUIE for your final grade.
+- Grades will be entered in Canvas and . Please check LOUIE for your final grade.
 
--   **Attendance:** Active participation in coding activities is expected. Repeated, unexcused absences may affect the student's grade.
+- **Attendance:** Active participation in coding activities is expected. Repeated, unexcused absences may affect the student's grade.
 
--   **Late Work:** Accepted only with prior arrangement.
+- **Late Work:** Accepted only with prior arrangement.
 
--   **Academic Integrity:** Students must adhere to NAU’s academic integrity policy.
+- **Academic Integrity:** Students must adhere to NAU’s academic integrity policy.
 
 ### University Policies
 
--   Please see this [document](https://nau.edu/wp-content/uploads/sites/26/Syllabus-Policy-Statements-Nov-28-2023.pdf) for all of the required Syllabus Policy Statements that equally apply to this course.
+- Please see this [document](https://nau.edu/wp-content/uploads/sites/26/Syllabus-Policy-Statements-Nov-28-2023.pdf) for all of the required Syllabus Policy Statements that equally apply to this course.
 
 > This syllabus is subject to minor adjustments. Updates will be announced in class and posted on Canvas.

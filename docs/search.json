@@ -1310,7 +1310,7 @@
     "href": "syllabus.html#assessments",
     "title": "Appendix A: INF506: Data Wrangling and Management – Syllabus",
     "section": "A.6 Assessments",
-    "text": "A.6 Assessments\n\n\n\nComponent\nWeight\n\n\n\n\nProblem Sets (14 total)\n30%\n\n\nQuizzes (6 total, lowest dropped)\n50%\n\n\nWorkshops (2)\n15%\n\n\nAttendance\n5%\n\n\n\n\nGrades will be assigned using the weighted sum described above using this scale: A ≥ 90%, B ≥ 80%, C ≥ 70%, D ≥ 60%, F &lt; 60%.",
+    "text": "A.6 Assessments\n\n\n\nComponent\nWeight\n\n\n\n\nProblem Sets (~9)\n30%\n\n\nQuizzes (6 total, lowest dropped)\n50%\n\n\nWorkshops (2)\n15%\n\n\nAttendance\n5%\n\n\n\n\nGrades will be assigned using the weighted sum described above using this scale: A ≥ 90%, B ≥ 80%, C ≥ 70%, D ≥ 60%, F &lt; 60%.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>INF506: Data Wrangling and Management – Syllabus</span>"
@@ -1520,6 +1520,17 @@
     "title": "Appendix A: INF506: Data Wrangling and Management – Syllabus",
     "section": "A.3 INF506 Book Website",
     "text": "A.3 INF506 Book Website\nI have compiled a course website that has supplemental text and coded examples that we will walk through in class. This website essentially serves as the course textbook and is required reading. There will be other required reading material.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>INF506: Data Wrangling and Management – Syllabus</span>"
+    ]
+  },
+  {
+    "objectID": "syllabus.html#course-schedule-fall-2026",
+    "href": "syllabus.html#course-schedule-fall-2026",
+    "title": "Appendix A: INF506: Data Wrangling and Management – Syllabus",
+    "section": "A.8 Course Schedule (Fall 2026)",
+    "text": "A.8 Course Schedule (Fall 2026)\n\n\n\nWeek\nDates (M/W)\nR4DS Chapters\nTopics\nAssignments\nQuiz\n\n\n\n\n1\nAug 24 / 26\nCh. 1\nIntro to R, RStudio, and Quarto: Projects, rendering .qmd to .pdf\nPS1\n\n\n\n2\nAug 31 / Sept 2\nCh. 2 – Data Visualization\nData Visualization with ggplot2: Aesthetics, geoms, facets\nPS2\n\n\n\n3\nSept 7 (Labor Day) / Sept 9\nCh. 3 – Data Transformation\nData Transformation (Rows): filter(), arrange()\nPS3\n\n\n\n4\nSept 14 / 16\nCh. 3 – Data Transformation\nGrouping & Summarization: group_by(), summarize()\nPS4\nQuiz 1 (Monday)\n\n\n5\nSept 21 / 23\nCh. 5 – Tidy Data\nTidy Data\nPS5\n\n\n\n6\nSept 28 / Sept 30\nCh. 10 – Exploratory Data Analysis\nExploratory data analysis: distributions, patterns, relationships\nPS6\nQuiz 2 (Wednesday)\n\n\n7\nOct 5 / Oct 7\n\nMini Hackathon (Tuesday)\nMini Hackathon\n\n\n\n8\nOct 12 / Oct 4\nCh. 7 - Data Import\nData Import: readr, column types\nPS7\nQuiz 3 (Monday)\n\n\n9\nOct 19 / Oct 21\nCh. 12 through 18 – Transform\nLogical Vectors and Numbers; Strings & Regular Expressions: stringr\nPS8\n\n\n\n10\nOct 26 / Oct 28\nCh. 12 through 18 – Transform (continued)\nFactors & Categorical Data: forcats\nPS9\nQuiz 4 (Thursday)\n\n\n11\nNov 2 / Nov 4\nCh. 19 – Joins\nRelational Data: joining tables (left_join, etc.)\nPS10\n\n\n\n12\nNov 9 / Nov 11 (Veterans’ Day)\nCh. 20-24 – Advanced Importing\nAdvanced Importing, databases, web scraping\nPS11\n\n\n\n13\nNov 16 / Nov 18\nTBD\nTBD\n\nQuiz 5\n\n\n14\nNov 23 / 25\n—\nNov 23: Code Review Workshop\nCode Review Workshop\n—\n\n\n15\nNov 30 / Dec 2\n—\nCourse Wrap-up & Final Quiz\n\nQuiz 6\n\n\n\n\n*Sept 7 (Labor Day) - no class that Monday.\n* Nov 11 (Veterans Day) – no class that Wednesday.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>INF506: Data Wrangling and Management – Syllabus</span>"
