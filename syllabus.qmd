@@ -21,7 +21,7 @@ format: html
 
 ## Canvas & Recorded Lectures
 
-We will use the learning management system, [Canvas](https://canvas.nau.edu/), to conduct some course business, including assignment disbursement and submitting.
+We will use the learning management system, [Canvas](https://canvas.nau.edu/), to conduct some course business, including assignment disbursement and submitting. I will record lectures/demos, and will make them available in batches before each quiz.
 
 ## INF506 Book Website
 
