@@ -147,7 +147,7 @@ This course directly supports the following program student outcomes in the Mast
 
 ### Course Policies
 
-Students are encouraged to attend the office hours of the instructor. If a student cannot attend regular office hours with the instructor, an appointment may be considered if made via email with sufficient advanced notice.
+- Students are encouraged to attend the office hours of the instructor. If a student cannot attend regular office hours with the instructor, an appointment may be considered if made via email with sufficient advanced notice.
 
 - Emails addressed to the instructor must be **respectful and professional**. The instructor will respond to emails promptly, within 2 business days. The instructor will generally not respond to emails on weekends or after working hours (i.e., in the evenings), so please plan accordingly.
 
@@ -164,6 +164,8 @@ Students are encouraged to attend the office hours of the instructor. If a stude
 - **Late Work:** Accepted only with prior arrangement.
 
 - **Academic Integrity:** Students must adhere to NAU’s academic integrity policy.
+
+- **Use of Artificial Intelligence Tools:** AI tools may be used on take-home assignments for explanation and debugging, but students must understand and verify all submitted work and disclose any AI assistance. **AI tools may not be used on quizzes or the in-class final unless explicitly permitted.**
 
 ### University Policies
 
