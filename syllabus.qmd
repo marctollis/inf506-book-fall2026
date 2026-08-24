@@ -10,7 +10,7 @@ format: html
 **INF506: Data Wrangling and Management** introduces graduate students to data wrangling and management using **R** and the **Tidyverse** ecosystem. Students will learn to import, manipulate, clean, and visualize data with a strong emphasis on practical applications and reproducible workflows.
 
 - INF 506, Fall 2026, 3 units
-- Section 001: Mondays and Wednesdays, 12:45–2:00 PM, Science Annex Room 223
+- Section 001: Mondays and Wednesdays, 12:45–2:00 PM, Science Annex Room 104
 - Prerequisite: Graduate status
 - Mode of Instruction: Face-to-face (in person)
 - Instructor's Name & Contact:
