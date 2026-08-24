@@ -165,7 +165,7 @@ This course directly supports the following program student outcomes in the Mast
 
 - **Academic Integrity:** Students must adhere to NAU’s academic integrity policy.
 
-- **Use of Artificial Intelligence Tools:** AI tools may be used on take-home assignments for explanation and debugging, but students must understand and verify all submitted work and disclose any AI assistance. **AI tools may not be used on quizzes or the in-class final unless explicitly permitted.**
+- **Use of Artificial Intelligence Tools:** AI tools may be used on take-home assignments for explanation and debugging, but students must understand and verify all submitted work and disclose any AI assistance. **AI tools may not be used on quizzes or the in-class final.**
 
 ### University Policies
 
