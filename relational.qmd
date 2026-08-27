@@ -1,12 +1,12 @@
 ---
-title: "Relational Data with dplyr Joins"
+title: "Joining Tables with dplyr Joins"
 ---
 
 ## Learning Objectives
 
 By the end of this chapter, you should be able to:
 
--   Understand the concept of relational data and keys
+-   Understand the concept of joins and keys
 -   Combine multiple datasets using different join functions
 -   Use `left_join()`, `inner_join()`, `full_join()`, and `semi_join()`
 -   Diagnose and handle join problems (missing keys, duplicates)
@@ -14,9 +14,9 @@ By the end of this chapter, you should be able to:
 
 ------------------------------------------------------------------------
 
-## What is Relational Data?
+## What are Joins?
 
-Relational data consists of **multiple tables** that can be linked by **keys**.
+Joins are **multiple tables** that can be linked by **keys**.
 
 Example tables from `nycflights13`:
 

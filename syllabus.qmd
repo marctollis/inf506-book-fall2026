@@ -114,7 +114,7 @@ This course directly supports the following program student outcomes in the Mast
 ## Course Schedule (Fall 2026)
 
 | **Week** | **Dates (M/W)** | **R4DS Chapters** | **Topics** | **Assignments** | **Quiz** |
-|------------|------------|------------|------------|------------|------------|
+|----|----|----|----|----|----|
 | 1 | Aug 24 / 26 | [Ch. 1](https://r4ds.hadley.nz/intro.html) | [**Intro to R, RStudio, and Quarto**](https://marctollis.github.io/inf506-book-fall2026/Rintro.html): Projects, rendering `.qmd` to `.pdf` | PS1 |  |
 | 2 | Aug 31 / Sept 2 | [Ch. 2 – Data Visualization](https://r4ds.hadley.nz/data-visualize.html) | [**Data Visualization with ggplot2**](https://marctollis.github.io/inf506-book-fall2026/ggplot2.html): Aesthetics, geoms, facets | PS2 |  |
 | 3 | Sept 7 (Labor Day) / Sept 9 | [Ch. 3 – Data Transformation](https://r4ds.hadley.nz/data-transform.html) | [**Data Transformation (Rows)**](https://marctollis.github.io/inf506-book-fall2026/dplyr1.html): `filter()`, `arrange()` | PS3 |  |
