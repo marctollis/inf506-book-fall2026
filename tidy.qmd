@@ -100,7 +100,10 @@ table5 |>
 ## Tidying a Real Dataset
 
 The `who` dataset is messy: column names encode multiple variables.
-
+```{r}
+who |>
+  head(10)
+```
 Example tidying workflow:
 
 ```{r}
@@ -109,8 +112,8 @@ who |>
                names_to = "key",
                values_to = "cases",
                values_drop_na = TRUE) |>
-  separate(key, into = c("type", "sex_age"), sep = "_") |>
-  separate(sex_age, into = c("sex", "age"), sep = 1)
+  separate(key, into = c("new", "type", "sex_age"), sep = "_") |> # separate the key column
+  separate(sex_age, into = c("sex", "age"), sep = 1) # take the new sex_age column and split it by the first position
 ```
 
 ------------------------------------------------------------------------
