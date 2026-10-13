@@ -175,7 +175,7 @@ You can parse numbers with `parse_number()`, dates with `parse_date()`, and time
 
 ### In-Class Exercise 2
 
-1.  Load a simple CSV file with `simple_csv()`.\
+1.  Load a simple CSV file with `read_csv()`.\
 2.  Use `col_types()` to change a data type of a column.\
 3.  Use `problems()` to diagnose a warning.\
 4.  Use `na =` to properly code missing data.\
