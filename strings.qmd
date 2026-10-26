@@ -122,7 +122,7 @@ We can also look for anything with an "a", followed by three letters, followed b
 str_view(stringr::fruit, "a...e")
 ```
 
-\###`str_detect()` Returns TRUE if a pattern is found.
+`str_detect()` Returns TRUE if a pattern is found.
 
 ```{r}
 animals <- c("dog", "cat", "parrot", "cow")
