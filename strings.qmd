@@ -100,7 +100,7 @@ babynames |>
 
 "Regex" are a powerful way to detecting and describing patterns in strings.
 
-\###`str_view` `str_view` can take a regular expression as its second argument.
+`str_view` can take a regular expression as its second argument.
 
 Here it is with a literal character:
 
