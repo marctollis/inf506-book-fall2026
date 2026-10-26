@@ -6,10 +6,10 @@ title: "Strings and Regular Expressions with stringr"
 
 By the end of this chapter, you should be able to:
 
--   Manipulate strings using the `stringr` package
--   Detect patterns with regular expressions (regex)
--   Extract, replace, and split text
--   Clean messy text data for analysis
+- Manipulate strings using the `stringr` package
+- Detect patterns with regular expressions (regex)
+- Extract, replace, and split text
+- Clean messy text data for analysis
 
 ------------------------------------------------------------------------
 
@@ -86,7 +86,7 @@ str_c(lore, " is cool")
 
 1.  Install the `babynames` package and load the library. Invoke `glimpse()` to understand the column names.\
 2.  Use `filter()` to look at the longest names (those with exactly 15 letters).\
-3.  Use `count()` to find the distribution of lengths of names (Hint: use the `wt` argument).\
+3.  Use `count()` to find the distribution of those names (Hint: use the `wt` argument).\
 
 ```{r}
 library(babynames)
@@ -100,8 +100,7 @@ babynames |>
 
 "Regex" are a powerful way to detecting and describing patterns in strings.
 
-###`str_view`
-`str_view` can take a regular expression as its second argument.
+\###`str_view` `str_view` can take a regular expression as its second argument.
 
 Here it is with a literal character:
 
@@ -123,8 +122,7 @@ We can also look for anything with an "a", followed by three letters, followed b
 str_view(stringr::fruit, "a...e")
 ```
 
-###`str_detect()`
-Returns TRUE if a pattern is found.
+\###`str_detect()` Returns TRUE if a pattern is found.
 
 ```{r}
 animals <- c("dog", "cat", "parrot", "cow")
@@ -135,9 +133,9 @@ You can use **regular expressions** for more complex patterns.
 
 Examples:
 
--   `^a` – starts with “a”\
--   `ing$` – ends with “ing”\
--   `[0-9]+` – one or more digits
+- `^a` – starts with “a”\
+- `ing$` – ends with “ing”\
+- `[0-9]+` – one or more digits
 
 ```{r}
 animals <- c("ant", "bat", "cat", "dog")
@@ -159,6 +157,7 @@ emails <- c("marc@nau.edu", "velma@gmail.com", "jack@yahoo.com", "sam@apple.com"
 str_detect(emails, "@")
 str_detect(emails, '.com$')
 ```
+
 `str_detect` returns a logical vector that is `TRUE` if the pattern matches an element of the character vector and `FALSE` if it doesn't.
 
 ```{r}
@@ -172,7 +171,6 @@ babynames |>
   filter(str_detect(name, "x")) |>
   count(name, wt = n, sort = TRUE)
 ```
-
 
 ### `str_count()`
 
@@ -260,8 +258,8 @@ Or, if you want anything **except** your character class:
 str_view(stringr::words, "[^aeiou]y[^aeiou]")
 ```
 
- - `-` defines a range (`[a-z]' or '[0-9]`).\
- - `\` escapes a special character, so `[\^\-\]]` matches `^`, `-``, or `]`.
+- `-` defines a range (`[a-z]' or '[0-9]`).\
+- `\` escapes a special character, so `[\^\-\]]` matches `^`, ``` -``, or ```\]\`.
 
 ### Quantifiers
 
@@ -283,11 +281,11 @@ str_view(c("a", "ab", "abb"), "ab*")
 
 You can specify the number of matches with `{}`.\\
 
--   `{n}` - matches **exactly** n times.
+- `{n}` - matches **exactly** n times.
 
--   `{n,}` - matches **at least** n times.
+- `{n,}` - matches **at least** n times.
 
--   `{n,m}` - matches between n and m times.
+- `{n,m}` - matches between n and m times.
 
 ## In-Class Challenge
 
