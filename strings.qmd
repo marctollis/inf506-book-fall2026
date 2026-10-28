@@ -20,8 +20,10 @@ The `stringr` package provides consistent, simple functions for string operation
 Load the library:
 
 ```{r}
+suppressWarnings(suppressPackageStartupMessages({
 library(tidyverse)
 library(stringr)
+}))
 ```
 
 ------------------------------------------------------------------------
@@ -219,13 +221,29 @@ These regular expressions allow us to search our data with more detail.
 
 ### Escaping
 
-You can use `str_view` to view the strings without the escapes.
+In order to match a literal `.`, you need an **escape**. You can use `str_view` to view the strings without the escapes.
 
 ```{r}
-double_quote <- "\"" # or '"'
-single_quote <- '\'' # or "'"
-x <- c(double_quote, single_quote)
+# To create the regular expression \., we need to use \\.
+dot <- "\\."
+
+# But the expression itself only contains one \
+str_view(dot)
+
+# And this tells R to look for an explicit .
+str_view(c("abc", "a.c", "bef"), "a\\.c")
+```
+
+How do you match a literal `\`? By escaping it!
+
+```{r}
+# creating the regular expression \\ (a slash and its escape)
+x <- "a\\b"
 str_view(x)
+
+# To create that regular expression, you need to use a string, which also needs to escape \ (so you need a slash and its escape)
+str_view(x, "\\\\")
+
 ```
 
 ### Anchors
@@ -244,6 +262,18 @@ str_view(stringr::fruit, "^a")
 str_view(stringr::fruit, "a$")
 ```
 
+Anchor with both `^` and `$` ti force a match to **only** the full string:
+
+```{r}
+str_view(fruit, "apple")
+```
+
+```{r}
+str_view(fruit, "^apple$")
+```
+
+See the difference?
+
 ### Character classes
 
 Let you match a set of characters: Let's use the string vector `stringr::words`:
@@ -260,6 +290,38 @@ str_view(stringr::words, "[^aeiou]y[^aeiou]")
 
 - `-` defines a range (`[a-z]' or '[0-9]`).\
 - `\` escapes a special character, so `[\^\-\]]` matches `^`, ``` -``, or ```\]\`.
+
+Let's look at some examples. Here's a vector:
+
+```{r}
+x <- "abcd ABCD 12345 -!@#%."
+```
+
+Find a string containing "abc"
+
+```{r}
+str_view(x, "[abc]+")
+```
+
+Find any string of lowercase letters of any length:
+
+```{r}
+str_view(x, "[a-z]+")
+```
+
+Escape to match special characters inside of \[\].
+
+Here it is using the range:
+
+```{r}
+str_view("a-b-c", "[a-c]")
+```
+
+Versus escaping the `\` in order to escape the `-`:
+
+```{r}
+str_view("a-b-c", "[a\\-c]")
+```
 
 ### Quantifiers
 
@@ -279,7 +341,7 @@ str_view(c("a", "ab", "abb"), "ab+")
 str_view(c("a", "ab", "abb"), "ab*")
 ```
 
-You can specify the number of matches with `{}`.\\
+You can specify the number of matches with `{}`.
 
 - `{n}` - matches **exactly** n times.
 
@@ -296,7 +358,7 @@ Using `stringr::words`, create regular expressions that find all words that:\
 - Are exactly three letters long. (Don’t cheat by using `str_length()`!)\
 - Have seven letters or more.\
 - Contain a vowel-consonant pair.\
-- Contain at least two vowel-consonant pairs in a row.\
+- Contain at least two vowel-consonant pairs in a row (using a quantifier).\
 - Only consist of repeated vowel-consonant pairs.\
 ------------------------------------------------------------------------
 
