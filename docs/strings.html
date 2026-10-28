@@ -334,36 +334,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>stringr</code> package provides consistent, simple functions for string operations.</p>
 <p>Load the library:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.4.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.4.1</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.0     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/warning.html">suppressWarnings</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr></section><section id="creating-and-inspecting-strings" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="creating-and-inspecting-strings">
 <span class="header-section-number">11.3</span> Creating and Inspecting Strings</h2>
 <section id="simple-string-creation" class="level3" data-number="11.3.1"><h3 data-number="11.3.1" class="anchored" data-anchor-id="simple-string-creation">
 <span class="header-section-number">11.3.1</span> Simple string creation:</h3>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">string1</span> <span class="op">&lt;-</span> <span class="st">"Here is a string"</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">string1</span> <span class="op">&lt;-</span> <span class="st">"Here is a string"</span></span>
 <span><span class="va">string2</span> <span class="op">&lt;-</span> <span class="st">'Single quotes work also'</span></span>
 <span><span class="va">string3</span> <span class="op">&lt;-</span> <span class="st">'If I want to put a "quote" in a string, I use single quotes.'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -375,7 +356,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This takes vectors as arguments and returns a character vector.</p>
 <p>Here is a simple string:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span>
 <span><span class="va">x</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple"  "banana" "pear"  </code></pre>
@@ -383,17 +364,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We can combine similar strings with <code>str_c</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "applebananapear"</code></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"apple "</span>, <span class="st">"banana "</span>, <span class="st">"pear "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"apple "</span>, <span class="st">"banana "</span>, <span class="st">"pear "</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "apple banana pear "</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">" is tasty"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">" is tasty"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "apple is tasty"             "apricot is tasty"          
  [3] "avocado is tasty"           "banana is tasty"           
@@ -441,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">11.4.2</span> Letters</h3>
 <p><code>str_length</code> gives you the number of letters in a string. You can provide a vector with multiple strings:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"CS506: Data Wrangling and Management"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"CS506: Data Wrangling and Management"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1 36 NA</code></pre>
 </div>
@@ -456,12 +437,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Concatenate them with the phrase <code>" is cool"</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pokemon"</span>, <span class="st">"Harry Potter"</span>, <span class="st">"LOTR"</span>, <span class="st">"Star Wars"</span>, <span class="st">"Rocky"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">lore</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pokemon"</span>, <span class="st">"Harry Potter"</span>, <span class="st">"LOTR"</span>, <span class="st">"Star Wars"</span>, <span class="st">"Rocky"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">lore</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  7 12  4  9  5</code></pre>
 </div>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">lore</span>, <span class="st">" is cool"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">lore</span>, <span class="st">" is cool"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Pokemon is cool"      "Harry Potter is cool" "LOTR is cool"        
 [4] "Star Wars is cool"    "Rocky is cool"       </code></pre>
@@ -478,7 +459,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></span>
 <span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">==</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">name</span>, wt <span class="op">=</span> <span class="va">n</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -506,7 +487,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>str_view</code> can take a regular expression as its second argument.</p>
 <p>Here it is with a literal character:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"berry"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"berry"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [6] │ bil&lt;berry&gt;
  [7] │ black&lt;berry&gt;
@@ -527,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>But you can also use a punctuation character like <code>.</code>, <code>+</code>, <code>*</code>, <code>[</code>, <code>]</code>, and <code>?</code>. These are called <strong>metacharacters</strong>.</p>
 <p><code>.</code> will match any character. <code>"a."</code> will match anything that is “a” followed by another character:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"ae"</span>, <span class="st">"bd"</span>, <span class="st">"ea"</span>, <span class="st">"eab"</span><span class="op">)</span>, <span class="st">"a."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"ae"</span>, <span class="st">"bd"</span>, <span class="st">"ea"</span>, <span class="st">"eab"</span><span class="op">)</span>, <span class="st">"a."</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2] │ &lt;ab&gt;
 [3] │ &lt;ae&gt;
@@ -536,7 +517,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We can also look for anything with an “a”, followed by three letters, followed by an “e”:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"a...e"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"a...e"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] │ &lt;apple&gt;
  [7] │ bl&lt;ackbe&gt;rry
@@ -550,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect()</a></code> Returns TRUE if a pattern is found.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">animals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"parrot"</span>, <span class="st">"cow"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">animals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"parrot"</span>, <span class="st">"cow"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">animals</span>, <span class="st">"o"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE  TRUE  TRUE</code></pre>
@@ -569,7 +550,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code>[0-9]+</code> – one or more digits</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">animals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ant"</span>, <span class="st">"bat"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">animals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ant"</span>, <span class="st">"bat"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">animals</span>, <span class="st">"^a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE FALSE</code></pre>
@@ -587,26 +568,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <hr>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">emails</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"marc@nau.edu"</span>, <span class="st">"velma@gmail.com"</span>, <span class="st">"jack@yahoo.com"</span>, <span class="st">"sam@apple.com"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">emails</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"marc@nau.edu"</span>, <span class="st">"velma@gmail.com"</span>, <span class="st">"jack@yahoo.com"</span>, <span class="st">"sam@apple.com"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">emails</span>, <span class="st">"@"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE TRUE TRUE</code></pre>
 </div>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">emails</span>, <span class="st">'.com$'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">emails</span>, <span class="st">'.com$'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE  TRUE  TRUE</code></pre>
 </div>
 </div>
 <p><code>str_detect</code> returns a logical vector that is <code>TRUE</code> if the pattern matches an element of the character vector and <code>FALSE</code> if it doesn’t.</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, <span class="st">"[aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span>, <span class="st">"[aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>This pairs quite well with <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">babynames</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">name</span>, <span class="st">"x"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">name</span>, wt <span class="op">=</span> <span class="va">n</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -631,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </h3>
 <p>Rather than a true or false, <code><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count()</a></code> counts how many matches are in a string.</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"p"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2 0 1</code></pre>
@@ -644,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </h3>
 <p>Extracts the first match:</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc123"</span>, <span class="st">"xyz789"</span><span class="op">)</span>, <span class="st">"[0-9]+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc123"</span>, <span class="st">"xyz789"</span><span class="op">)</span>, <span class="st">"[0-9]+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "123" "789"</code></pre>
 </div>
@@ -654,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </h3>
 <p>Replaces matching patterns:</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"apple pie"</span>, <span class="st">"apple"</span>, <span class="st">"peach"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"apple pie"</span>, <span class="st">"apple"</span>, <span class="st">"peach"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "peach pie"</code></pre>
 </div>
@@ -667,12 +648,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Replace the word <code>"dog"</code> with <code>"puppy"</code> in a text vector.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'1'</span>,<span class="st">'fg3'</span>,<span class="st">'5gh'</span>,<span class="st">'j34'</span>, <span class="st">'0978'</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'1'</span>,<span class="st">'fg3'</span>,<span class="st">'5gh'</span>,<span class="st">'j34'</span>, <span class="st">'0978'</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">v</span>, <span class="st">"[0-9]+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "1"    "3"    "5"    "34"   "0978"</code></pre>
 </div>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Big dog"</span>, <span class="st">"Bird dog"</span>, <span class="st">"Silly dog"</span><span class="op">)</span>, <span class="st">"dog"</span>, <span class="st">"puppy"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Big dog"</span>, <span class="st">"Bird dog"</span>, <span class="st">"Silly dog"</span><span class="op">)</span>, <span class="st">"dog"</span>, <span class="st">"puppy"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Big puppy"   "Bird puppy"  "Silly puppy"</code></pre>
 </div>
@@ -682,15 +663,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>These regular expressions allow us to search our data with more detail.</p>
 <section id="escaping" class="level3" data-number="11.8.1"><h3 data-number="11.8.1" class="anchored" data-anchor-id="escaping">
 <span class="header-section-number">11.8.1</span> Escaping</h3>
-<p>You can use <code>str_view</code> to view the strings without the escapes.</p>
+<p>In order to match a literal <code>.</code>, you need an <strong>escape</strong>. You can use <code>str_view</code> to view the strings without the escapes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">double_quote</span> <span class="op">&lt;-</span> <span class="st">"\""</span> <span class="co"># or '"'</span></span>
-<span><span class="va">single_quote</span> <span class="op">&lt;-</span> <span class="st">'\''</span> <span class="co"># or "'"</span></span>
-<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">double_quote</span>, <span class="va">single_quote</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># To create the regular expression \., we need to use \\.</span></span>
+<span><span class="va">dot</span> <span class="op">&lt;-</span> <span class="st">"\\."</span></span>
+<span></span>
+<span><span class="co"># But the expression itself only contains one \</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">dot</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ \.</code></pre>
+</div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># And this tells R to look for an explicit .</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"bef"</span><span class="op">)</span>, <span class="st">"a\\.c"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2] │ &lt;a.c&gt;</code></pre>
+</div>
+</div>
+<p>How do you match a literal <code>\</code>? By escaping it!</p>
+<div class="cell">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># creating the regular expression \\ (a slash and its escape)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"a\\b"</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] │ "
-[2] │ '</code></pre>
+<pre><code>[1] │ a\b</code></pre>
+</div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># To create that regular expression, you need to use a string, which also needs to escape \ (so you need a slash and its escape)</span></span>
+<span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"\\\\"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ a&lt;\&gt;b</code></pre>
 </div>
 </div>
 </section><section id="anchors" class="level3" data-number="11.8.2"><h3 data-number="11.8.2" class="anchored" data-anchor-id="anchors">
@@ -698,7 +698,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Regular expressions match any part of a string by default. Sometimes you just want the start or end, so you need to <strong>anchor</strong> your regex:</p>
 <p><code>^</code> matches the start:</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"^a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"^a"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;a&gt;pple
 [2] │ &lt;a&gt;pricot
@@ -707,7 +707,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><code>$</code> matches the end:</p>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"a$"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">fruit</a></span>, <span class="st">"a$"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [4] │ banan&lt;a&gt;
 [15] │ cherimoy&lt;a&gt;
@@ -717,11 +717,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [74] │ satsum&lt;a&gt;</code></pre>
 </div>
 </div>
+<p>Anchor with both <code>^</code> and <code>$</code> ti force a match to <strong>only</strong> the full string:</p>
+<div class="cell">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">"apple"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] │ &lt;apple&gt;
+[62] │ pine&lt;apple&gt;</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">fruit</span>, <span class="st">"^apple$"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;apple&gt;</code></pre>
+</div>
+</div>
+<p>See the difference?</p>
 </section><section id="character-classes" class="level3" data-number="11.8.3"><h3 data-number="11.8.3" class="anchored" data-anchor-id="character-classes">
 <span class="header-section-number">11.8.3</span> Character classes</h3>
 <p>Let you match a set of characters: Let’s use the string vector <code><a href="https://stringr.tidyverse.org/reference/stringr-data.html">stringr::words</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">words</a></span>, <span class="st">"[aeiou]x[aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">words</a></span>, <span class="st">"[aeiou]x[aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[284] │ &lt;exa&gt;ct
 [285] │ &lt;exa&gt;mple
@@ -731,7 +746,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Or, if you want anything <strong>except</strong> your character class:</p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">words</a></span>, <span class="st">"[^aeiou]y[^aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/stringr-data.html">words</a></span>, <span class="st">"[^aeiou]y[^aeiou]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[836] │ &lt;sys&gt;tem
 [901] │ &lt;typ&gt;e</code></pre>
@@ -743,27 +758,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
 <li>
 <code>\</code> escapes a special character, so <code>[\^\-\]]</code> matches <code>^</code>, <code>-``, or</code>]`.</li>
-</ul></section><section id="quantifiers" class="level3" data-number="11.8.4"><h3 data-number="11.8.4" class="anchored" data-anchor-id="quantifiers">
+</ul>
+<p>Let’s look at some examples. Here’s a vector:</p>
+<div class="cell">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">"abcd ABCD 12345 -!@#%."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Find a string containing “abc”</p>
+<div class="cell">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"[abc]+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;abc&gt;d ABCD 12345 -!@#%.</code></pre>
+</div>
+</div>
+<p>Find any string of lowercase letters of any length:</p>
+<div class="cell">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="va">x</span>, <span class="st">"[a-z]+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;abcd&gt; ABCD 12345 -!@#%.</code></pre>
+</div>
+</div>
+<p>Escape to match special characters inside of [].</p>
+<p>Here it is using the range:</p>
+<div class="cell">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="st">"a-b-c"</span>, <span class="st">"[a-c]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;a&gt;-&lt;b&gt;-&lt;c&gt;</code></pre>
+</div>
+</div>
+<p>Versus escaping the <code>\</code> in order to escape the <code>-</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="st">"a-b-c"</span>, <span class="st">"[a\\-c]"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] │ &lt;a&gt;&lt;-&gt;b&lt;-&gt;&lt;c&gt;</code></pre>
+</div>
+</div>
+</section><section id="quantifiers" class="level3" data-number="11.8.4"><h3 data-number="11.8.4" class="anchored" data-anchor-id="quantifiers">
 <span class="header-section-number">11.8.4</span> Quantifiers</h3>
 <p>These control how many times a pattern can match.<br>
 - <code>?</code> makes a pattern optional (i.e.&nbsp;it matches 0 or 1 times)<br>
 - <code>+</code> lets a pattern repeat (i.e.&nbsp;it matches at least once)<br>
 - <code>*</code> lets a pattern be optional or repeat (i.e.&nbsp;it matches any number of times, including 0).<br></p>
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab? matches an "a", optionally followed by a "b".</span></span>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab? matches an "a", optionally followed by a "b".</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span><span class="op">)</span>, <span class="st">"ab?"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;a&gt;
 [2] │ &lt;ab&gt;
 [3] │ &lt;ab&gt;b</code></pre>
 </div>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab+ matches an "a", followed by at least one "b".</span></span>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab+ matches an "a", followed by at least one "b".</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span><span class="op">)</span>, <span class="st">"ab+"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[2] │ &lt;ab&gt;
 [3] │ &lt;abb&gt;</code></pre>
 </div>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab* matches an "a", followed by any number of "b"s.</span></span>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ab* matches an "a", followed by any number of "b"s.</span></span>
 <span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_view.html">str_view</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span><span class="op">)</span>, <span class="st">"ab*"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] │ &lt;a&gt;
@@ -771,7 +820,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [3] │ &lt;abb&gt;</code></pre>
 </div>
 </div>
-<p>You can specify the number of matches with <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>.\</p>
+<p>You can specify the number of matches with <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code>.</p>
 <ul>
 <li><p><code>{n}</code> - matches <strong>exactly</strong> n times.</p></li>
 <li><p><code>{n,}</code> - matches <strong>at least</strong> n times.</p></li>
@@ -785,7 +834,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 - Are exactly three letters long. (Don’t cheat by using <code><a href="https://stringr.tidyverse.org/reference/str_length.html">str_length()</a></code>!)<br>
 - Have seven letters or more.<br>
 - Contain a vowel-consonant pair.<br>
-- Contain at least two vowel-consonant pairs in a row.<br>
+- Contain at least two vowel-consonant pairs in a row (using a quantifier).<br>
 - Only consist of repeated vowel-consonant pairs.<br>
 ————————————————————————</p>
 </section><section id="next-steps" class="level2" data-number="11.10"><h2 data-number="11.10" class="anchored" data-anchor-id="next-steps">
@@ -1273,311 +1322,373 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb68" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Strings and Regular Expressions with stringr"</span></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning Objectives</span></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>By the end of this chapter, you should be able to:</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Manipulate strings using the <span class="in">`stringr`</span> package</span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Detect patterns with regular expressions (regex)</span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Extract, replace, and split text</span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Clean messy text data for analysis</span>
-<span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-15"><a href="#cb68-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-16"><a href="#cb68-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to `stringr`</span></span>
-<span id="cb68-17"><a href="#cb68-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-18"><a href="#cb68-18" aria-hidden="true" tabindex="-1"></a>The <span class="in">`stringr`</span> package provides consistent, simple functions for string operations.</span>
-<span id="cb68-19"><a href="#cb68-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-20"><a href="#cb68-20" aria-hidden="true" tabindex="-1"></a>Load the library:</span>
-<span id="cb68-21"><a href="#cb68-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-24"><a href="#cb68-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-25"><a href="#cb68-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb68-26"><a href="#cb68-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb68-27"><a href="#cb68-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-28"><a href="#cb68-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-29"><a href="#cb68-29" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-30"><a href="#cb68-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-31"><a href="#cb68-31" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and Inspecting Strings</span></span>
-<span id="cb68-32"><a href="#cb68-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-33"><a href="#cb68-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Simple string creation:</span></span>
-<span id="cb68-34"><a href="#cb68-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-37"><a href="#cb68-37" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-38"><a href="#cb68-38" aria-hidden="true" tabindex="-1"></a>string1 <span class="ot">&lt;-</span> <span class="st">"Here is a string"</span></span>
-<span id="cb68-39"><a href="#cb68-39" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">'Single quotes work also'</span></span>
-<span id="cb68-40"><a href="#cb68-40" aria-hidden="true" tabindex="-1"></a>string3 <span class="ot">&lt;-</span> <span class="st">'If I want to put a "quote" in a string, I use single quotes.'</span></span>
-<span id="cb68-41"><a href="#cb68-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-42"><a href="#cb68-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-43"><a href="#cb68-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating strings from data</span></span>
-<span id="cb68-44"><a href="#cb68-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-45"><a href="#cb68-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_c()`</span></span>
-<span id="cb68-46"><a href="#cb68-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-47"><a href="#cb68-47" aria-hidden="true" tabindex="-1"></a>This takes vectors as arguments and returns a character vector.</span>
-<span id="cb68-48"><a href="#cb68-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-49"><a href="#cb68-49" aria-hidden="true" tabindex="-1"></a>Here is a simple string:</span>
-<span id="cb68-50"><a href="#cb68-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-53"><a href="#cb68-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-54"><a href="#cb68-54" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
-<span id="cb68-55"><a href="#cb68-55" aria-hidden="true" tabindex="-1"></a>x</span>
-<span id="cb68-56"><a href="#cb68-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-57"><a href="#cb68-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-58"><a href="#cb68-58" aria-hidden="true" tabindex="-1"></a>We can combine similar strings with <span class="in">`str_c`</span>:</span>
-<span id="cb68-59"><a href="#cb68-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-62"><a href="#cb68-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-63"><a href="#cb68-63" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
-<span id="cb68-64"><a href="#cb68-64" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"apple "</span>, <span class="st">"banana "</span>, <span class="st">"pear "</span>)</span>
-<span id="cb68-65"><a href="#cb68-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-66"><a href="#cb68-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-69"><a href="#cb68-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-70"><a href="#cb68-70" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(fruit, <span class="st">" is tasty"</span>)</span>
-<span id="cb68-71"><a href="#cb68-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-72"><a href="#cb68-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-73"><a href="#cb68-73" aria-hidden="true" tabindex="-1"></a><span class="fu">### Letters</span></span>
-<span id="cb68-74"><a href="#cb68-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-75"><a href="#cb68-75" aria-hidden="true" tabindex="-1"></a><span class="in">`str_length`</span> gives you the number of letters in a string. You can provide a vector with multiple strings:</span>
-<span id="cb68-76"><a href="#cb68-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-79"><a href="#cb68-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-80"><a href="#cb68-80" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"CS506: Data Wrangling and Management"</span>, <span class="cn">NA</span>))</span>
-<span id="cb68-81"><a href="#cb68-81" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-82"><a href="#cb68-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-83"><a href="#cb68-83" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-84"><a href="#cb68-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-85"><a href="#cb68-85" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 1 – Basic String Operations</span></span>
-<span id="cb68-86"><a href="#cb68-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-87"><a href="#cb68-87" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a vector of at least 5 words.\</span>
-<span id="cb68-88"><a href="#cb68-88" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Measure their lengths with <span class="in">`str_length()`</span>.\</span>
-<span id="cb68-89"><a href="#cb68-89" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Concatenate them with the phrase <span class="in">`" is cool"`</span>.</span>
-<span id="cb68-90"><a href="#cb68-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-93"><a href="#cb68-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-94"><a href="#cb68-94" aria-hidden="true" tabindex="-1"></a>lore <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Pokemon"</span>, <span class="st">"Harry Potter"</span>, <span class="st">"LOTR"</span>, <span class="st">"Star Wars"</span>, <span class="st">"Rocky"</span>)</span>
-<span id="cb68-95"><a href="#cb68-95" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(lore)</span>
-<span id="cb68-96"><a href="#cb68-96" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(lore, <span class="st">" is cool"</span>)</span>
-<span id="cb68-97"><a href="#cb68-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-98"><a href="#cb68-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-99"><a href="#cb68-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-Class Challenge</span></span>
-<span id="cb68-100"><a href="#cb68-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-101"><a href="#cb68-101" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Install the <span class="in">`babynames`</span> package and load the library. Invoke <span class="in">`glimpse()`</span> to understand the column names.\</span>
-<span id="cb68-102"><a href="#cb68-102" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Use <span class="in">`filter()`</span> to look at the longest names (those with exactly 15 letters).\</span>
-<span id="cb68-103"><a href="#cb68-103" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Use <span class="in">`count()`</span> to find the distribution of those names (Hint: use the <span class="in">`wt`</span> argument).\</span>
-<span id="cb68-104"><a href="#cb68-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-107"><a href="#cb68-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-108"><a href="#cb68-108" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
-<span id="cb68-109"><a href="#cb68-109" aria-hidden="true" tabindex="-1"></a>babynames <span class="sc">|&gt;</span></span>
-<span id="cb68-110"><a href="#cb68-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(name) <span class="sc">==</span> <span class="dv">15</span>) <span class="sc">|&gt;</span></span>
-<span id="cb68-111"><a href="#cb68-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, <span class="at">wt =</span> n) <span class="sc">|&gt;</span></span>
-<span id="cb68-112"><a href="#cb68-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb68-113"><a href="#cb68-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-114"><a href="#cb68-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-115"><a href="#cb68-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Detecting Patterns with Regular Expressions</span></span>
-<span id="cb68-116"><a href="#cb68-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-117"><a href="#cb68-117" aria-hidden="true" tabindex="-1"></a>"Regex" are a powerful way to detecting and describing patterns in strings.</span>
-<span id="cb68-118"><a href="#cb68-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-119"><a href="#cb68-119" aria-hidden="true" tabindex="-1"></a><span class="in">`str_view`</span> can take a regular expression as its second argument.</span>
-<span id="cb68-120"><a href="#cb68-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-121"><a href="#cb68-121" aria-hidden="true" tabindex="-1"></a>Here it is with a literal character:</span>
-<span id="cb68-122"><a href="#cb68-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-125"><a href="#cb68-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-126"><a href="#cb68-126" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"berry"</span>)</span>
-<span id="cb68-127"><a href="#cb68-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-128"><a href="#cb68-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-129"><a href="#cb68-129" aria-hidden="true" tabindex="-1"></a>But you can also use a punctuation character like <span class="in">`.`</span>, <span class="in">`+`</span>, <span class="in">`*`</span>, <span class="in">`[`</span>, <span class="in">`]`</span>, and <span class="in">`?`</span>. These are called **metacharacters**.</span>
-<span id="cb68-130"><a href="#cb68-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-131"><a href="#cb68-131" aria-hidden="true" tabindex="-1"></a><span class="in">`.`</span> will match any character. <span class="in">`"a."`</span> will match anything that is "a" followed by another character:</span>
-<span id="cb68-132"><a href="#cb68-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-135"><a href="#cb68-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-136"><a href="#cb68-136" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"ae"</span>, <span class="st">"bd"</span>, <span class="st">"ea"</span>, <span class="st">"eab"</span>), <span class="st">"a."</span>)</span>
-<span id="cb68-137"><a href="#cb68-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-138"><a href="#cb68-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-139"><a href="#cb68-139" aria-hidden="true" tabindex="-1"></a>We can also look for anything with an "a", followed by three letters, followed by an "e":</span>
-<span id="cb68-140"><a href="#cb68-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-143"><a href="#cb68-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-144"><a href="#cb68-144" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"a...e"</span>)</span>
-<span id="cb68-145"><a href="#cb68-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-146"><a href="#cb68-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-147"><a href="#cb68-147" aria-hidden="true" tabindex="-1"></a><span class="in">`str_detect()`</span> Returns TRUE if a pattern is found.</span>
-<span id="cb68-148"><a href="#cb68-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-151"><a href="#cb68-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-152"><a href="#cb68-152" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"parrot"</span>, <span class="st">"cow"</span>)</span>
-<span id="cb68-153"><a href="#cb68-153" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(animals, <span class="st">"o"</span>)</span>
-<span id="cb68-154"><a href="#cb68-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-155"><a href="#cb68-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-156"><a href="#cb68-156" aria-hidden="true" tabindex="-1"></a>You can use **regular expressions** for more complex patterns.</span>
-<span id="cb68-157"><a href="#cb68-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-158"><a href="#cb68-158" aria-hidden="true" tabindex="-1"></a>Examples:</span>
-<span id="cb68-159"><a href="#cb68-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-160"><a href="#cb68-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`^a`</span> – starts with “a”\</span>
-<span id="cb68-161"><a href="#cb68-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ing$`</span> – ends with “ing”\</span>
-<span id="cb68-162"><a href="#cb68-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`[0-9]+`</span> – one or more digits</span>
-<span id="cb68-163"><a href="#cb68-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-166"><a href="#cb68-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-167"><a href="#cb68-167" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ant"</span>, <span class="st">"bat"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>)</span>
-<span id="cb68-168"><a href="#cb68-168" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(animals, <span class="st">"^a"</span>)</span>
-<span id="cb68-169"><a href="#cb68-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-170"><a href="#cb68-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-171"><a href="#cb68-171" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-172"><a href="#cb68-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-173"><a href="#cb68-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 2 – Pattern Detection</span></span>
-<span id="cb68-174"><a href="#cb68-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-175"><a href="#cb68-175" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a vector of email-like strings.\</span>
-<span id="cb68-176"><a href="#cb68-176" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Use <span class="in">`str_detect()`</span> to check which contain <span class="in">`"@"`</span>.\</span>
-<span id="cb68-177"><a href="#cb68-177" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Write a regex to detect strings ending in <span class="in">`.com`</span>.</span>
-<span id="cb68-178"><a href="#cb68-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-179"><a href="#cb68-179" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-180"><a href="#cb68-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-183"><a href="#cb68-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-184"><a href="#cb68-184" aria-hidden="true" tabindex="-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"marc@nau.edu"</span>, <span class="st">"velma@gmail.com"</span>, <span class="st">"jack@yahoo.com"</span>, <span class="st">"sam@apple.com"</span>)</span>
-<span id="cb68-185"><a href="#cb68-185" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(emails, <span class="st">"@"</span>)</span>
-<span id="cb68-186"><a href="#cb68-186" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(emails, <span class="st">'.com$'</span>)</span>
-<span id="cb68-187"><a href="#cb68-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-188"><a href="#cb68-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-189"><a href="#cb68-189" aria-hidden="true" tabindex="-1"></a><span class="in">`str_detect`</span> returns a logical vector that is <span class="in">`TRUE`</span> if the pattern matches an element of the character vector and <span class="in">`FALSE`</span> if it doesn't.</span>
-<span id="cb68-190"><a href="#cb68-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-193"><a href="#cb68-193" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-194"><a href="#cb68-194" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="st">"[aeiou]"</span>)</span>
-<span id="cb68-195"><a href="#cb68-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-196"><a href="#cb68-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-197"><a href="#cb68-197" aria-hidden="true" tabindex="-1"></a>This pairs quite well with <span class="in">`filter()`</span>:</span>
-<span id="cb68-198"><a href="#cb68-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-201"><a href="#cb68-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-202"><a href="#cb68-202" aria-hidden="true" tabindex="-1"></a>babynames <span class="sc">|&gt;</span></span>
-<span id="cb68-203"><a href="#cb68-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(name, <span class="st">"x"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb68-204"><a href="#cb68-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, <span class="at">wt =</span> n, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb68-205"><a href="#cb68-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-206"><a href="#cb68-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-207"><a href="#cb68-207" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_count()`</span></span>
-<span id="cb68-208"><a href="#cb68-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-209"><a href="#cb68-209" aria-hidden="true" tabindex="-1"></a>Rather than a true or false, <span class="in">`str_count()`</span> counts how many matches are in a string.</span>
-<span id="cb68-210"><a href="#cb68-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-213"><a href="#cb68-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-214"><a href="#cb68-214" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
-<span id="cb68-215"><a href="#cb68-215" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(x, <span class="st">"p"</span>)</span>
-<span id="cb68-216"><a href="#cb68-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-217"><a href="#cb68-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-218"><a href="#cb68-218" aria-hidden="true" tabindex="-1"></a><span class="fu">## Extracting and Replacing Text</span></span>
-<span id="cb68-219"><a href="#cb68-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-220"><a href="#cb68-220" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_extract()`</span></span>
-<span id="cb68-221"><a href="#cb68-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-222"><a href="#cb68-222" aria-hidden="true" tabindex="-1"></a>Extracts the first match:</span>
-<span id="cb68-223"><a href="#cb68-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-226"><a href="#cb68-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-227"><a href="#cb68-227" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"xyz789"</span>), <span class="st">"[0-9]+"</span>)</span>
-<span id="cb68-228"><a href="#cb68-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-229"><a href="#cb68-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-230"><a href="#cb68-230" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_replace()`</span></span>
-<span id="cb68-231"><a href="#cb68-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-232"><a href="#cb68-232" aria-hidden="true" tabindex="-1"></a>Replaces matching patterns:</span>
-<span id="cb68-233"><a href="#cb68-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-236"><a href="#cb68-236" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-237"><a href="#cb68-237" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="st">"apple pie"</span>, <span class="st">"apple"</span>, <span class="st">"peach"</span>)</span>
-<span id="cb68-238"><a href="#cb68-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-239"><a href="#cb68-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-240"><a href="#cb68-240" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-241"><a href="#cb68-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-242"><a href="#cb68-242" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 3 – Extraction and Replacement</span></span>
-<span id="cb68-243"><a href="#cb68-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-244"><a href="#cb68-244" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Extract digits from a vector of alphanumeric strings.\</span>
-<span id="cb68-245"><a href="#cb68-245" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Replace the word <span class="in">`"dog"`</span> with <span class="in">`"puppy"`</span> in a text vector.</span>
-<span id="cb68-246"><a href="#cb68-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-249"><a href="#cb68-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-250"><a href="#cb68-250" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'fg3'</span>,<span class="st">'5gh'</span>,<span class="st">'j34'</span>, <span class="st">'0978'</span>)</span>
-<span id="cb68-251"><a href="#cb68-251" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(v, <span class="st">"[0-9]+"</span>)</span>
-<span id="cb68-252"><a href="#cb68-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-253"><a href="#cb68-253" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="fu">c</span>(<span class="st">"Big dog"</span>, <span class="st">"Bird dog"</span>, <span class="st">"Silly dog"</span>), <span class="st">"dog"</span>, <span class="st">"puppy"</span>)</span>
-<span id="cb68-254"><a href="#cb68-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-255"><a href="#cb68-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-256"><a href="#cb68-256" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pattern details</span></span>
-<span id="cb68-257"><a href="#cb68-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-258"><a href="#cb68-258" aria-hidden="true" tabindex="-1"></a>These regular expressions allow us to search our data with more detail.</span>
-<span id="cb68-259"><a href="#cb68-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-260"><a href="#cb68-260" aria-hidden="true" tabindex="-1"></a><span class="fu">### Escaping</span></span>
-<span id="cb68-261"><a href="#cb68-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-262"><a href="#cb68-262" aria-hidden="true" tabindex="-1"></a>You can use <span class="in">`str_view`</span> to view the strings without the escapes.</span>
-<span id="cb68-263"><a href="#cb68-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-266"><a href="#cb68-266" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-267"><a href="#cb68-267" aria-hidden="true" tabindex="-1"></a>double_quote <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\"</span><span class="st">"</span> <span class="co"># or '"'</span></span>
-<span id="cb68-268"><a href="#cb68-268" aria-hidden="true" tabindex="-1"></a>single_quote <span class="ot">&lt;-</span> <span class="st">'</span><span class="sc">\'</span><span class="st">'</span> <span class="co"># or "'"</span></span>
-<span id="cb68-269"><a href="#cb68-269" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(double_quote, single_quote)</span>
-<span id="cb68-270"><a href="#cb68-270" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(x)</span>
-<span id="cb68-271"><a href="#cb68-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-272"><a href="#cb68-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-273"><a href="#cb68-273" aria-hidden="true" tabindex="-1"></a><span class="fu">### Anchors</span></span>
-<span id="cb68-274"><a href="#cb68-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-275"><a href="#cb68-275" aria-hidden="true" tabindex="-1"></a>Regular expressions match any part of a string by default. Sometimes you just want the start or end, so you need to **anchor** your regex:</span>
-<span id="cb68-276"><a href="#cb68-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-277"><a href="#cb68-277" aria-hidden="true" tabindex="-1"></a><span class="in">`^`</span> matches the start:</span>
-<span id="cb68-278"><a href="#cb68-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-281"><a href="#cb68-281" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-282"><a href="#cb68-282" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"^a"</span>)</span>
-<span id="cb68-283"><a href="#cb68-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-284"><a href="#cb68-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-285"><a href="#cb68-285" aria-hidden="true" tabindex="-1"></a><span class="in">`$`</span> matches the end:</span>
-<span id="cb68-286"><a href="#cb68-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-289"><a href="#cb68-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-290"><a href="#cb68-290" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"a$"</span>)</span>
-<span id="cb68-291"><a href="#cb68-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-292"><a href="#cb68-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-293"><a href="#cb68-293" aria-hidden="true" tabindex="-1"></a><span class="fu">### Character classes</span></span>
-<span id="cb68-294"><a href="#cb68-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-295"><a href="#cb68-295" aria-hidden="true" tabindex="-1"></a>Let you match a set of characters: Let's use the string vector <span class="in">`stringr::words`</span>:</span>
-<span id="cb68-296"><a href="#cb68-296" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-299"><a href="#cb68-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-300"><a href="#cb68-300" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>words, <span class="st">"[aeiou]x[aeiou]"</span>)</span>
-<span id="cb68-301"><a href="#cb68-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-302"><a href="#cb68-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-303"><a href="#cb68-303" aria-hidden="true" tabindex="-1"></a>Or, if you want anything **except** your character class:</span>
-<span id="cb68-304"><a href="#cb68-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-307"><a href="#cb68-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-308"><a href="#cb68-308" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>words, <span class="st">"[^aeiou]y[^aeiou]"</span>)</span>
-<span id="cb68-309"><a href="#cb68-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-310"><a href="#cb68-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-311"><a href="#cb68-311" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`-`</span> defines a range (<span class="in">`[a-z]' or '[0-9]`</span>).\</span>
-<span id="cb68-312"><a href="#cb68-312" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`\`</span> escapes a special character, so <span class="in">`[\^\-\]]`</span> matches <span class="in">`^`</span>, `<span class="in">`` -``</span>, or ``<span class="in">`\]\`</span>.</span>
-<span id="cb68-313"><a href="#cb68-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-314"><a href="#cb68-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantifiers</span></span>
-<span id="cb68-315"><a href="#cb68-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-316"><a href="#cb68-316" aria-hidden="true" tabindex="-1"></a>These control how many times a pattern can match.\</span>
-<span id="cb68-317"><a href="#cb68-317" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`?`</span> makes a pattern optional (i.e. it matches 0 or 1 times)\</span>
-<span id="cb68-318"><a href="#cb68-318" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`+`</span> lets a pattern repeat (i.e. it matches at least once)\</span>
-<span id="cb68-319"><a href="#cb68-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`*`</span> lets a pattern be optional or repeat (i.e. it matches any number of times, including 0).\</span>
-<span id="cb68-320"><a href="#cb68-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-323"><a href="#cb68-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb68-324"><a href="#cb68-324" aria-hidden="true" tabindex="-1"></a><span class="co"># ab? matches an "a", optionally followed by a "b".</span></span>
-<span id="cb68-325"><a href="#cb68-325" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab?"</span>)</span>
-<span id="cb68-326"><a href="#cb68-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-327"><a href="#cb68-327" aria-hidden="true" tabindex="-1"></a><span class="co"># ab+ matches an "a", followed by at least one "b".</span></span>
-<span id="cb68-328"><a href="#cb68-328" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab+"</span>)</span>
-<span id="cb68-329"><a href="#cb68-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-330"><a href="#cb68-330" aria-hidden="true" tabindex="-1"></a><span class="co"># ab* matches an "a", followed by any number of "b"s.</span></span>
-<span id="cb68-331"><a href="#cb68-331" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab*"</span>)</span>
-<span id="cb68-332"><a href="#cb68-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb68-333"><a href="#cb68-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-334"><a href="#cb68-334" aria-hidden="true" tabindex="-1"></a>You can specify the number of matches with <span class="in">`{}`</span>.<span class="sc">\\</span></span>
-<span id="cb68-335"><a href="#cb68-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-336"><a href="#cb68-336" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n}`</span> - matches **exactly** n times.</span>
-<span id="cb68-337"><a href="#cb68-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-338"><a href="#cb68-338" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n,}`</span> - matches **at least** n times.</span>
-<span id="cb68-339"><a href="#cb68-339" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-340"><a href="#cb68-340" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n,m}`</span> - matches between n and m times.</span>
-<span id="cb68-341"><a href="#cb68-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-342"><a href="#cb68-342" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-Class Challenge</span></span>
-<span id="cb68-343"><a href="#cb68-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-344"><a href="#cb68-344" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`stringr::words`</span>, create regular expressions that find all words that:\</span>
-<span id="cb68-345"><a href="#cb68-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Start with “y”.\</span>
-<span id="cb68-346"><a href="#cb68-346" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Don’t start with “y”.\</span>
-<span id="cb68-347"><a href="#cb68-347" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>End with “x”.\</span>
-<span id="cb68-348"><a href="#cb68-348" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are exactly three letters long. (Don’t cheat by using <span class="in">`str_length()`</span>!)\</span>
-<span id="cb68-349"><a href="#cb68-349" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Have seven letters or more.\</span>
-<span id="cb68-350"><a href="#cb68-350" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Contain a vowel-consonant pair.\</span>
-<span id="cb68-351"><a href="#cb68-351" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Contain at least two vowel-consonant pairs in a row.\</span>
-<span id="cb68-352"><a href="#cb68-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Only consist of repeated vowel-consonant pairs.\</span>
-<span id="cb68-353"><a href="#cb68-353" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
-<span id="cb68-354"><a href="#cb68-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-355"><a href="#cb68-355" aria-hidden="true" tabindex="-1"></a><span class="fu">## Next Steps</span></span>
-<span id="cb68-356"><a href="#cb68-356" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-357"><a href="#cb68-357" aria-hidden="true" tabindex="-1"></a>Next, we will learn to **work with factors and categorical data** using the <span class="in">`forcats`</span> package.</span>
+<div class="sourceCode" id="cb82" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Strings and Regular Expressions with stringr"</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Learning Objectives</span></span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>By the end of this chapter, you should be able to:</span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Manipulate strings using the <span class="in">`stringr`</span> package</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Detect patterns with regular expressions (regex)</span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Extract, replace, and split text</span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Clean messy text data for analysis</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction to `stringr`</span></span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a>The <span class="in">`stringr`</span> package provides consistent, simple functions for string operations.</span>
+<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a>Load the library:</span>
+<span id="cb82-21"><a href="#cb82-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-24"><a href="#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-25"><a href="#cb82-25" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressWarnings</span>(<span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb82-26"><a href="#cb82-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb82-27"><a href="#cb82-27" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb82-28"><a href="#cb82-28" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb82-29"><a href="#cb82-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-30"><a href="#cb82-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-31"><a href="#cb82-31" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-32"><a href="#cb82-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-33"><a href="#cb82-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating and Inspecting Strings</span></span>
+<span id="cb82-34"><a href="#cb82-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-35"><a href="#cb82-35" aria-hidden="true" tabindex="-1"></a><span class="fu">### Simple string creation:</span></span>
+<span id="cb82-36"><a href="#cb82-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-39"><a href="#cb82-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-40"><a href="#cb82-40" aria-hidden="true" tabindex="-1"></a>string1 <span class="ot">&lt;-</span> <span class="st">"Here is a string"</span></span>
+<span id="cb82-41"><a href="#cb82-41" aria-hidden="true" tabindex="-1"></a>string2 <span class="ot">&lt;-</span> <span class="st">'Single quotes work also'</span></span>
+<span id="cb82-42"><a href="#cb82-42" aria-hidden="true" tabindex="-1"></a>string3 <span class="ot">&lt;-</span> <span class="st">'If I want to put a "quote" in a string, I use single quotes.'</span></span>
+<span id="cb82-43"><a href="#cb82-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-44"><a href="#cb82-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-45"><a href="#cb82-45" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating strings from data</span></span>
+<span id="cb82-46"><a href="#cb82-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-47"><a href="#cb82-47" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_c()`</span></span>
+<span id="cb82-48"><a href="#cb82-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-49"><a href="#cb82-49" aria-hidden="true" tabindex="-1"></a>This takes vectors as arguments and returns a character vector.</span>
+<span id="cb82-50"><a href="#cb82-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-51"><a href="#cb82-51" aria-hidden="true" tabindex="-1"></a>Here is a simple string:</span>
+<span id="cb82-52"><a href="#cb82-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-55"><a href="#cb82-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-56"><a href="#cb82-56" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
+<span id="cb82-57"><a href="#cb82-57" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb82-58"><a href="#cb82-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-59"><a href="#cb82-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-60"><a href="#cb82-60" aria-hidden="true" tabindex="-1"></a>We can combine similar strings with <span class="in">`str_c`</span>:</span>
+<span id="cb82-61"><a href="#cb82-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-64"><a href="#cb82-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-65"><a href="#cb82-65" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
+<span id="cb82-66"><a href="#cb82-66" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(<span class="st">"apple "</span>, <span class="st">"banana "</span>, <span class="st">"pear "</span>)</span>
+<span id="cb82-67"><a href="#cb82-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-68"><a href="#cb82-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-71"><a href="#cb82-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-72"><a href="#cb82-72" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(fruit, <span class="st">" is tasty"</span>)</span>
+<span id="cb82-73"><a href="#cb82-73" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-74"><a href="#cb82-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-75"><a href="#cb82-75" aria-hidden="true" tabindex="-1"></a><span class="fu">### Letters</span></span>
+<span id="cb82-76"><a href="#cb82-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-77"><a href="#cb82-77" aria-hidden="true" tabindex="-1"></a><span class="in">`str_length`</span> gives you the number of letters in a string. You can provide a vector with multiple strings:</span>
+<span id="cb82-78"><a href="#cb82-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-81"><a href="#cb82-81" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-82"><a href="#cb82-82" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(<span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"CS506: Data Wrangling and Management"</span>, <span class="cn">NA</span>))</span>
+<span id="cb82-83"><a href="#cb82-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-84"><a href="#cb82-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-85"><a href="#cb82-85" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-86"><a href="#cb82-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-87"><a href="#cb82-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 1 – Basic String Operations</span></span>
+<span id="cb82-88"><a href="#cb82-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-89"><a href="#cb82-89" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a vector of at least 5 words.\</span>
+<span id="cb82-90"><a href="#cb82-90" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Measure their lengths with <span class="in">`str_length()`</span>.\</span>
+<span id="cb82-91"><a href="#cb82-91" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Concatenate them with the phrase <span class="in">`" is cool"`</span>.</span>
+<span id="cb82-92"><a href="#cb82-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-95"><a href="#cb82-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-96"><a href="#cb82-96" aria-hidden="true" tabindex="-1"></a>lore <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Pokemon"</span>, <span class="st">"Harry Potter"</span>, <span class="st">"LOTR"</span>, <span class="st">"Star Wars"</span>, <span class="st">"Rocky"</span>)</span>
+<span id="cb82-97"><a href="#cb82-97" aria-hidden="true" tabindex="-1"></a><span class="fu">str_length</span>(lore)</span>
+<span id="cb82-98"><a href="#cb82-98" aria-hidden="true" tabindex="-1"></a><span class="fu">str_c</span>(lore, <span class="st">" is cool"</span>)</span>
+<span id="cb82-99"><a href="#cb82-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-100"><a href="#cb82-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-101"><a href="#cb82-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-Class Challenge</span></span>
+<span id="cb82-102"><a href="#cb82-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-103"><a href="#cb82-103" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Install the <span class="in">`babynames`</span> package and load the library. Invoke <span class="in">`glimpse()`</span> to understand the column names.\</span>
+<span id="cb82-104"><a href="#cb82-104" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Use <span class="in">`filter()`</span> to look at the longest names (those with exactly 15 letters).\</span>
+<span id="cb82-105"><a href="#cb82-105" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Use <span class="in">`count()`</span> to find the distribution of those names (Hint: use the <span class="in">`wt`</span> argument).\</span>
+<span id="cb82-106"><a href="#cb82-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-109"><a href="#cb82-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-110"><a href="#cb82-110" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(babynames)</span>
+<span id="cb82-111"><a href="#cb82-111" aria-hidden="true" tabindex="-1"></a>babynames <span class="sc">|&gt;</span></span>
+<span id="cb82-112"><a href="#cb82-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_length</span>(name) <span class="sc">==</span> <span class="dv">15</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-113"><a href="#cb82-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, <span class="at">wt =</span> n) <span class="sc">|&gt;</span></span>
+<span id="cb82-114"><a href="#cb82-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb82-115"><a href="#cb82-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-116"><a href="#cb82-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-117"><a href="#cb82-117" aria-hidden="true" tabindex="-1"></a><span class="fu">## Detecting Patterns with Regular Expressions</span></span>
+<span id="cb82-118"><a href="#cb82-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-119"><a href="#cb82-119" aria-hidden="true" tabindex="-1"></a>"Regex" are a powerful way to detecting and describing patterns in strings.</span>
+<span id="cb82-120"><a href="#cb82-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-121"><a href="#cb82-121" aria-hidden="true" tabindex="-1"></a><span class="in">`str_view`</span> can take a regular expression as its second argument.</span>
+<span id="cb82-122"><a href="#cb82-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-123"><a href="#cb82-123" aria-hidden="true" tabindex="-1"></a>Here it is with a literal character:</span>
+<span id="cb82-124"><a href="#cb82-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-127"><a href="#cb82-127" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-128"><a href="#cb82-128" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"berry"</span>)</span>
+<span id="cb82-129"><a href="#cb82-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-130"><a href="#cb82-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-131"><a href="#cb82-131" aria-hidden="true" tabindex="-1"></a>But you can also use a punctuation character like <span class="in">`.`</span>, <span class="in">`+`</span>, <span class="in">`*`</span>, <span class="in">`[`</span>, <span class="in">`]`</span>, and <span class="in">`?`</span>. These are called **metacharacters**.</span>
+<span id="cb82-132"><a href="#cb82-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-133"><a href="#cb82-133" aria-hidden="true" tabindex="-1"></a><span class="in">`.`</span> will match any character. <span class="in">`"a."`</span> will match anything that is "a" followed by another character:</span>
+<span id="cb82-134"><a href="#cb82-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-137"><a href="#cb82-137" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-138"><a href="#cb82-138" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"ae"</span>, <span class="st">"bd"</span>, <span class="st">"ea"</span>, <span class="st">"eab"</span>), <span class="st">"a."</span>)</span>
+<span id="cb82-139"><a href="#cb82-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-140"><a href="#cb82-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-141"><a href="#cb82-141" aria-hidden="true" tabindex="-1"></a>We can also look for anything with an "a", followed by three letters, followed by an "e":</span>
+<span id="cb82-142"><a href="#cb82-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-145"><a href="#cb82-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-146"><a href="#cb82-146" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"a...e"</span>)</span>
+<span id="cb82-147"><a href="#cb82-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-148"><a href="#cb82-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-149"><a href="#cb82-149" aria-hidden="true" tabindex="-1"></a><span class="in">`str_detect()`</span> Returns TRUE if a pattern is found.</span>
+<span id="cb82-150"><a href="#cb82-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-153"><a href="#cb82-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-154"><a href="#cb82-154" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dog"</span>, <span class="st">"cat"</span>, <span class="st">"parrot"</span>, <span class="st">"cow"</span>)</span>
+<span id="cb82-155"><a href="#cb82-155" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(animals, <span class="st">"o"</span>)</span>
+<span id="cb82-156"><a href="#cb82-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-157"><a href="#cb82-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-158"><a href="#cb82-158" aria-hidden="true" tabindex="-1"></a>You can use **regular expressions** for more complex patterns.</span>
+<span id="cb82-159"><a href="#cb82-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-160"><a href="#cb82-160" aria-hidden="true" tabindex="-1"></a>Examples:</span>
+<span id="cb82-161"><a href="#cb82-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-162"><a href="#cb82-162" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`^a`</span> – starts with “a”\</span>
+<span id="cb82-163"><a href="#cb82-163" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ing$`</span> – ends with “ing”\</span>
+<span id="cb82-164"><a href="#cb82-164" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`[0-9]+`</span> – one or more digits</span>
+<span id="cb82-165"><a href="#cb82-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-168"><a href="#cb82-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-169"><a href="#cb82-169" aria-hidden="true" tabindex="-1"></a>animals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ant"</span>, <span class="st">"bat"</span>, <span class="st">"cat"</span>, <span class="st">"dog"</span>)</span>
+<span id="cb82-170"><a href="#cb82-170" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(animals, <span class="st">"^a"</span>)</span>
+<span id="cb82-171"><a href="#cb82-171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-172"><a href="#cb82-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-173"><a href="#cb82-173" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-174"><a href="#cb82-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-175"><a href="#cb82-175" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 2 – Pattern Detection</span></span>
+<span id="cb82-176"><a href="#cb82-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-177"><a href="#cb82-177" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Create a vector of email-like strings.\</span>
+<span id="cb82-178"><a href="#cb82-178" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Use <span class="in">`str_detect()`</span> to check which contain <span class="in">`"@"`</span>.\</span>
+<span id="cb82-179"><a href="#cb82-179" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Write a regex to detect strings ending in <span class="in">`.com`</span>.</span>
+<span id="cb82-180"><a href="#cb82-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-181"><a href="#cb82-181" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-182"><a href="#cb82-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-185"><a href="#cb82-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-186"><a href="#cb82-186" aria-hidden="true" tabindex="-1"></a>emails <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"marc@nau.edu"</span>, <span class="st">"velma@gmail.com"</span>, <span class="st">"jack@yahoo.com"</span>, <span class="st">"sam@apple.com"</span>)</span>
+<span id="cb82-187"><a href="#cb82-187" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(emails, <span class="st">"@"</span>)</span>
+<span id="cb82-188"><a href="#cb82-188" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(emails, <span class="st">'.com$'</span>)</span>
+<span id="cb82-189"><a href="#cb82-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-190"><a href="#cb82-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-191"><a href="#cb82-191" aria-hidden="true" tabindex="-1"></a><span class="in">`str_detect`</span> returns a logical vector that is <span class="in">`TRUE`</span> if the pattern matches an element of the character vector and <span class="in">`FALSE`</span> if it doesn't.</span>
+<span id="cb82-192"><a href="#cb82-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-195"><a href="#cb82-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-196"><a href="#cb82-196" aria-hidden="true" tabindex="-1"></a><span class="fu">str_detect</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), <span class="st">"[aeiou]"</span>)</span>
+<span id="cb82-197"><a href="#cb82-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-198"><a href="#cb82-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-199"><a href="#cb82-199" aria-hidden="true" tabindex="-1"></a>This pairs quite well with <span class="in">`filter()`</span>:</span>
+<span id="cb82-200"><a href="#cb82-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-203"><a href="#cb82-203" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-204"><a href="#cb82-204" aria-hidden="true" tabindex="-1"></a>babynames <span class="sc">|&gt;</span></span>
+<span id="cb82-205"><a href="#cb82-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(name, <span class="st">"x"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb82-206"><a href="#cb82-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(name, <span class="at">wt =</span> n, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb82-207"><a href="#cb82-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-208"><a href="#cb82-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-209"><a href="#cb82-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_count()`</span></span>
+<span id="cb82-210"><a href="#cb82-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-211"><a href="#cb82-211" aria-hidden="true" tabindex="-1"></a>Rather than a true or false, <span class="in">`str_count()`</span> counts how many matches are in a string.</span>
+<span id="cb82-212"><a href="#cb82-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-215"><a href="#cb82-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-216"><a href="#cb82-216" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"apple"</span>, <span class="st">"banana"</span>, <span class="st">"pear"</span>)</span>
+<span id="cb82-217"><a href="#cb82-217" aria-hidden="true" tabindex="-1"></a><span class="fu">str_count</span>(x, <span class="st">"p"</span>)</span>
+<span id="cb82-218"><a href="#cb82-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-219"><a href="#cb82-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-220"><a href="#cb82-220" aria-hidden="true" tabindex="-1"></a><span class="fu">## Extracting and Replacing Text</span></span>
+<span id="cb82-221"><a href="#cb82-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-222"><a href="#cb82-222" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_extract()`</span></span>
+<span id="cb82-223"><a href="#cb82-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-224"><a href="#cb82-224" aria-hidden="true" tabindex="-1"></a>Extracts the first match:</span>
+<span id="cb82-225"><a href="#cb82-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-228"><a href="#cb82-228" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-229"><a href="#cb82-229" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(<span class="fu">c</span>(<span class="st">"abc123"</span>, <span class="st">"xyz789"</span>), <span class="st">"[0-9]+"</span>)</span>
+<span id="cb82-230"><a href="#cb82-230" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-231"><a href="#cb82-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-232"><a href="#cb82-232" aria-hidden="true" tabindex="-1"></a><span class="fu">### `str_replace()`</span></span>
+<span id="cb82-233"><a href="#cb82-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-234"><a href="#cb82-234" aria-hidden="true" tabindex="-1"></a>Replaces matching patterns:</span>
+<span id="cb82-235"><a href="#cb82-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-238"><a href="#cb82-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-239"><a href="#cb82-239" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="st">"apple pie"</span>, <span class="st">"apple"</span>, <span class="st">"peach"</span>)</span>
+<span id="cb82-240"><a href="#cb82-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-241"><a href="#cb82-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-242"><a href="#cb82-242" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-243"><a href="#cb82-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-244"><a href="#cb82-244" aria-hidden="true" tabindex="-1"></a><span class="fu">### In-Class Exercise 3 – Extraction and Replacement</span></span>
+<span id="cb82-245"><a href="#cb82-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-246"><a href="#cb82-246" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Extract digits from a vector of alphanumeric strings.\</span>
+<span id="cb82-247"><a href="#cb82-247" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Replace the word <span class="in">`"dog"`</span> with <span class="in">`"puppy"`</span> in a text vector.</span>
+<span id="cb82-248"><a href="#cb82-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-251"><a href="#cb82-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-252"><a href="#cb82-252" aria-hidden="true" tabindex="-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'1'</span>,<span class="st">'fg3'</span>,<span class="st">'5gh'</span>,<span class="st">'j34'</span>, <span class="st">'0978'</span>)</span>
+<span id="cb82-253"><a href="#cb82-253" aria-hidden="true" tabindex="-1"></a><span class="fu">str_extract</span>(v, <span class="st">"[0-9]+"</span>)</span>
+<span id="cb82-254"><a href="#cb82-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-255"><a href="#cb82-255" aria-hidden="true" tabindex="-1"></a><span class="fu">str_replace</span>(<span class="fu">c</span>(<span class="st">"Big dog"</span>, <span class="st">"Bird dog"</span>, <span class="st">"Silly dog"</span>), <span class="st">"dog"</span>, <span class="st">"puppy"</span>)</span>
+<span id="cb82-256"><a href="#cb82-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-257"><a href="#cb82-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-258"><a href="#cb82-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pattern details</span></span>
+<span id="cb82-259"><a href="#cb82-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-260"><a href="#cb82-260" aria-hidden="true" tabindex="-1"></a>These regular expressions allow us to search our data with more detail.</span>
+<span id="cb82-261"><a href="#cb82-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-262"><a href="#cb82-262" aria-hidden="true" tabindex="-1"></a><span class="fu">### Escaping</span></span>
+<span id="cb82-263"><a href="#cb82-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-264"><a href="#cb82-264" aria-hidden="true" tabindex="-1"></a>In order to match a literal <span class="in">`.`</span>, you need an **escape**. You can use <span class="in">`str_view`</span> to view the strings without the escapes.</span>
+<span id="cb82-265"><a href="#cb82-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-268"><a href="#cb82-268" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-269"><a href="#cb82-269" aria-hidden="true" tabindex="-1"></a><span class="co"># To create the regular expression \., we need to use \\.</span></span>
+<span id="cb82-270"><a href="#cb82-270" aria-hidden="true" tabindex="-1"></a>dot <span class="ot">&lt;-</span> <span class="st">"</span><span class="sc">\\</span><span class="st">."</span></span>
+<span id="cb82-271"><a href="#cb82-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-272"><a href="#cb82-272" aria-hidden="true" tabindex="-1"></a><span class="co"># But the expression itself only contains one \</span></span>
+<span id="cb82-273"><a href="#cb82-273" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(dot)</span>
+<span id="cb82-274"><a href="#cb82-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-275"><a href="#cb82-275" aria-hidden="true" tabindex="-1"></a><span class="co"># And this tells R to look for an explicit .</span></span>
+<span id="cb82-276"><a href="#cb82-276" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"abc"</span>, <span class="st">"a.c"</span>, <span class="st">"bef"</span>), <span class="st">"a</span><span class="sc">\\</span><span class="st">.c"</span>)</span>
+<span id="cb82-277"><a href="#cb82-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-278"><a href="#cb82-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-279"><a href="#cb82-279" aria-hidden="true" tabindex="-1"></a>How do you match a literal <span class="in">`\`</span>? By escaping it!</span>
+<span id="cb82-280"><a href="#cb82-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-283"><a href="#cb82-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-284"><a href="#cb82-284" aria-hidden="true" tabindex="-1"></a><span class="co"># creating the regular expression \\ (a slash and its escape)</span></span>
+<span id="cb82-285"><a href="#cb82-285" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"a</span><span class="sc">\\</span><span class="st">b"</span></span>
+<span id="cb82-286"><a href="#cb82-286" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(x)</span>
+<span id="cb82-287"><a href="#cb82-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-288"><a href="#cb82-288" aria-hidden="true" tabindex="-1"></a><span class="co"># To create that regular expression, you need to use a string, which also needs to escape \ (so you need a slash and its escape)</span></span>
+<span id="cb82-289"><a href="#cb82-289" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(x, <span class="st">"</span><span class="sc">\\\\</span><span class="st">"</span>)</span>
+<span id="cb82-290"><a href="#cb82-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-291"><a href="#cb82-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-292"><a href="#cb82-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-293"><a href="#cb82-293" aria-hidden="true" tabindex="-1"></a><span class="fu">### Anchors</span></span>
+<span id="cb82-294"><a href="#cb82-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-295"><a href="#cb82-295" aria-hidden="true" tabindex="-1"></a>Regular expressions match any part of a string by default. Sometimes you just want the start or end, so you need to **anchor** your regex:</span>
+<span id="cb82-296"><a href="#cb82-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-297"><a href="#cb82-297" aria-hidden="true" tabindex="-1"></a><span class="in">`^`</span> matches the start:</span>
+<span id="cb82-298"><a href="#cb82-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-301"><a href="#cb82-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-302"><a href="#cb82-302" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"^a"</span>)</span>
+<span id="cb82-303"><a href="#cb82-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-304"><a href="#cb82-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-305"><a href="#cb82-305" aria-hidden="true" tabindex="-1"></a><span class="in">`$`</span> matches the end:</span>
+<span id="cb82-306"><a href="#cb82-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-309"><a href="#cb82-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-310"><a href="#cb82-310" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>fruit, <span class="st">"a$"</span>)</span>
+<span id="cb82-311"><a href="#cb82-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-312"><a href="#cb82-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-313"><a href="#cb82-313" aria-hidden="true" tabindex="-1"></a>Anchor with both <span class="in">`^`</span> and <span class="in">`$`</span> ti force a match to **only** the full string:</span>
+<span id="cb82-314"><a href="#cb82-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-317"><a href="#cb82-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-318"><a href="#cb82-318" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(fruit, <span class="st">"apple"</span>)</span>
+<span id="cb82-319"><a href="#cb82-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-320"><a href="#cb82-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-323"><a href="#cb82-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-324"><a href="#cb82-324" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(fruit, <span class="st">"^apple$"</span>)</span>
+<span id="cb82-325"><a href="#cb82-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-326"><a href="#cb82-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-327"><a href="#cb82-327" aria-hidden="true" tabindex="-1"></a>See the difference?</span>
+<span id="cb82-328"><a href="#cb82-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-329"><a href="#cb82-329" aria-hidden="true" tabindex="-1"></a><span class="fu">### Character classes</span></span>
+<span id="cb82-330"><a href="#cb82-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-331"><a href="#cb82-331" aria-hidden="true" tabindex="-1"></a>Let you match a set of characters: Let's use the string vector <span class="in">`stringr::words`</span>:</span>
+<span id="cb82-332"><a href="#cb82-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-335"><a href="#cb82-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-336"><a href="#cb82-336" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>words, <span class="st">"[aeiou]x[aeiou]"</span>)</span>
+<span id="cb82-337"><a href="#cb82-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-338"><a href="#cb82-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-339"><a href="#cb82-339" aria-hidden="true" tabindex="-1"></a>Or, if you want anything **except** your character class:</span>
+<span id="cb82-340"><a href="#cb82-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-343"><a href="#cb82-343" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-344"><a href="#cb82-344" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(stringr<span class="sc">::</span>words, <span class="st">"[^aeiou]y[^aeiou]"</span>)</span>
+<span id="cb82-345"><a href="#cb82-345" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-346"><a href="#cb82-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-347"><a href="#cb82-347" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`-`</span> defines a range (<span class="in">`[a-z]' or '[0-9]`</span>).\</span>
+<span id="cb82-348"><a href="#cb82-348" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`\`</span> escapes a special character, so <span class="in">`[\^\-\]]`</span> matches <span class="in">`^`</span>, `<span class="in">`` -``</span>, or ``<span class="in">`\]\`</span>.</span>
+<span id="cb82-349"><a href="#cb82-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-350"><a href="#cb82-350" aria-hidden="true" tabindex="-1"></a>Let's look at some examples. Here's a vector:</span>
+<span id="cb82-351"><a href="#cb82-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-354"><a href="#cb82-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-355"><a href="#cb82-355" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="st">"abcd ABCD 12345 -!@#%."</span></span>
+<span id="cb82-356"><a href="#cb82-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-357"><a href="#cb82-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-358"><a href="#cb82-358" aria-hidden="true" tabindex="-1"></a>Find a string containing "abc"</span>
+<span id="cb82-359"><a href="#cb82-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-362"><a href="#cb82-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-363"><a href="#cb82-363" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(x, <span class="st">"[abc]+"</span>)</span>
+<span id="cb82-364"><a href="#cb82-364" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-365"><a href="#cb82-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-366"><a href="#cb82-366" aria-hidden="true" tabindex="-1"></a>Find any string of lowercase letters of any length:</span>
+<span id="cb82-367"><a href="#cb82-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-370"><a href="#cb82-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-371"><a href="#cb82-371" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(x, <span class="st">"[a-z]+"</span>)</span>
+<span id="cb82-372"><a href="#cb82-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-373"><a href="#cb82-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-374"><a href="#cb82-374" aria-hidden="true" tabindex="-1"></a>Escape to match special characters inside of <span class="sc">\[\]</span>.</span>
+<span id="cb82-375"><a href="#cb82-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-376"><a href="#cb82-376" aria-hidden="true" tabindex="-1"></a>Here it is using the range:</span>
+<span id="cb82-377"><a href="#cb82-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-380"><a href="#cb82-380" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-381"><a href="#cb82-381" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">"a-b-c"</span>, <span class="st">"[a-c]"</span>)</span>
+<span id="cb82-382"><a href="#cb82-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-383"><a href="#cb82-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-384"><a href="#cb82-384" aria-hidden="true" tabindex="-1"></a>Versus escaping the <span class="in">`\`</span> in order to escape the <span class="in">`-`</span>:</span>
+<span id="cb82-385"><a href="#cb82-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-388"><a href="#cb82-388" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-389"><a href="#cb82-389" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="st">"a-b-c"</span>, <span class="st">"[a</span><span class="sc">\\</span><span class="st">-c]"</span>)</span>
+<span id="cb82-390"><a href="#cb82-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-391"><a href="#cb82-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-392"><a href="#cb82-392" aria-hidden="true" tabindex="-1"></a><span class="fu">### Quantifiers</span></span>
+<span id="cb82-393"><a href="#cb82-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-394"><a href="#cb82-394" aria-hidden="true" tabindex="-1"></a>These control how many times a pattern can match.\</span>
+<span id="cb82-395"><a href="#cb82-395" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`?`</span> makes a pattern optional (i.e. it matches 0 or 1 times)\</span>
+<span id="cb82-396"><a href="#cb82-396" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`+`</span> lets a pattern repeat (i.e. it matches at least once)\</span>
+<span id="cb82-397"><a href="#cb82-397" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`*`</span> lets a pattern be optional or repeat (i.e. it matches any number of times, including 0).\</span>
+<span id="cb82-398"><a href="#cb82-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-401"><a href="#cb82-401" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb82-402"><a href="#cb82-402" aria-hidden="true" tabindex="-1"></a><span class="co"># ab? matches an "a", optionally followed by a "b".</span></span>
+<span id="cb82-403"><a href="#cb82-403" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab?"</span>)</span>
+<span id="cb82-404"><a href="#cb82-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-405"><a href="#cb82-405" aria-hidden="true" tabindex="-1"></a><span class="co"># ab+ matches an "a", followed by at least one "b".</span></span>
+<span id="cb82-406"><a href="#cb82-406" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab+"</span>)</span>
+<span id="cb82-407"><a href="#cb82-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-408"><a href="#cb82-408" aria-hidden="true" tabindex="-1"></a><span class="co"># ab* matches an "a", followed by any number of "b"s.</span></span>
+<span id="cb82-409"><a href="#cb82-409" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(<span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"ab"</span>, <span class="st">"abb"</span>), <span class="st">"ab*"</span>)</span>
+<span id="cb82-410"><a href="#cb82-410" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb82-411"><a href="#cb82-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-412"><a href="#cb82-412" aria-hidden="true" tabindex="-1"></a>You can specify the number of matches with <span class="in">`{}`</span>.</span>
+<span id="cb82-413"><a href="#cb82-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-414"><a href="#cb82-414" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n}`</span> - matches **exactly** n times.</span>
+<span id="cb82-415"><a href="#cb82-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-416"><a href="#cb82-416" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n,}`</span> - matches **at least** n times.</span>
+<span id="cb82-417"><a href="#cb82-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-418"><a href="#cb82-418" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`{n,m}`</span> - matches between n and m times.</span>
+<span id="cb82-419"><a href="#cb82-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-420"><a href="#cb82-420" aria-hidden="true" tabindex="-1"></a><span class="fu">## In-Class Challenge</span></span>
+<span id="cb82-421"><a href="#cb82-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-422"><a href="#cb82-422" aria-hidden="true" tabindex="-1"></a>Using <span class="in">`stringr::words`</span>, create regular expressions that find all words that:\</span>
+<span id="cb82-423"><a href="#cb82-423" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Start with “y”.\</span>
+<span id="cb82-424"><a href="#cb82-424" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Don’t start with “y”.\</span>
+<span id="cb82-425"><a href="#cb82-425" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>End with “x”.\</span>
+<span id="cb82-426"><a href="#cb82-426" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are exactly three letters long. (Don’t cheat by using <span class="in">`str_length()`</span>!)\</span>
+<span id="cb82-427"><a href="#cb82-427" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Have seven letters or more.\</span>
+<span id="cb82-428"><a href="#cb82-428" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Contain a vowel-consonant pair.\</span>
+<span id="cb82-429"><a href="#cb82-429" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Contain at least two vowel-consonant pairs in a row (using a quantifier).\</span>
+<span id="cb82-430"><a href="#cb82-430" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Only consist of repeated vowel-consonant pairs.\</span>
+<span id="cb82-431"><a href="#cb82-431" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb82-432"><a href="#cb82-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-433"><a href="#cb82-433" aria-hidden="true" tabindex="-1"></a><span class="fu">## Next Steps</span></span>
+<span id="cb82-434"><a href="#cb82-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-435"><a href="#cb82-435" aria-hidden="true" tabindex="-1"></a>Next, we will learn to **work with factors and categorical data** using the <span class="in">`forcats`</span> package.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
