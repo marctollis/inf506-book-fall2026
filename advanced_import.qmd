@@ -2,13 +2,12 @@
 title: "Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping"
 ---
 
-## Learning Objectives
+# Learning Objectives
 
 By the end of this lecture, you should be able to:
 
 - Import and work with data from Excel and Google Sheets
 - Connect to and query relational databases from R
-- Use Arrow to work efficiently with parquet files and large datasets
 - Access and tidy hierarchical JSON data
 - Perform basic web scraping to extract data from web pages
 
@@ -49,7 +48,7 @@ gs_df
 
 ------------------------------------------------------------------------
 
-### In-Class Exercise 1 – Spreadsheets
+## In-Class Exercise 1 – Spreadsheets
 
 1.  Read an Excel file (`students.xlsx` from above).
 2.  Fix column names.
@@ -188,7 +187,7 @@ Relational databases store data in tables that can be queried without loading th
 
 In R, the `DBI` package provides a common interface for working with databases. Here we will use `RSQLite` to create a small SQLite database from the familiar `nycflights13` data.
 
-### In-Class Exercise 2
+## In-Class Exercise 2
 
 In this exercise, you will create a small SQLite database from the `nycflights13::flights` data, connect to it, and query it using familiar `dplyr` verbs.
 
@@ -199,7 +198,9 @@ library(dplyr)
 library(nycflights13)
 ```
 
-Step 1: Create the database Create a new SQLite database file called `flights.sqlite`.
+### Step 1: Create the database
+
+Create a new SQLite database file called `flights.sqlite`.
 
 ```{r}
 con <- dbConnect(
@@ -208,7 +209,7 @@ con <- dbConnect(
 )
 ```
 
-Step 2: Write the `flights` table to the database
+### Step 2: Write the `flights` table to the database
 
 ```{r}
 dbWriteTable(
@@ -225,7 +226,7 @@ Check that the table was created:
 dbListTables(con)
 ```
 
-Step 3: Create a reference to the database table
+### Step 3: Create a reference to the database table
 
 ```{r}
 flights_db <- tbl(
@@ -238,7 +239,9 @@ flights_db
 
 Note that flights_db is a reference to the database table. The full dataset has not been copied into R.
 
-Step 4: Query the database Find all flights with departure delays greater than 120 minutes.
+### Step 4: Query the database
+
+Find all flights with departure delays greater than 120 minutes.
 
 Keep only these variables: - carrier - flight - origin - dest - dep_delay
 
@@ -256,14 +259,16 @@ delayed_flights <- flights_db |>
 delayed_flights
 ```
 
-Step 5: See the SQL query
+### Step 5: See the SQL query
 
 ```{r}
 delayed_flights |>
   show_query()
 ```
 
-Step 6: Bring the result into R Use `collect()` to actually retrieve the query result from the database.
+### Step 6: Bring the result into R
+
+Use `collect()` to actually retrieve the query result from the database.
 
 ```{r}
 delayed_flights_df <- delayed_flights |>
@@ -272,7 +277,7 @@ delayed_flights_df <- delayed_flights |>
 delayed_flights_df
 ```
 
-Step 7: How many flights matched?
+### Step 7: How many flights matched?
 
 ```{r}
 nrow(delayed_flights_df)
@@ -289,7 +294,7 @@ flights_db |>
 
 ------------------------------------------------------------------------
 
-## Hierarchical Data and JSON
+# Hierarchical Data and JSON
 
 Many datasets are not stored as rectangular tables. Instead, they may contain nested objects, lists, or repeated values.
 
@@ -350,7 +355,7 @@ str(students_json)
 
 Notice that this is not yet a rectangular data frame.
 
-**Converting hierarchical data to a tibble**
+## **Converting hierarchical data to a tibble**
 
 Start by placing each student record into a row:
 
@@ -362,7 +367,7 @@ students_df <- tibble(
 students_df
 ```
 
-**Widening nested objects**
+## **Widening nested objects**
 
 Use `unnest_wider()` when named elements of a nested object should become columns.
 
@@ -375,7 +380,7 @@ students_df
 
 The `name` and `program` fields are now columns, but `scores` is still a list column.
 
-**Lengthening repeated values**
+## **Lengthening repeated values**
 
 Use `unnest_longer()` when multiple values should become multiple rows.
 
@@ -481,7 +486,7 @@ html <- minimal_html("
 html
 ```
 
-## Selecting HTML Elements
+### Selecting HTML Elements
 
 Use `html_elements()` to select all matching elements.
 
@@ -492,7 +497,7 @@ html |>
 
 This selects all `<p>` elements.
 
-## Select by class
+### Select by class
 
 A period `.` selects elements by their class attribute:
 
@@ -501,7 +506,7 @@ html |>
   html_elements(".important")
 ```
 
-## Select by ID
+### Select by ID
 
 A hash `#` selects an element by its id attribute:
 
@@ -528,7 +533,7 @@ html |>
   html_element("p")
 ```
 
-## Extracting text
+### Extracting text
 
 Selecting an element gives us the HTML element itself.
 
@@ -540,7 +545,7 @@ html |>
   html_text2()
 ```
 
-## Extracting Attributes
+### Extracting Attributes
 
 Sometimes useful information is stored inside HTML attributes rather than in the visible text.
 
@@ -638,11 +643,71 @@ In this exercise we will:
 
 5.  Combine the scraped information into a tidy data frame.
 
-## Homework Preview
+```{r}
+# IMDB exercise:
+url <- "https://web.archive.org/web/20220201012049/https://www.imdb.com/chart/top/"
+html <- read_html(url)
+
+table <- html |> 
+  html_element("table") |> 
+  html_table()
+table
+# This includes a few empty columns, 
+# but overall does a good job of capturing the information from the table.
+# we need to do some more processing:
+# First, we’ll rename the columns with select()
+# Then we’ll remove the new lines and extra spaces
+# and pull out the title, year, and rank into their own variables.
+
+ratings <- table |>
+  select(
+    rank_title_year = `Rank & Title`,
+    rating = `IMDb Rating`
+  ) |> 
+  mutate(
+    rank_title_year = str_replace_all(rank_title_year, "\n +", " ")
+  ) |> 
+  separate_wider_regex(
+    rank_title_year,
+    patterns = c(
+      rank = "\\d+", "\\. ",
+      title = ".+", " +\\(",
+      year = "\\d+", "\\)"
+    )
+  )
+ratings
+
+# let's explore the raw html:
+html |> 
+  html_elements("td strong") |> 
+  head() |> 
+  html_attr("title")
+
+# that's extra data!
+# combine this with the tabular data
+
+ratings |>
+  mutate(
+    rating_n = html |> html_elements("td strong") |> html_attr("title")
+  ) |> 
+  separate_wider_regex(
+    rating_n,
+    patterns = c(
+      "[0-9.]+ based on ",
+      number = "[0-9,]+",
+      " user ratings"
+    )
+  ) |> 
+  mutate(
+    number = parse_number(number)
+  )
+```
+
+# Homework Preview
 
 For the next homework:
 
-- Choose **two different data sources** (Excel, database, parquet, JSON, web)
+- Choose **two different data sources** (Excel, database, JSON, web)
 - Import and tidy them
 - Join or compare across sources
 - Render a short report with one plot and one table
@@ -650,6 +715,6 @@ For the next homework:
 
 ------------------------------------------------------------------------
 
-## Conclusion
+# Conclusion
 
 This session completes the course by showing how to **access data from multiple modern sources**, preparing you to work with **real-world messy data** beyond flat CSV files.
