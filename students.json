@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Ana",
+    "program": "Biology",
+    "scores": [88, 92, 95]
+  },
+  {
+    "name": "Ben",
+    "program": "Informatics",
+    "scores": [78, 85, 91]
+  },
+  {
+    "name": "Cara",
+    "program": "Biology",
+    "scores": [94, 96, 98]
+  }
+]

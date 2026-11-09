@@ -14,13 +14,14 @@ By the end of this lecture, you should be able to:
 
 ------------------------------------------------------------------------
 
-## Spreadsheets (R4DS Chapter 20)
+# Spreadsheets (R4DS Chapter 20)
 
 R can read Excel files with the `readxl` package and Google Sheets with `googlesheets4`.
 
-### Importing Excel
+## Importing Excel
 
 ```{r, eval=TRUE}
+library(tidyverse)
 library(readxl)
 
 url <- "https://github.com/marctollis/inf506-book-fall2026/raw/refs/heads/main/students.xlsx"
@@ -36,7 +37,7 @@ students <- read_excel("students.xlsx")
 students
 ```
 
-### Importing Google Sheets
+## Importing Google Sheets
 
 ```{r eval=FALSE}
 library(googlesheets4)
@@ -108,7 +109,9 @@ students
 Data science is done through **iteration**!
 
 ## Sheets
+
 Now let's download `penguins` but in Excel format:
+
 ```{r}
 url <- "https://github.com/marctollis/inf506-book-fall2026/raw/refs/heads/main/penguins.xlsx"
 
@@ -118,12 +121,15 @@ download.file(
   mode = "wb"
 )
 ```
+
 The file has sheets, which you can view with `excel_sheets`.
 
 ```{r}
 excel_sheets("penguins.xlsx")
 ```
+
 You can also use `read_excel` to extract specific sheets:
+
 ```{r}
 penguins_torgersen <- read_excel("penguins.xlsx", sheet = "Torgersen Island")
 
@@ -131,13 +137,16 @@ penguins_torgersen
 ```
 
 And you can read each sheet individually too:
+
 ```{r}
 penguins_biscoe <- read_excel("penguins.xlsx", sheet = "Biscoe Island", na = "NA")
 penguins_dream  <- read_excel("penguins.xlsx", sheet = "Dream Island", na = "NA")
 ```
 
 You can also *write* to an Excel file:
+
 ```{r}
+library(writexl)
 bake_sale <- tibble(
   item     = factor(c("brownie", "cupcake", "cookie")),
   quantity = c(10, 5, 8)
@@ -146,7 +155,8 @@ bake_sale <- tibble(
 write_xlsx(bake_sale, path = "bake-sale.xlsx")
 ```
 
-# With Google Sheets:
+## With Google Sheets:
+
 ```{r}
 
 library(googlesheets4)
@@ -169,130 +179,452 @@ penguins_sheet_id <- "1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"
 sheet_names(penguins_sheet_id)
 read_sheet(penguins_sheet_id, sheet = "Torgersen Island")
 ```
-------------------------------------------------------------------------
-
-## Databases (R4DS Chapter 21)
-
-Use `DBI` and `RSQLite` to interact with relational databases. You can also use `dplyr` verbs to query tables.
-
-### Example: Connecting to SQLite
-
-```{r, eval=FALSE}
-library(DBI)
-con <- dbConnect(RSQLite::SQLite(), "data/mydb.sqlite")
-
-# List tables
-dbListTables(con)
-
-# Read a table into R
-flights_db <- dbReadTable(con, "flights")
-
-# Or use dplyr to query lazily
-library(dplyr)
-tbl(con, "flights") |> filter(dep_delay > 60) |> collect() |> head()
-```
 
 ------------------------------------------------------------------------
 
-### In-Class Exercise 2 – Databases
+# Databases (R4DS Chapter 21)
 
-1.  Connect to the provided SQLite database.\
-2.  List tables with `dbListTables()`.\
-3.  Query the flights table for flights delayed more than 2 hours.
+Relational databases store data in tables that can be queried without loading the entire dataset into memory.
 
-------------------------------------------------------------------------
+In R, the `DBI` package provides a common interface for working with databases. Here we will use `RSQLite` to create a small SQLite database from the familiar `nycflights13` data.
 
-## Arrow (R4DS Chapter 22)
+### In-Class Exercise 2
 
-Arrow allows you to read parquet files efficiently without loading everything into memory.
-
-### Example: Reading Parquet
-
-```{r, eval=FALSE}
-library(arrow)
-
-dataset <- open_dataset("data/large.parquet")
-dataset |> filter(column_x > 10) |> collect() |> head()
-```
-
-------------------------------------------------------------------------
-
-### In-Class Exercise 3 – Arrow
-
-1.  Open a parquet dataset using `arrow::open_dataset()`.\
-2.  Run a filter and select query.\
-3.  Compare performance to reading the equivalent CSV.
-
-------------------------------------------------------------------------
-
-## Hierarchical Data (R4DS Chapter 23)
-
-Hierarchical data (JSON) often contains nested lists. Use `jsonlite` to load JSON and `tidyr::unnest_wider()` to flatten it.
-
-### Example: Reading JSON
-
-```{r, eval=FALSE}
-library(jsonlite)
-
-json_data <- fromJSON("data/example.json")
-str(json_data)
-```
-
-### Flattening Nested Data
+In this exercise, you will create a small SQLite database from the `nycflights13::flights` data, connect to it, and query it using familiar `dplyr` verbs.
 
 ```{r}
-library(tidyr)
-nested_df <- tibble(
-  id = 1,
-  details = list(tibble(city = "NYC", temp = 75))
+library(DBI)
+library(RSQLite)
+library(dplyr)
+library(nycflights13)
+```
+
+Step 1: Create the database Create a new SQLite database file called `flights.sqlite`.
+
+```{r}
+con <- dbConnect(
+  SQLite(),
+  "flights.sqlite"
+)
+```
+
+Step 2: Write the `flights` table to the database
+
+```{r}
+dbWriteTable(
+  con,
+  "flights",
+  flights,
+  overwrite = TRUE
+)
+```
+
+Check that the table was created:
+
+```{r}
+dbListTables(con)
+```
+
+Step 3: Create a reference to the database table
+
+```{r}
+flights_db <- tbl(
+  con,
+  "flights"
 )
 
-nested_df |> unnest_wider(details)
+flights_db
+```
+
+Note that flights_db is a reference to the database table. The full dataset has not been copied into R.
+
+Step 4: Query the database Find all flights with departure delays greater than 120 minutes.
+
+Keep only these variables: - carrier - flight - origin - dest - dep_delay
+
+```{r}
+delayed_flights <- flights_db |>
+  filter(dep_delay > 120) |>
+  select(
+    carrier,
+    flight,
+    origin,
+    dest,
+    dep_delay
+  )
+
+delayed_flights
+```
+
+Step 5: See the SQL query
+
+```{r}
+delayed_flights |>
+  show_query()
+```
+
+Step 6: Bring the result into R Use `collect()` to actually retrieve the query result from the database.
+
+```{r}
+delayed_flights_df <- delayed_flights |>
+  collect()
+
+delayed_flights_df
+```
+
+Step 7: How many flights matched?
+
+```{r}
+nrow(delayed_flights_df)
+```
+
+Or do the counting inside the database:
+
+```{r}
+flights_db |>
+  filter(dep_delay > 120) |>
+  summarize(n = n()) |>
+  collect()
 ```
 
 ------------------------------------------------------------------------
 
-### In-Class Exercise 4 – JSON Rectangling
+## Hierarchical Data and JSON
 
-1.  Load a nested JSON file.\
-2.  Use `unnest_wider()` or `unnest_longer()` to flatten it.\
-3.  Create a tidy table with one row per observation.
+Many datasets are not stored as rectangular tables. Instead, they may contain nested objects, lists, or repeated values.
 
-------------------------------------------------------------------------
+This is common with data returned by web APIs.
 
-## Web Scraping (R4DS Chapter 24)
+JSON stands for **JavaScript Object Notation** and is a widely used format for storing and exchanging hierarchical data.
 
-Web scraping extracts data from websites. Use `rvest` to read HTML and extract tables or nodes.
+## Creating a small JSON example
 
-### Example: Scraping a Table
+We will create a small nested dataset in R and save it as JSON.
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(jsonlite)
+
+students <- list(
+  list(
+    name = "Ana",
+    program = "Biology",
+    scores = c(88, 92, 95)
+  ),
+  list(
+    name = "Ben",
+    program = "Informatics",
+    scores = c(78, 85, 91)
+  ),
+  list(
+    name = "Cara",
+    program = "Biology",
+    scores = c(94, 96, 98)
+  )
+)
+
+write_json(
+  students,
+  "students.json",
+  pretty = TRUE,
+  auto_unbox = TRUE
+)
+```
+
+Reading JSON
+
+```{r}
+students_json <- jsonlite::read_json(
+  "students.json",
+  simplifyVector = FALSE
+)
+
+students_json
+```
+
+Inspect the object:
+
+```{r}
+str(students_json)
+```
+
+Notice that this is not yet a rectangular data frame.
+
+*Converting hierarchical data to a tibble* Start by placing each student record into a row:
+
+```{r}
+students_df <- tibble(
+  student = students_json
+)
+
+students_df
+```
+
+*Widening nested objects* Use `unnest_wider()` when named elements of a nested object should become columns.
+
+```{r}
+students_df <- students_df |>
+  unnest_wider(student)
+
+students_df
+```
+
+The `name` and `program` fields are now columns, but `scores` is still a list column.
+
+*Lengthening repeated values* Use `unnest_longer()` when multiple values should become multiple rows.
+
+```{r}
+students_long <- students_df |>
+  unnest_longer(scores)
+
+students_long
+```
+
+Now each score appears in its own row.
+
+*Summarizing the tidy data*
+
+```{r}
+students_long |>
+  group_by(name, program) |>
+  summarize(
+    mean_score = mean(scores),
+    .groups = "drop"
+  )
+```
+
+The main workflow is:
+
+JSON → nested R object → tibble → unnest → tidy data
+
+## In-Class Exercise 3 – JSON
+
+Using the `students.json` file created above:
+
+1.  Read the JSON file using `read_json()`.
+2.  Use `str()` to inspect its structure.
+3.  Convert the top-level list into a tibble.
+4.  Use `unnest_wider()` to turn the student fields into columns.
+5.  Use `unnest_longer()` to turn the score values into rows.
+6.  Calculate the mean score for each student.
+
+# Web Scraping with HTML
+
+Web scraping means extracting information from web pages.
+
+Web pages are written in **HTML** (HyperText Markup Language). HTML is hierarchical: elements can be nested inside other elements.
+
+In R, the `rvest` package provides tools for reading and extracting information from HTML.
+
+```{r, eval=TRUE}
+library(rvest)
+```
+
+*Reading HTML* Use read_html() to read HTML from a web page:
+
+```{r}
+url <- "https://rvest.tidyverse.org/"
+html <- read_html(url)
+
+html
+```
+
+The result is an HTML document that we can query with `rvest`.
+
+We can also create a small HTML document directly in R:
+
+```{r}
+html <- minimal_html("
+  <h1>This is a heading</h1>
+  <p>This is a paragraph</p>
+  <ul>
+    <li>This is a bulleted list</li>
+  </ul>
+")
+
+html
+```
+
+## HTML Elements
+
+HTML pages are made of elements marked by tags.
+
+For example:
+
+```         
+<h1>This is a heading</h1>
+<p>This is a paragraph</p>
+```
+
+Here: - `<h1>` represents a heading. - `<p>` represents a paragraph.
+
+Elements can also have attributes such as `id` and `class`.
+
+```{r}
+html <- minimal_html("
+  <h1>This is a heading</h1>
+  <p id='first'>This is a paragraph</p>
+  <p class='important'>This is an important paragraph</p>
+")
+html
+```
+
+## Selecting HTML Elements
+
+Use `html_elements()` to select all matching elements.
+
+```{r}
+html |>
+  html_elements("p")
+```
+
+This selects all `<p>` elements.
+
+## Select by class
+
+A period `.` selects elements by their class attribute:
+
+```{r}
+html |>
+  html_elements(".important")
+```
+
+## Select by ID
+
+A hash `#` selects an element by its id attribute:
+
+```{r}
+html |>
+  html_elements("#first")
+```
+
+The basic selector rules are: - `p` selects HTML tags - `.class_name` selects a class - `#id_name` selects an ID
+
+## `html_element()` vs. `html_elements()`
+
+`html_elements()` returns all matching elements.
+
+```{r}
+html |>
+  html_elements("p")
+```
+
+`html_element()` returns the first matching element for each input.
+
+```{r}
+html |>
+  html_element("p")
+```
+
+## Extracting text
+
+Selecting an element gives us the HTML element itself.
+
+To extract its visible text, use `html_text2()`:
+
+```{r}
+html |>
+  html_elements("p") |>
+  html_text2()
+```
+
+## Extracting Attributes
+
+Sometimes useful information is stored inside HTML attributes rather than in the visible text.
+
+For example:
+
+```{r eval=FALSE}
+html <- minimal_html("
+  <a href='https://www.example.com'>Example website</a>
+")
+```
+
+Select the link:
+
+```{r eval=FALSE}
+link <- html |>
+  html_element("a")
+```
+
+Extract the visible text:
+
+```{r eval = FALSE}
+link |>
+  html_text2()
+```
+
+Extract the `href` attribute:
+
+```{r eval = FALSE}
+link |>
+  html_attr("href")
+```
+
+This distinction is important when scraping real websites: some information is visible on the page, while other information is stored in the HTML structure or attributes.
+
+## Extracting HTML Tables
+
+Many web pages contain tables that can be converted directly into data frames.
+
+Use `html_element()` to select a table and `html_table()` to convert it:
 
 ```{r}
 library(rvest)
 
-url <- "https://en.wikipedia.org/wiki/List_of_countries_by_GDP_(nominal)"
-page <- read_html(url)
+page <- minimal_html("
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+    </tr>
+    <tr>
+      <td>Ana</td>
+      <td>92</td>
+    </tr>
+    <tr>
+      <td>Ben</td>
+      <td>85</td>
+    </tr>
+  </table>
+")
 
-gdp_table <- page |> html_element("table") |> html_table()
-head(gdp_table)
+table <- page |>
+  html_element("table") |>
+  html_table()
+
+table
 ```
 
-------------------------------------------------------------------------
+## Web Scraping Workflow
 
-### In-Class Exercise 5 – Web Scraping
+A typical web scraping workflow is:
 
-1.  Use `rvest` to scrape a simple table from Wikipedia.\
-2.  Convert it to a tibble and clean column names.\
-3.  Create a plot of GDP vs. rank.
+1\. Read a web page with read_html().
 
-------------------------------------------------------------------------
+2\. Inspect the HTML structure.
 
-## In-Class Challenge – Multiple Data Sources
+3\. Select elements with html_elements() or html_element().
 
-1.  Import an Excel dataset, a JSON dataset, and scrape a table from the web.\
-2.  Clean and join at least two sources.\
-3.  Create one visualization combining information.
+4\. Extract text with html_text2(), attributes with html_attr(), or tables with html_table().
 
-------------------------------------------------------------------------
+5\. Clean the extracted data using familiar tidyverse tools.
+
+### In-Class Exercise 4 – IMDb Top Films
+
+We will now use `rvest` to scrape a real archived web page containing the IMDb Top 250 films.
+
+In this exercise we will:
+
+1.  Read the web page with `read_html()`.
+
+2.  Extract the movie table with `html_element()` and `html_table()`.
+
+3.  Clean the table using `dplyr`, `stringr`, and `tidyr`.
+
+4.  Extract additional information stored in HTML attributes.
+
+5.  Combine the scraped information into a tidy data frame.
 
 ## Homework Preview
 
