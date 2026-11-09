@@ -331,7 +331,7 @@ write_json(
 )
 ```
 
-Reading JSON
+## Reading JSON
 
 ```{r}
 students_json <- jsonlite::read_json(
@@ -350,7 +350,9 @@ str(students_json)
 
 Notice that this is not yet a rectangular data frame.
 
-*Converting hierarchical data to a tibble* Start by placing each student record into a row:
+**Converting hierarchical data to a tibble**
+
+Start by placing each student record into a row:
 
 ```{r}
 students_df <- tibble(
@@ -360,7 +362,9 @@ students_df <- tibble(
 students_df
 ```
 
-*Widening nested objects* Use `unnest_wider()` when named elements of a nested object should become columns.
+**Widening nested objects**
+
+Use `unnest_wider()` when named elements of a nested object should become columns.
 
 ```{r}
 students_df <- students_df |>
@@ -371,7 +375,9 @@ students_df
 
 The `name` and `program` fields are now columns, but `scores` is still a list column.
 
-*Lengthening repeated values* Use `unnest_longer()` when multiple values should become multiple rows.
+**Lengthening repeated values**
+
+Use `unnest_longer()` when multiple values should become multiple rows.
 
 ```{r}
 students_long <- students_df |>
@@ -382,7 +388,7 @@ students_long
 
 Now each score appears in its own row.
 
-*Summarizing the tidy data*
+**Summarizing the tidy data**
 
 ```{r}
 students_long |>
@@ -420,7 +426,9 @@ In R, the `rvest` package provides tools for reading and extracting information 
 library(rvest)
 ```
 
-*Reading HTML* Use read_html() to read HTML from a web page:
+## **Reading HTML**
+
+Use read_html() to read HTML from a web page:
 
 ```{r}
 url <- "https://rvest.tidyverse.org/"
@@ -456,7 +464,11 @@ For example:
 <p>This is a paragraph</p>
 ```
 
-Here: - `<h1>` represents a heading. - `<p>` represents a paragraph.
+Here:
+
+- `<h1>` represents a heading.
+
+- `<p>` represents a paragraph.
 
 Elements can also have attributes such as `id` and `class`.
 

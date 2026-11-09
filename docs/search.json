@@ -1223,8 +1223,8 @@
     "objectID": "advanced_import.html#homework-preview",
     "href": "advanced_import.html#homework-preview",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.10 Homework Preview",
-    "text": "17.10 Homework Preview\nFor the next homework:\n\nChoose two different data sources (Excel, database, parquet, JSON, web)\nImport and tidy them\nJoin or compare across sources\nRender a short report with one plot and one table\nSubmit the rendered PDF",
+    "section": "\n17.11 Homework Preview",
+    "text": "17.11 Homework Preview\nFor the next homework:\n\nChoose two different data sources (Excel, database, parquet, JSON, web)\nImport and tidy them\nJoin or compare across sources\nRender a short report with one plot and one table\nSubmit the rendered PDF",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1233,8 +1233,8 @@
     "objectID": "advanced_import.html#conclusion",
     "href": "advanced_import.html#conclusion",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.11 Conclusion",
-    "text": "17.11 Conclusion\nThis session completes the course by showing how to access data from multiple modern sources, preparing you to work with real-world messy data beyond flat CSV files.",
+    "section": "\n17.12 Conclusion",
+    "text": "17.12 Conclusion\nThis session completes the course by showing how to access data from multiple modern sources, preparing you to work with real-world messy data beyond flat CSV files.",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1733,7 +1733,7 @@
     "href": "advanced_import.html#creating-a-small-json-example",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
     "section": "\n16.2 Creating a small JSON example",
-    "text": "16.2 Creating a small JSON example\nWe will create a small nested dataset in R and save it as JSON.\n\nlibrary(tidyverse)\nlibrary(jsonlite)\n\nstudents &lt;- list(\n  list(\n    name = \"Ana\",\n    program = \"Biology\",\n    scores = c(88, 92, 95)\n  ),\n  list(\n    name = \"Ben\",\n    program = \"Informatics\",\n    scores = c(78, 85, 91)\n  ),\n  list(\n    name = \"Cara\",\n    program = \"Biology\",\n    scores = c(94, 96, 98)\n  )\n)\n\nwrite_json(\n  students,\n  \"students.json\",\n  pretty = TRUE,\n  auto_unbox = TRUE\n)\n\nReading JSON\n\nstudents_json &lt;- jsonlite::read_json(\n  \"students.json\",\n  simplifyVector = FALSE\n)\n\nstudents_json\n\n[[1]]\n[[1]]$name\n[1] \"Ana\"\n\n[[1]]$program\n[1] \"Biology\"\n\n[[1]]$scores\n[[1]]$scores[[1]]\n[1] 88\n\n[[1]]$scores[[2]]\n[1] 92\n\n[[1]]$scores[[3]]\n[1] 95\n\n\n\n[[2]]\n[[2]]$name\n[1] \"Ben\"\n\n[[2]]$program\n[1] \"Informatics\"\n\n[[2]]$scores\n[[2]]$scores[[1]]\n[1] 78\n\n[[2]]$scores[[2]]\n[1] 85\n\n[[2]]$scores[[3]]\n[1] 91\n\n\n\n[[3]]\n[[3]]$name\n[1] \"Cara\"\n\n[[3]]$program\n[1] \"Biology\"\n\n[[3]]$scores\n[[3]]$scores[[1]]\n[1] 94\n\n[[3]]$scores[[2]]\n[1] 96\n\n[[3]]$scores[[3]]\n[1] 98\n\n\nInspect the object:\n\nstr(students_json)\n\nList of 3\n $ :List of 3\n  ..$ name   : chr \"Ana\"\n  ..$ program: chr \"Biology\"\n  ..$ scores :List of 3\n  .. ..$ : int 88\n  .. ..$ : int 92\n  .. ..$ : int 95\n $ :List of 3\n  ..$ name   : chr \"Ben\"\n  ..$ program: chr \"Informatics\"\n  ..$ scores :List of 3\n  .. ..$ : int 78\n  .. ..$ : int 85\n  .. ..$ : int 91\n $ :List of 3\n  ..$ name   : chr \"Cara\"\n  ..$ program: chr \"Biology\"\n  ..$ scores :List of 3\n  .. ..$ : int 94\n  .. ..$ : int 96\n  .. ..$ : int 98\n\n\nNotice that this is not yet a rectangular data frame.\nConverting hierarchical data to a tibble Start by placing each student record into a row:\n\nstudents_df &lt;- tibble(\n  student = students_json\n)\n\nstudents_df\n\n# A tibble: 3 × 1\n  student         \n  &lt;list&gt;          \n1 &lt;named list [3]&gt;\n2 &lt;named list [3]&gt;\n3 &lt;named list [3]&gt;\n\n\nWidening nested objects Use unnest_wider() when named elements of a nested object should become columns.\n\nstudents_df &lt;- students_df |&gt;\n  unnest_wider(student)\n\nstudents_df\n\n# A tibble: 3 × 3\n  name  program     scores    \n  &lt;chr&gt; &lt;chr&gt;       &lt;list&gt;    \n1 Ana   Biology     &lt;list [3]&gt;\n2 Ben   Informatics &lt;list [3]&gt;\n3 Cara  Biology     &lt;list [3]&gt;\n\n\nThe name and program fields are now columns, but scores is still a list column.\nLengthening repeated values Use unnest_longer() when multiple values should become multiple rows.\n\nstudents_long &lt;- students_df |&gt;\n  unnest_longer(scores)\n\nstudents_long\n\n# A tibble: 9 × 3\n  name  program     scores\n  &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;\n1 Ana   Biology         88\n2 Ana   Biology         92\n3 Ana   Biology         95\n4 Ben   Informatics     78\n5 Ben   Informatics     85\n6 Ben   Informatics     91\n7 Cara  Biology         94\n8 Cara  Biology         96\n9 Cara  Biology         98\n\n\nNow each score appears in its own row.\nSummarizing the tidy data\n\nstudents_long |&gt;\n  group_by(name, program) |&gt;\n  summarize(\n    mean_score = mean(scores),\n    .groups = \"drop\"\n  )\n\n# A tibble: 3 × 3\n  name  program     mean_score\n  &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;\n1 Ana   Biology           91.7\n2 Ben   Informatics       84.7\n3 Cara  Biology           96  \n\n\nThe main workflow is:\nJSON → nested R object → tibble → unnest → tidy data",
+    "text": "16.2 Creating a small JSON example\nWe will create a small nested dataset in R and save it as JSON.\n\nlibrary(tidyverse)\nlibrary(jsonlite)\n\nstudents &lt;- list(\n  list(\n    name = \"Ana\",\n    program = \"Biology\",\n    scores = c(88, 92, 95)\n  ),\n  list(\n    name = \"Ben\",\n    program = \"Informatics\",\n    scores = c(78, 85, 91)\n  ),\n  list(\n    name = \"Cara\",\n    program = \"Biology\",\n    scores = c(94, 96, 98)\n  )\n)\n\nwrite_json(\n  students,\n  \"students.json\",\n  pretty = TRUE,\n  auto_unbox = TRUE\n)",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1742,8 +1742,8 @@
     "objectID": "advanced_import.html#in-class-exercise-3-json",
     "href": "advanced_import.html#in-class-exercise-3-json",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n16.3 In-Class Exercise 3 – JSON",
-    "text": "16.3 In-Class Exercise 3 – JSON\nUsing the students.json file created above:\n\nRead the JSON file using read_json().\nUse str() to inspect its structure.\nConvert the top-level list into a tibble.\nUse unnest_wider() to turn the student fields into columns.\nUse unnest_longer() to turn the score values into rows.\nCalculate the mean score for each student.",
+    "section": "\n16.4 In-Class Exercise 3 – JSON",
+    "text": "16.4 In-Class Exercise 3 – JSON\nUsing the students.json file created above:\n\nRead the JSON file using read_json().\nUse str() to inspect its structure.\nConvert the top-level list into a tibble.\nUse unnest_wider() to turn the student fields into columns.\nUse unnest_longer() to turn the score values into rows.\nCalculate the mean score for each student.",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1752,8 +1752,8 @@
     "objectID": "advanced_import.html#html-elements",
     "href": "advanced_import.html#html-elements",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.1 HTML Elements",
-    "text": "17.1 HTML Elements\nHTML pages are made of elements marked by tags.\nFor example:\n&lt;h1&gt;This is a heading&lt;/h1&gt;\n&lt;p&gt;This is a paragraph&lt;/p&gt;\nHere: - &lt;h1&gt; represents a heading. - &lt;p&gt; represents a paragraph.\nElements can also have attributes such as id and class.\n\nhtml &lt;- minimal_html(\"\n  &lt;h1&gt;This is a heading&lt;/h1&gt;\n  &lt;p id='first'&gt;This is a paragraph&lt;/p&gt;\n  &lt;p class='important'&gt;This is an important paragraph&lt;/p&gt;\n\")\nhtml\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n&lt;h1&gt;This is a heading&lt;/h1&gt;\\n  &lt;p id=\"first\"&gt;This is a paragraph&lt;/ ...",
+    "section": "\n17.2 HTML Elements",
+    "text": "17.2 HTML Elements\nHTML pages are made of elements marked by tags.\nFor example:\n&lt;h1&gt;This is a heading&lt;/h1&gt;\n&lt;p&gt;This is a paragraph&lt;/p&gt;\nHere:\n\n&lt;h1&gt; represents a heading.\n&lt;p&gt; represents a paragraph.\n\nElements can also have attributes such as id and class.\n\nhtml &lt;- minimal_html(\"\n  &lt;h1&gt;This is a heading&lt;/h1&gt;\n  &lt;p id='first'&gt;This is a paragraph&lt;/p&gt;\n  &lt;p class='important'&gt;This is an important paragraph&lt;/p&gt;\n\")\nhtml\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n&lt;h1&gt;This is a heading&lt;/h1&gt;\\n  &lt;p id=\"first\"&gt;This is a paragraph&lt;/ ...",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1762,8 +1762,8 @@
     "objectID": "advanced_import.html#selecting-html-elements",
     "href": "advanced_import.html#selecting-html-elements",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.2 Selecting HTML Elements",
-    "text": "17.2 Selecting HTML Elements\nUse html_elements() to select all matching elements.\n\nhtml |&gt;\n  html_elements(\"p\")\n\n{xml_nodeset (2)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n[2] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;\n\n\nThis selects all &lt;p&gt; elements.",
+    "section": "\n17.3 Selecting HTML Elements",
+    "text": "17.3 Selecting HTML Elements\nUse html_elements() to select all matching elements.\n\nhtml |&gt;\n  html_elements(\"p\")\n\n{xml_nodeset (2)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n[2] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;\n\n\nThis selects all &lt;p&gt; elements.",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1772,8 +1772,8 @@
     "objectID": "advanced_import.html#select-by-class",
     "href": "advanced_import.html#select-by-class",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.3 Select by class",
-    "text": "17.3 Select by class\nA period . selects elements by their class attribute:\n\nhtml |&gt;\n  html_elements(\".important\")\n\n{xml_nodeset (1)}\n[1] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;",
+    "section": "\n17.4 Select by class",
+    "text": "17.4 Select by class\nA period . selects elements by their class attribute:\n\nhtml |&gt;\n  html_elements(\".important\")\n\n{xml_nodeset (1)}\n[1] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1782,8 +1782,8 @@
     "objectID": "advanced_import.html#select-by-id",
     "href": "advanced_import.html#select-by-id",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.4 Select by ID",
-    "text": "17.4 Select by ID\nA hash # selects an element by its id attribute:\n\nhtml |&gt;\n  html_elements(\"#first\")\n\n{xml_nodeset (1)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n\n\nThe basic selector rules are: - p selects HTML tags - .class_name selects a class - #id_name selects an ID",
+    "section": "\n17.5 Select by ID",
+    "text": "17.5 Select by ID\nA hash # selects an element by its id attribute:\n\nhtml |&gt;\n  html_elements(\"#first\")\n\n{xml_nodeset (1)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n\n\nThe basic selector rules are: - p selects HTML tags - .class_name selects a class - #id_name selects an ID",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1792,8 +1792,8 @@
     "objectID": "advanced_import.html#html_element-vs.-html_elements",
     "href": "advanced_import.html#html_element-vs.-html_elements",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.5 html_element() vs. html_elements()\n",
-    "text": "17.5 html_element() vs. html_elements()\n\nhtml_elements() returns all matching elements.\n\nhtml |&gt;\n  html_elements(\"p\")\n\n{xml_nodeset (2)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n[2] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;\n\n\nhtml_element() returns the first matching element for each input.\n\nhtml |&gt;\n  html_element(\"p\")\n\n{html_node}\n&lt;p id=\"first\"&gt;",
+    "section": "\n17.6 html_element() vs. html_elements()\n",
+    "text": "17.6 html_element() vs. html_elements()\n\nhtml_elements() returns all matching elements.\n\nhtml |&gt;\n  html_elements(\"p\")\n\n{xml_nodeset (2)}\n[1] &lt;p id=\"first\"&gt;This is a paragraph&lt;/p&gt;\n[2] &lt;p class=\"important\"&gt;This is an important paragraph&lt;/p&gt;\n\n\nhtml_element() returns the first matching element for each input.\n\nhtml |&gt;\n  html_element(\"p\")\n\n{html_node}\n&lt;p id=\"first\"&gt;",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1802,8 +1802,8 @@
     "objectID": "advanced_import.html#extracting-text",
     "href": "advanced_import.html#extracting-text",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.6 Extracting text",
-    "text": "17.6 Extracting text\nSelecting an element gives us the HTML element itself.\nTo extract its visible text, use html_text2():\n\nhtml |&gt;\n  html_elements(\"p\") |&gt;\n  html_text2()\n\n[1] \"This is a paragraph\"            \"This is an important paragraph\"",
+    "section": "\n17.7 Extracting text",
+    "text": "17.7 Extracting text\nSelecting an element gives us the HTML element itself.\nTo extract its visible text, use html_text2():\n\nhtml |&gt;\n  html_elements(\"p\") |&gt;\n  html_text2()\n\n[1] \"This is a paragraph\"            \"This is an important paragraph\"",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1812,8 +1812,8 @@
     "objectID": "advanced_import.html#extracting-attributes",
     "href": "advanced_import.html#extracting-attributes",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.7 Extracting Attributes",
-    "text": "17.7 Extracting Attributes\nSometimes useful information is stored inside HTML attributes rather than in the visible text.\nFor example:\n\nhtml &lt;- minimal_html(\"\n  &lt;a href='https://www.example.com'&gt;Example website&lt;/a&gt;\n\")\n\nSelect the link:\n\nlink &lt;- html |&gt;\n  html_element(\"a\")\n\nExtract the visible text:\n\nlink |&gt;\n  html_text2()\n\nExtract the href attribute:\n\nlink |&gt;\n  html_attr(\"href\")\n\nThis distinction is important when scraping real websites: some information is visible on the page, while other information is stored in the HTML structure or attributes.",
+    "section": "\n17.8 Extracting Attributes",
+    "text": "17.8 Extracting Attributes\nSometimes useful information is stored inside HTML attributes rather than in the visible text.\nFor example:\n\nhtml &lt;- minimal_html(\"\n  &lt;a href='https://www.example.com'&gt;Example website&lt;/a&gt;\n\")\n\nSelect the link:\n\nlink &lt;- html |&gt;\n  html_element(\"a\")\n\nExtract the visible text:\n\nlink |&gt;\n  html_text2()\n\nExtract the href attribute:\n\nlink |&gt;\n  html_attr(\"href\")\n\nThis distinction is important when scraping real websites: some information is visible on the page, while other information is stored in the HTML structure or attributes.",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1822,8 +1822,8 @@
     "objectID": "advanced_import.html#extracting-html-tables",
     "href": "advanced_import.html#extracting-html-tables",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.8 Extracting HTML Tables",
-    "text": "17.8 Extracting HTML Tables\nMany web pages contain tables that can be converted directly into data frames.\nUse html_element() to select a table and html_table() to convert it:\n\nlibrary(rvest)\n\npage &lt;- minimal_html(\"\n  &lt;table&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Name&lt;/th&gt;\n      &lt;th&gt;Score&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Ana&lt;/td&gt;\n      &lt;td&gt;92&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Ben&lt;/td&gt;\n      &lt;td&gt;85&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/table&gt;\n\")\n\ntable &lt;- page |&gt;\n  html_element(\"table\") |&gt;\n  html_table()\n\ntable\n\n# A tibble: 2 × 2\n  Name  Score\n  &lt;chr&gt; &lt;int&gt;\n1 Ana      92\n2 Ben      85",
+    "section": "\n17.9 Extracting HTML Tables",
+    "text": "17.9 Extracting HTML Tables\nMany web pages contain tables that can be converted directly into data frames.\nUse html_element() to select a table and html_table() to convert it:\n\nlibrary(rvest)\n\npage &lt;- minimal_html(\"\n  &lt;table&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Name&lt;/th&gt;\n      &lt;th&gt;Score&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Ana&lt;/td&gt;\n      &lt;td&gt;92&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;Ben&lt;/td&gt;\n      &lt;td&gt;85&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/table&gt;\n\")\n\ntable &lt;- page |&gt;\n  html_element(\"table\") |&gt;\n  html_table()\n\ntable\n\n# A tibble: 2 × 2\n  Name  Score\n  &lt;chr&gt; &lt;int&gt;\n1 Ana      92\n2 Ben      85",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
@@ -1832,8 +1832,28 @@
     "objectID": "advanced_import.html#web-scraping-workflow",
     "href": "advanced_import.html#web-scraping-workflow",
     "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
-    "section": "\n17.9 Web Scraping Workflow",
-    "text": "17.9 Web Scraping Workflow\nA typical web scraping workflow is:\n1. Read a web page with read_html().\n2. Inspect the HTML structure.\n3. Select elements with html_elements() or html_element().\n4. Extract text with html_text2(), attributes with html_attr(), or tables with html_table().\n5. Clean the extracted data using familiar tidyverse tools.\n\n17.9.1 In-Class Exercise 4 – IMDb Top Films\nWe will now use rvest to scrape a real archived web page containing the IMDb Top 250 films.\nIn this exercise we will:\n\nRead the web page with read_html().\nExtract the movie table with html_element() and html_table().\nClean the table using dplyr, stringr, and tidyr.\nExtract additional information stored in HTML attributes.\nCombine the scraped information into a tidy data frame.",
+    "section": "\n17.10 Web Scraping Workflow",
+    "text": "17.10 Web Scraping Workflow\nA typical web scraping workflow is:\n1. Read a web page with read_html().\n2. Inspect the HTML structure.\n3. Select elements with html_elements() or html_element().\n4. Extract text with html_text2(), attributes with html_attr(), or tables with html_table().\n5. Clean the extracted data using familiar tidyverse tools.\n\n17.10.1 In-Class Exercise 4 – IMDb Top Films\nWe will now use rvest to scrape a real archived web page containing the IMDb Top 250 films.\nIn this exercise we will:\n\nRead the web page with read_html().\nExtract the movie table with html_element() and html_table().\nClean the table using dplyr, stringr, and tidyr.\nExtract additional information stored in HTML attributes.\nCombine the scraped information into a tidy data frame.",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_import.html#reading-json",
+    "href": "advanced_import.html#reading-json",
+    "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
+    "section": "\n16.3 Reading JSON",
+    "text": "16.3 Reading JSON\n\nstudents_json &lt;- jsonlite::read_json(\n  \"students.json\",\n  simplifyVector = FALSE\n)\n\nstudents_json\n\n[[1]]\n[[1]]$name\n[1] \"Ana\"\n\n[[1]]$program\n[1] \"Biology\"\n\n[[1]]$scores\n[[1]]$scores[[1]]\n[1] 88\n\n[[1]]$scores[[2]]\n[1] 92\n\n[[1]]$scores[[3]]\n[1] 95\n\n\n\n[[2]]\n[[2]]$name\n[1] \"Ben\"\n\n[[2]]$program\n[1] \"Informatics\"\n\n[[2]]$scores\n[[2]]$scores[[1]]\n[1] 78\n\n[[2]]$scores[[2]]\n[1] 85\n\n[[2]]$scores[[3]]\n[1] 91\n\n\n\n[[3]]\n[[3]]$name\n[1] \"Cara\"\n\n[[3]]$program\n[1] \"Biology\"\n\n[[3]]$scores\n[[3]]$scores[[1]]\n[1] 94\n\n[[3]]$scores[[2]]\n[1] 96\n\n[[3]]$scores[[3]]\n[1] 98\n\n\nInspect the object:\n\nstr(students_json)\n\nList of 3\n $ :List of 3\n  ..$ name   : chr \"Ana\"\n  ..$ program: chr \"Biology\"\n  ..$ scores :List of 3\n  .. ..$ : int 88\n  .. ..$ : int 92\n  .. ..$ : int 95\n $ :List of 3\n  ..$ name   : chr \"Ben\"\n  ..$ program: chr \"Informatics\"\n  ..$ scores :List of 3\n  .. ..$ : int 78\n  .. ..$ : int 85\n  .. ..$ : int 91\n $ :List of 3\n  ..$ name   : chr \"Cara\"\n  ..$ program: chr \"Biology\"\n  ..$ scores :List of 3\n  .. ..$ : int 94\n  .. ..$ : int 96\n  .. ..$ : int 98\n\n\nNotice that this is not yet a rectangular data frame.\nConverting hierarchical data to a tibble\nStart by placing each student record into a row:\n\nstudents_df &lt;- tibble(\n  student = students_json\n)\n\nstudents_df\n\n# A tibble: 3 × 1\n  student         \n  &lt;list&gt;          \n1 &lt;named list [3]&gt;\n2 &lt;named list [3]&gt;\n3 &lt;named list [3]&gt;\n\n\nWidening nested objects\nUse unnest_wider() when named elements of a nested object should become columns.\n\nstudents_df &lt;- students_df |&gt;\n  unnest_wider(student)\n\nstudents_df\n\n# A tibble: 3 × 3\n  name  program     scores    \n  &lt;chr&gt; &lt;chr&gt;       &lt;list&gt;    \n1 Ana   Biology     &lt;list [3]&gt;\n2 Ben   Informatics &lt;list [3]&gt;\n3 Cara  Biology     &lt;list [3]&gt;\n\n\nThe name and program fields are now columns, but scores is still a list column.\nLengthening repeated values\nUse unnest_longer() when multiple values should become multiple rows.\n\nstudents_long &lt;- students_df |&gt;\n  unnest_longer(scores)\n\nstudents_long\n\n# A tibble: 9 × 3\n  name  program     scores\n  &lt;chr&gt; &lt;chr&gt;        &lt;int&gt;\n1 Ana   Biology         88\n2 Ana   Biology         92\n3 Ana   Biology         95\n4 Ben   Informatics     78\n5 Ben   Informatics     85\n6 Ben   Informatics     91\n7 Cara  Biology         94\n8 Cara  Biology         96\n9 Cara  Biology         98\n\n\nNow each score appears in its own row.\nSummarizing the tidy data\n\nstudents_long |&gt;\n  group_by(name, program) |&gt;\n  summarize(\n    mean_score = mean(scores),\n    .groups = \"drop\"\n  )\n\n# A tibble: 3 × 3\n  name  program     mean_score\n  &lt;chr&gt; &lt;chr&gt;            &lt;dbl&gt;\n1 Ana   Biology           91.7\n2 Ben   Informatics       84.7\n3 Cara  Biology           96  \n\n\nThe main workflow is:\nJSON → nested R object → tibble → unnest → tidy data",
+    "crumbs": [
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
+    ]
+  },
+  {
+    "objectID": "advanced_import.html#reading-html",
+    "href": "advanced_import.html#reading-html",
+    "title": "\n14  Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping\n",
+    "section": "\n17.1 Reading HTML\n",
+    "text": "17.1 Reading HTML\n\nUse read_html() to read HTML from a web page:\n\nurl &lt;- \"https://rvest.tidyverse.org/\"\nhtml &lt;- read_html(url)\n\nhtml\n\n{html_document}\n&lt;html lang=\"en\"&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n    &lt;a href=\"#container\" class=\"visually-hidden-focusable\"&gt;Skip t ...\n\n\nThe result is an HTML document that we can query with rvest.\nWe can also create a small HTML document directly in R:\n\nhtml &lt;- minimal_html(\"\n  &lt;h1&gt;This is a heading&lt;/h1&gt;\n  &lt;p&gt;This is a paragraph&lt;/p&gt;\n  &lt;ul&gt;\n    &lt;li&gt;This is a bulleted list&lt;/li&gt;\n  &lt;/ul&gt;\n\")\n\nhtml\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8 ...\n[2] &lt;body&gt;\\n&lt;h1&gt;This is a heading&lt;/h1&gt;\\n  &lt;p&gt;This is a paragraph&lt;/p&gt;\\n  &lt;ul&gt;\\ ...",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping</span>"
     ]
