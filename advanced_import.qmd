@@ -2,7 +2,7 @@
 title: "Accessing Data: Spreadsheets, Databases, JSON, and Web Scraping"
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 By the end of this lecture, you should be able to:
 
@@ -13,11 +13,11 @@ By the end of this lecture, you should be able to:
 
 ------------------------------------------------------------------------
 
-# Spreadsheets (R4DS Chapter 20)
+## Spreadsheets (R4DS Chapter 20)
 
 R can read Excel files with the `readxl` package and Google Sheets with `googlesheets4`.
 
-## Importing Excel
+### Importing Excel
 
 ```{r, eval=TRUE}
 library(tidyverse)
@@ -36,7 +36,7 @@ students <- read_excel("students.xlsx")
 students
 ```
 
-## Importing Google Sheets
+### Importing Google Sheets
 
 ```{r eval=FALSE}
 library(googlesheets4)
@@ -48,7 +48,7 @@ gs_df
 
 ------------------------------------------------------------------------
 
-## In-Class Exercise 1 – Spreadsheets
+### In-Class Exercise 1 – Spreadsheets
 
 1.  Read an Excel file (`students.xlsx` from above).
 2.  Fix column names.
@@ -107,7 +107,7 @@ students
 
 Data science is done through **iteration**!
 
-## Sheets
+### Sheets
 
 Now let's download `penguins` but in Excel format:
 
@@ -154,7 +154,7 @@ bake_sale <- tibble(
 write_xlsx(bake_sale, path = "bake-sale.xlsx")
 ```
 
-## With Google Sheets:
+### With Google Sheets:
 
 ```{r}
 
@@ -181,13 +181,13 @@ read_sheet(penguins_sheet_id, sheet = "Torgersen Island")
 
 ------------------------------------------------------------------------
 
-# Databases (R4DS Chapter 21)
+## Databases (R4DS Chapter 21)
 
 Relational databases store data in tables that can be queried without loading the entire dataset into memory.
 
 In R, the `DBI` package provides a common interface for working with databases. Here we will use `RSQLite` to create a small SQLite database from the familiar `nycflights13` data.
 
-## In-Class Exercise 2
+### In-Class Exercise 2
 
 In this exercise, you will create a small SQLite database from the `nycflights13::flights` data, connect to it, and query it using familiar `dplyr` verbs.
 
@@ -198,7 +198,7 @@ library(dplyr)
 library(nycflights13)
 ```
 
-### Step 1: Create the database
+#### Step 1: Create the database
 
 Create a new SQLite database file called `flights.sqlite`.
 
@@ -209,7 +209,7 @@ con <- dbConnect(
 )
 ```
 
-### Step 2: Write the `flights` table to the database
+#### Step 2: Write the `flights` table to the database
 
 ```{r}
 dbWriteTable(
@@ -226,7 +226,7 @@ Check that the table was created:
 dbListTables(con)
 ```
 
-### Step 3: Create a reference to the database table
+#### Step 3: Create a reference to the database table
 
 ```{r}
 flights_db <- tbl(
@@ -239,7 +239,7 @@ flights_db
 
 Note that flights_db is a reference to the database table. The full dataset has not been copied into R.
 
-### Step 4: Query the database
+#### Step 4: Query the database
 
 Find all flights with departure delays greater than 120 minutes.
 
@@ -259,14 +259,14 @@ delayed_flights <- flights_db |>
 delayed_flights
 ```
 
-### Step 5: See the SQL query
+#### Step 5: See the SQL query
 
 ```{r}
 delayed_flights |>
   show_query()
 ```
 
-### Step 6: Bring the result into R
+#### Step 6: Bring the result into R
 
 Use `collect()` to actually retrieve the query result from the database.
 
@@ -277,7 +277,7 @@ delayed_flights_df <- delayed_flights |>
 delayed_flights_df
 ```
 
-### Step 7: How many flights matched?
+#### Step 7: How many flights matched?
 
 ```{r}
 nrow(delayed_flights_df)
@@ -294,7 +294,7 @@ flights_db |>
 
 ------------------------------------------------------------------------
 
-# Hierarchical Data and JSON
+## Hierarchical Data and JSON
 
 Many datasets are not stored as rectangular tables. Instead, they may contain nested objects, lists, or repeated values.
 
@@ -302,7 +302,7 @@ This is common with data returned by web APIs.
 
 JSON stands for **JavaScript Object Notation** and is a widely used format for storing and exchanging hierarchical data.
 
-## Creating a small JSON example
+### Creating a small JSON example
 
 We will create a small nested dataset in R and save it as JSON.
 
@@ -336,7 +336,7 @@ write_json(
 )
 ```
 
-## Reading JSON
+### Reading JSON
 
 ```{r}
 students_json <- jsonlite::read_json(
@@ -355,7 +355,7 @@ str(students_json)
 
 Notice that this is not yet a rectangular data frame.
 
-## **Converting hierarchical data to a tibble**
+### **Converting hierarchical data to a tibble**
 
 Start by placing each student record into a row:
 
@@ -367,7 +367,7 @@ students_df <- tibble(
 students_df
 ```
 
-## **Widening nested objects**
+### **Widening nested objects**
 
 Use `unnest_wider()` when named elements of a nested object should become columns.
 
@@ -380,7 +380,7 @@ students_df
 
 The `name` and `program` fields are now columns, but `scores` is still a list column.
 
-## **Lengthening repeated values**
+### **Lengthening repeated values**
 
 Use `unnest_longer()` when multiple values should become multiple rows.
 
@@ -408,7 +408,7 @@ The main workflow is:
 
 JSON → nested R object → tibble → unnest → tidy data
 
-## In-Class Exercise 3 – JSON
+### In-Class Exercise 3 – JSON
 
 Using the `students.json` file created above:
 
@@ -419,7 +419,7 @@ Using the `students.json` file created above:
 5.  Use `unnest_longer()` to turn the score values into rows.
 6.  Calculate the mean score for each student.
 
-# Web Scraping with HTML
+## Web Scraping with HTML
 
 Web scraping means extracting information from web pages.
 
@@ -431,7 +431,7 @@ In R, the `rvest` package provides tools for reading and extracting information 
 library(rvest)
 ```
 
-## **Reading HTML**
+### **Reading HTML**
 
 Use read_html() to read HTML from a web page:
 
@@ -458,7 +458,7 @@ html <- minimal_html("
 html
 ```
 
-## HTML Elements
+### HTML Elements
 
 HTML pages are made of elements marked by tags.
 
@@ -486,7 +486,7 @@ html <- minimal_html("
 html
 ```
 
-### Selecting HTML Elements
+#### Selecting HTML Elements
 
 Use `html_elements()` to select all matching elements.
 
@@ -497,7 +497,7 @@ html |>
 
 This selects all `<p>` elements.
 
-### Select by class
+#### Select by class
 
 A period `.` selects elements by their class attribute:
 
@@ -506,7 +506,7 @@ html |>
   html_elements(".important")
 ```
 
-### Select by ID
+#### Select by ID
 
 A hash `#` selects an element by its id attribute:
 
@@ -517,7 +517,7 @@ html |>
 
 The basic selector rules are: - `p` selects HTML tags - `.class_name` selects a class - `#id_name` selects an ID
 
-## `html_element()` vs. `html_elements()`
+### `html_element()` vs. `html_elements()`
 
 `html_elements()` returns all matching elements.
 
@@ -533,7 +533,7 @@ html |>
   html_element("p")
 ```
 
-### Extracting text
+#### Extracting text
 
 Selecting an element gives us the HTML element itself.
 
@@ -545,7 +545,7 @@ html |>
   html_text2()
 ```
 
-### Extracting Attributes
+#### Extracting Attributes
 
 Sometimes useful information is stored inside HTML attributes rather than in the visible text.
 
@@ -580,7 +580,7 @@ link |>
 
 This distinction is important when scraping real websites: some information is visible on the page, while other information is stored in the HTML structure or attributes.
 
-## Extracting HTML Tables
+### Extracting HTML Tables
 
 Many web pages contain tables that can be converted directly into data frames.
 
@@ -613,7 +613,7 @@ table <- page |>
 table
 ```
 
-## Web Scraping Workflow
+### Web Scraping Workflow
 
 A typical web scraping workflow is:
 
@@ -703,7 +703,7 @@ ratings |>
   )
 ```
 
-# Homework Preview
+## Homework Preview
 
 For the next homework:
 
@@ -715,6 +715,6 @@ For the next homework:
 
 ------------------------------------------------------------------------
 
-# Conclusion
+## Conclusion
 
 This session completes the course by showing how to **access data from multiple modern sources**, preparing you to work with **real-world messy data** beyond flat CSV files.
