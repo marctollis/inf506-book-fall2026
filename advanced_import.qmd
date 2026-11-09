@@ -1,5 +1,5 @@
 ---
-title: "Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping"
+title: "Accessing Data: Spreadsheets, Databases, JSON, and Web Scraping"
 ---
 
 # Learning Objectives
