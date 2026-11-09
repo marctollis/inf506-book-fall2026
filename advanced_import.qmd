@@ -6,11 +6,11 @@ title: "Accessing Data: Spreadsheets, Databases, Arrow, JSON, and Web Scraping"
 
 By the end of this lecture, you should be able to:
 
--   Import and work with data from Excel and Google Sheets
--   Connect to and query relational databases from R
--   Use Arrow to work efficiently with parquet files and large datasets
--   Access and tidy hierarchical JSON data
--   Perform basic web scraping to extract data from web pages
+- Import and work with data from Excel and Google Sheets
+- Connect to and query relational databases from R
+- Use Arrow to work efficiently with parquet files and large datasets
+- Access and tidy hierarchical JSON data
+- Perform basic web scraping to extract data from web pages
 
 ------------------------------------------------------------------------
 
@@ -20,29 +20,155 @@ R can read Excel files with the `readxl` package and Google Sheets with `googles
 
 ### Importing Excel
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 library(readxl)
 
-excel_df <- read_excel("data/example.xlsx", sheet = "Sheet1")
-head(excel_df)
+url <- "https://github.com/marctollis/inf506-book-fall2026/raw/refs/heads/main/students.xlsx"
+
+download.file(
+  url,
+  destfile = "students.xlsx",
+  mode = "wb"
+)
+
+students <- read_excel("students.xlsx")
+
+students
 ```
 
 ### Importing Google Sheets
 
 ```{r eval=FALSE}
 library(googlesheets4)
-sheet_url <- "https://docs.google.com/spreadsheets/d/your-sheet-id/edit#gid=0"
+gs4_deauth()
+sheet_url <- "https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w/edit?usp=sharing"
 gs_df <- read_sheet(sheet_url)
+gs_df
 ```
 
 ------------------------------------------------------------------------
 
 ### In-Class Exercise 1 – Spreadsheets
 
-1.  Read an Excel file from the course data folder.\
-2.  Load a Google Sheet you create (optional, requires authentication).\
-3.  Summarize one numeric column.
+1.  Read an Excel file (`students.xlsx` from above).
+2.  Fix column names.
+3.  Encode missing data properly.
+4.  Specify column types.
+5.  Any problems?
+6.  Summarize one numeric column.
 
+Read in the Excel file, fix column names:
+
+```{r}
+read_excel(
+  "students.xlsx",
+  col_names = c("student_id", "full_name", "favourite_food", "meal_plan", "age"), skip = 1)
+```
+
+Encode missing data properly:
+
+```{r}
+read_excel(
+  "students.xlsx",
+  col_names = c("student_id", "full_name", "favourite_food", "meal_plan", "age"), skip = 1, na = c("","N/A")
+)
+```
+
+Specify column types:
+
+```{r}
+students <- read_excel(
+  "students.xlsx",
+  col_names = c("student_id", "full_name", "favourite_food", "meal_plan", "age"),
+  skip = 1,
+  na = c("", "N/A"),
+  col_types = c("numeric", "text", "text", "text", "numeric")
+)
+```
+
+This doesn't do the trick. Why? What happend in the `age` column? Try again, but this way:
+
+```{r}
+students <- read_excel(
+  "students.xlsx",
+  col_names = c("student_id", "full_name", "favourite_food", "meal_plan", "age"),
+  skip = 1,
+  na = c("", "N/A"),
+  col_types = c("numeric", "text", "text", "text", "text")
+)
+
+students <- students |>
+  mutate(
+    age = if_else(age == "five", "5", age),
+    age = parse_number(age)
+  )
+students
+```
+
+Data science is done through **iteration**!
+
+## Sheets
+Now let's download `penguins` but in Excel format:
+```{r}
+url <- "https://github.com/marctollis/inf506-book-fall2026/raw/refs/heads/main/penguins.xlsx"
+
+download.file(
+  url,
+  destfile = "penguins.xlsx",
+  mode = "wb"
+)
+```
+The file has sheets, which you can view with `excel_sheets`.
+
+```{r}
+excel_sheets("penguins.xlsx")
+```
+You can also use `read_excel` to extract specific sheets:
+```{r}
+penguins_torgersen <- read_excel("penguins.xlsx", sheet = "Torgersen Island")
+
+penguins_torgersen
+```
+
+And you can read each sheet individually too:
+```{r}
+penguins_biscoe <- read_excel("penguins.xlsx", sheet = "Biscoe Island", na = "NA")
+penguins_dream  <- read_excel("penguins.xlsx", sheet = "Dream Island", na = "NA")
+```
+
+You can also *write* to an Excel file:
+```{r}
+bake_sale <- tibble(
+  item     = factor(c("brownie", "cupcake", "cookie")),
+  quantity = c(10, 5, 8)
+)
+
+write_xlsx(bake_sale, path = "bake-sale.xlsx")
+```
+
+# With Google Sheets:
+```{r}
+
+library(googlesheets4)
+gs4_deauth()
+students_sheet_id <- "https://docs.google.com/spreadsheets/d/1V1nPp1tzOuutXFLb3G9Eyxi3qxeEhnOXUzL5_BcCQ0w"
+students <- read_sheet(students_sheet_id)
+students
+# now you can change column data type, etc:
+students <- read_sheet(
+  students_sheet_id,
+  col_names = c("student_id", "full_name", "favourite_food", "meal_plan", "age"),
+  skip = 1,
+  na = c("", "N/A"),
+  col_types = "dcccc"
+)
+students
+
+# read in sheets:
+penguins_sheet_id <- "1aFu8lnD_g0yjF5O-K6SFgSEWiHPpgvFCF0NY9D6LXnY"
+sheet_names(penguins_sheet_id)
+read_sheet(penguins_sheet_id, sheet = "Torgersen Island")
+```
 ------------------------------------------------------------------------
 
 ## Databases (R4DS Chapter 21)
@@ -172,11 +298,11 @@ head(gdp_table)
 
 For the next homework:
 
--   Choose **two different data sources** (Excel, database, parquet, JSON, web)
--   Import and tidy them
--   Join or compare across sources
--   Render a short report with one plot and one table
--   Submit the rendered PDF
+- Choose **two different data sources** (Excel, database, parquet, JSON, web)
+- Import and tidy them
+- Join or compare across sources
+- Render a short report with one plot and one table
+- Submit the rendered PDF
 
 ------------------------------------------------------------------------
 
