@@ -2,55 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/index.html</loc>
-    <lastmod>2026-08-17T22:34:29.254Z</lastmod>
+    <lastmod>2026-08-17T22:33:20.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/welcome.html</loc>
-    <lastmod>2026-08-17T21:45:25.898Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/Rintro.html</loc>
-    <lastmod>2026-08-17T21:45:25.820Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/ggplot2.html</loc>
-    <lastmod>2026-08-17T21:45:25.886Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/dplyr1.html</loc>
-    <lastmod>2026-08-17T21:45:25.884Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/dplyr2.html</loc>
-    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/tidy.html</loc>
-    <lastmod>2026-09-22T23:25:36.655Z</lastmod>
+    <lastmod>2026-09-22T23:25:36.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/eda.html</loc>
-    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/workflow.html</loc>
-    <lastmod>2026-08-17T21:45:25.898Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/dataimport.html</loc>
-    <lastmod>2026-10-13T23:01:10.524Z</lastmod>
+    <lastmod>2026-10-13T23:01:10.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/transform.html</loc>
-    <lastmod>2026-08-17T21:45:25.897Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/strings.html</loc>
-    <lastmod>2026-10-28T18:20:41.428Z</lastmod>
+    <lastmod>2026-10-28T18:08:45.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/factors.html</loc>
-    <lastmod>2026-08-17T21:45:25.885Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/relational.html</loc>
@@ -58,18 +58,22 @@
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/advanced_import.html</loc>
-    <lastmod>2026-11-09T21:40:06.432Z</lastmod>
+    <lastmod>2026-11-09T21:40:06.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/syllabus.html</loc>
-    <lastmod>2026-11-09T17:20:14.723Z</lastmod>
+    <lastmod>2026-11-09T16:10:59.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/codestyle.html</loc>
-    <lastmod>2026-08-17T21:45:25.831Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
   </url>
   <url>
     <loc>https://marctollis.github.io/inf506-book-fall2026/tibbles.html</loc>
-    <lastmod>2026-08-17T21:45:25.896Z</lastmod>
+    <lastmod>2026-08-17T21:45:25.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marctollis.github.io/inf506-book-fall2026/INF506--Data-Wrangling-and-Management.pdf</loc>
+    <lastmod>2026-11-24T21:53:03.206Z</lastmod>
   </url>
 </urlset>

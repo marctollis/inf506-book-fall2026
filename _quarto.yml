@@ -13,6 +13,7 @@ book:
   site-url: https://marctollis.github.io/inf506-book-fall2026/
   repo-url: https://github.com/marctollis/inf506-book-fall2026
   repo-actions: [source, issue]
+  downloads: [pdf]
   chapters:
     - index.qmd
     - welcome.qmd
@@ -55,3 +56,7 @@ format:
     code-fold: false
     highlight-style: printing
     code-block-bg: true
+  pdf:
+    documentclass: scrreprt
+    toc: true
+    number-sections: true
